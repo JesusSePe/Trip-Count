@@ -1,7 +1,8 @@
 # Trip-Count
 
-![](img/portada.jpg)
+---
 
+![](img/portada.jpg)
 
 ---
 
