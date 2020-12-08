@@ -8,7 +8,5 @@
 <body>
     <h1>TRIP COUNT</h1>
     <img src="img/portada.jpg" alt="test">
-    hola
-    adeu
 </body>
 </html>
