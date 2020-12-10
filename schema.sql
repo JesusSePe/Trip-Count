@@ -1,7 +1,7 @@
 CREATE DATABASE tripcount;
 USE tripcount;
 CREATE TABLE users (
-	id_user CHAR(3) NOT NULL AUTO_INCREMENT,
+	id_user CHAR(3) NOT NULL,
 	name VARCHAR(25) NOT NULL,
 	last_name VARCHAR (40) NOT NULL,
 	uname VARCHAR(15) NOT NULL,
@@ -12,13 +12,13 @@ CREATE TABLE users (
 CREATE TABLE friends (
 	id_user CHAR(3) NOT NULL,
 	id_friend CHAR(3) NOT NULL,
-	FOREIGN KEY(id_usr) references users(id_user),
+	FOREIGN KEY(id_user) references users(id_user),
 	FOREIGN KEY(id_friend) references users(id_user),
 	PRIMARY KEY(id_user, id_friend)
 );
 
 CREATE TABLE travels (
-	id_travel CHAR(3) NOT NULL AUTO_INCREMENT,
+	id_travel CHAR(3) NOT NULL,
 	destination VARCHAR(100) NOT NULL,
 	origin VARCHAR(100) NOT NULL,
 	leaving_day DATE NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE users_travels (
 );
 
 CREATE TABLE expenses (
-	id_expense CHAR(5) NOT NULL AUTO_INCREMENT,
+	id_expense CHAR(5) NOT NULL,
 	amount CHAR(7) NOT NULL,
 	expense_date DATE NOT NULL,
 	id_travel CHAR(3) NOT NULL,
