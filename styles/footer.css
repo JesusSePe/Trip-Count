@@ -2,7 +2,7 @@
 }
  /*  FOOTER  */
 
- body {overflow-x: hidden }
+ body {overflow-x: hidden } /* esconde el scrollbar horizontal */
 
 ul {
     list-style: none;
