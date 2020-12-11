@@ -8,8 +8,6 @@
     </div>
     <div class="copyright">
         <p>TRIP-COUNT</p>
-        <p>© 2016-</p> <?php echo date("Y")?>
+        <p>© 2016 - <?php echo date("Y")?> </p>
     </div>
 </div>   
-</body>
-</html>
