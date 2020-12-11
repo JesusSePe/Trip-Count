@@ -1,1 +1,194 @@
-f
+* { 
+    margin: 0; 
+    font-family: Arial, Helvetica, sans-serif;
+  }
+/*  HEADER   */
+  .header {
+    display: flex;
+    background-color: orange;
+    padding: 10px 10px;
+    color: #333334;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 100%;
+  }
+  
+  /* Quita la barra scrollbar*/
+  *::-webkit-scrollbar {
+    scrollbar-color: rgba(0, 0, 0, .5) rgba(0, 0, 0, 0);
+    scrollbar-width: thin;
+  
+    /*display: none;*/
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: #797979;
+    border-radius: 20px;
+    border: 2px solid #f1f2f3;
+  }
+  
+  *::-webkit-scrollbar {
+    -webkit-appearance: none;
+  }
+  
+  *::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+    display: none;
+  } 
+  
+  
+  .header a {
+    float: left;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px; 
+    line-height: 25px;
+    border-radius: 4px;
+  }
+  
+  .header a.logo {
+    font-size: 25px;
+    font-weight: bold;
+  }
+  
+  .tripcount {
+    border-right: solid #333334 1px;
+    padding-right: 1.5rem;
+  }
+  
+  .header a.active {
+    background-color: dodgerblue;
+    color: white;
+  }
+  
+  .header-right {
+    width: 85%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    
+  }
+  
+  .button {
+    background-color: #333334;
+    border: solid 1px white;
+    color: white;
+    transition: 0.5s;
+  }
+  
+  .button:hover {
+    transition: 0.3s;
+    background-color: #3392ff;
+  }
+  
+  .button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+   }
+  
+  .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -50px;
+    transition: 0.5s;
+  }
+  
+  .button:hover span {
+    padding-right: 25px;
+  }
+  
+  .button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+
+ /*  FOOTER  */
+
+ body {overflow-x: hidden } /* esconde el scrollbar horizontal */
+
+ul {
+    list-style: none;
+}
+.footer {
+    display: flex;
+    width: 100%;
+    display: flex;
+    left: 0;
+    bottom: 0;
+    background-color: #333334;
+    color: orange;
+    text-align: center;
+    justify-content: center;
+    font-weight: bold;
+    align-items: center;
+    padding: 1rem;
+}
+
+.names {
+    display: flex;
+    margin-right : 2rem;
+    align-items: center;
+    text-align: center;
+    border-right: solid orange 1px;
+    height: 80%;
+    padding-right: 2rem;
+}
+
+.copyright {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-right : 2%; 
+}
+
+/* ALERTS */
+
+span::before {
+    margin-right: 10px;
+}
+
+.info {
+    background-color: #11D0D0;
+    padding: 20px;
+}
+
+.info span::before {
+    font-family: FontAwesome;
+    content: '\f05a';
+}
+
+.warning {
+    background-color: #FFEB3B;
+    padding: 20px;
+}
+
+.warning span::before {
+    font-family: FontAwesome;
+    content: '\f06a';
+}
+
+.success {
+    background-color: #4CAF50;
+    padding: 20px;
+}
+
+.success span::before {
+    font-family: FontAwesome;
+    content: '\f058';
+}
+
+.error {
+    background-color: #FF5C5C;
+    padding: 20px;
+}
+
+.error span::before {
+    font-family: FontAwesome;
+    content: '\f057';
+
+}
+
