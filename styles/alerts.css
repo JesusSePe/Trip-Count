@@ -41,7 +41,7 @@ span::before {
 
 .error span::before {
     font-family: FontAwesome;
-    content: '\f00d';
+    content: '\f057';
 
 }
 
