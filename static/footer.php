@@ -1,3 +1,4 @@
+<style><?php include_once(dirname(__DIR__).'/styles/footer.css'); ?></style>
 <div class="footer">
     <div class="names">
         <ul>
