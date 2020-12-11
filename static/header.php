@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style><?php include_once(dirname(__DIR__).'/styles/header.css'); ?></style>
-    <link rel="icon" type="icon/png" href="../img/coin.png"/>
     <title>TRIP-COUNT</title>
 </head>
 <body>

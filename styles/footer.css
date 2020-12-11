@@ -8,7 +8,7 @@ ul {
     list-style: none;
 }
 .footer {
-    position: absolute;
+    display: flex;
     width: 100%;
     display: flex;
     left: 0;
