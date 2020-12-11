@@ -18,7 +18,7 @@
         </div>
         <div class="copyright">
             <p>TRIP-COUNT</p>
-            <p>© 2016-2020 </p>
+            <p>© 2016-</p> <?php echo date("Y")?>
         </div>
     </div>
 
