@@ -1,4 +1,3 @@
-<style><?php include_once(dirname(__DIR__).'/styles/footer.css'); ?></style>
 <div class="footer">
     <div class="names">
         <ul>
@@ -9,6 +8,6 @@
     </div>
     <div class="copyright">
         <p>TRIP-COUNT</p>
-        <p>© 2016 - <?php echo date("Y")?></p>
+        <p>© 2016 - <?php echo date("Y")?> </p>
     </div>
-</div>
+</div>   

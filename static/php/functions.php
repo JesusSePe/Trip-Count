@@ -1,4 +1,5 @@
 <?php
+
     function systemMSG($state, $msg) {
         if ($state == 'info'){
             echo '<div class="info"><span>INFO | '. $msg .'</span></div>';
@@ -10,4 +11,5 @@
             echo '<div class="error"><span>ERROR | '. $msg .'</span></div>';
         }
     }
+
 ?>
