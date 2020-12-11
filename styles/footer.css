@@ -1,0 +1,40 @@
+ * {font-family: Arial, Helvetica, sans-serif;
+}
+ /*  FOOTER  */
+
+ body {overflow-x: hidden } /* esconde el scrollbar horizontal */
+
+ul {
+    list-style: none;
+}
+.footer {
+    display: flex;
+    width: 100%;
+    display: flex;
+    left: 0;
+    bottom: 0;
+    background-color: #333334;
+    color: orange;
+    text-align: center;
+    justify-content: center;
+    font-weight: bold;
+    align-items: center;
+    padding: 1rem;
+}
+
+.names {
+    display: flex;
+    margin-right : 2rem;
+    align-items: center;
+    text-align: center;
+    border-right: solid orange 1px;
+    height: 80%;
+    padding-right: 2rem;
+}
+
+.copyright {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-right : 2%; 
+}
