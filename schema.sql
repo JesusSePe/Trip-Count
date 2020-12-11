@@ -13,9 +13,17 @@ CREATE TABLE users (
 CREATE TABLE friends (
 	id_user CHAR(3) NOT NULL,
 	id_friend CHAR(3) NOT NULL,
+	PRIMARY KEY(id_user, id_friend),
 	FOREIGN KEY(id_user) references users(id_user),
-	FOREIGN KEY(id_friend) references users(id_user),
-	PRIMARY KEY(id_user, id_friend)
+	FOREIGN KEY(id_friend) references users(id_user)
+);
+
+CREATE TABLE invitations (
+	id_invitation CHAR(3) NOT NULL,
+	id_user_invitor CHAR(3) NOT NULL,
+	mail VARCHAR(50) NOT NULL,
+	PRIMARY KEY(id_invitation),
+	FOREIGN KEY(id_user_invitor) references users(id_user)
 );
 
 CREATE TABLE travels (
