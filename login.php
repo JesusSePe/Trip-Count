@@ -15,14 +15,13 @@
 
         $_username = $_POST["username"];
         $_password = $_POST["userPass"];
-
-        $_password = hash("sha256", filter_var($_POST["userPass"], FILTER_SANITIZE_STRING));
+          
         $query = $pdo -> prepare("SELECT * FROM usuarios WHERE usuario = ? AND password = ?");
         $query->bindParam(1, $_username);
         $query->bindParam(2, $_password);
         $query->execute();
         $row = $query -> fetch();
-        if ($row !== false) {
+        if ($row != false) {
           echo "<p class='success'>Entraste</p>";
         } else {
           echo "<p class='fail'>ERROR</p>";
