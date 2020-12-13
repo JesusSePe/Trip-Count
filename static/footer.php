@@ -1,9 +1,9 @@
 <div class="footer">
     <div class="names">
         <ul>
-            <li>Castilla</li>
             <li>Jesus</li>
             <li>Adrian</li>
+            <li>Castilla</li>
         </ul>
     </div>
     <div class="copyright">
