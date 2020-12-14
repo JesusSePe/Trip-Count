@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Login</title>
     <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="styles/main.css">
   </head>
 <?php
       if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["username"]) and isset($_POST["userPass"])) {
