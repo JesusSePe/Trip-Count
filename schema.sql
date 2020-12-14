@@ -32,6 +32,8 @@ CREATE TABLE travels (
 	origin VARCHAR(100) NOT NULL,
 	leaving_day DATE NOT NULL,
 	back_day DATE NOT NULL,
+	t_creation DATE NOT NULL,
+	t_update DATE NOT NULL,
 	PRIMARY KEY(id_travel)
 );
 
@@ -60,15 +62,15 @@ CREATE TABLE user_expenses (
 	PRIMARY KEY(id_user, id_expense)
 );
 
-INSERT INTO users (id_user, name, last_name, mail, uname, pwd) VALUES (1, 'Check', 'Correct', 'mail@mail.com', 'Manolo', 'P@ssw0rd');
-INSERT INTO users (id_user, name, last_name, mail, uname, pwd) VALUES (2, 'Another', 'User', 'example@mail.com', 'Anon', 'AsDf 1243');
+INSERT INTO users (id_user, name, last_name, mail, uname, pwd) VALUES (1, 'Check', 'Correct', 'mail@mail.com', 'Manolo', 'b03ddf3ca2e714a6548e7495e2a03f5e824eaac9837cd7f159c67b90fb4b7342');
+INSERT INTO users (id_user, name, last_name, mail, uname, pwd) VALUES (2, 'Another', 'User', 'example@mail.com', 'Anon', '1a4d8f9dabdf67491921cd1f528b27fcca35cc1e76afdb26ea1c4c237bf7e27b');
 INSERT INTO friends (id_user, id_friend) VALUES (1, 2); /*User 1 added user 2 as a friend*/
 INSERT INTO friends (id_user, id_friend) VALUES (2, 1); /*User 2 added user 1 as a friend*/
 INSERT INTO invitations (id_invitation, id_user_invitor, mail) VALUES (1, 1, 'example@mail.com');
 INSERT INTO invitations (id_invitation, id_user_invitor, mail) VALUES (2, 1, 'anotheruser@mail.com');
-INSERT INTO travels (id_travel, destination, origin, leaving_day, back_day) VALUES (1, 'Toronto', 'Madrid', STR_TO_DATE('21-12-2020', '%d-%m-%Y'), STR_TO_DATE('02-01-2021', '%d-%m-%Y'));
-INSERT INTO travels (id_travel, destination, origin, leaving_day, back_day) VALUES (2, 'Buenos Aires', 'Toronto', STR_TO_DATE('02-01-2021', '%d-%m-%Y'), STR_TO_DATE('15-01-2021', '%d-%m-%Y'));
-INSERT INTO travels (id_travel, destination, origin, leaving_day, back_day) VALUES (3, 'Paris', 'Buenos Aires', STR_TO_DATE('15-01-2021', '%d-%m-%Y'), STR_TO_DATE('27-01-2021', '%d-%m-%Y'));
+INSERT INTO travels (id_travel, destination, origin, leaving_day, back_day, t_creation, t_update) VALUES (1, 'Toronto', 'Madrid', STR_TO_DATE('21-12-2020', '%d-%m-%Y'), STR_TO_DATE('02-01-2021', '%d-%m-%Y'), STR_TO_DATE('28-11-2020', '%d-%m-%Y'), STR_TO_DATE('30-11-2020', '%d-%m-%Y'));
+INSERT INTO travels (id_travel, destination, origin, leaving_day, back_day, t_creation, t_update) VALUES (2, 'Buenos Aires', 'Toronto', STR_TO_DATE('02-01-2021', '%d-%m-%Y'), STR_TO_DATE('15-01-2021', '%d-%m-%Y'), STR_TO_DATE('29-11-2020', '%d-%m-%Y'), STR_TO_DATE('1-12-2020', '%d-%m-%Y'));
+INSERT INTO travels (id_travel, destination, origin, leaving_day, back_day, t_creation, t_update) VALUES (3, 'Paris', 'Buenos Aires', STR_TO_DATE('15-01-2021', '%d-%m-%Y'), STR_TO_DATE('27-01-2021', '%d-%m-%Y'), STR_TO_DATE('30-11-2020', '%d-%m-%Y'), STR_TO_DATE('10-12-2020', '%d-%m-%Y'));
 INSERT INTO users_travels (id_travel, id_user) VALUES (1, 1);
 INSERT INTO users_travels (id_travel, id_user) VALUES (1, 2);
 INSERT INTO users_travels (id_travel, id_user) VALUES (2, 1);
