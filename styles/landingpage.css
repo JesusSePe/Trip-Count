@@ -5,8 +5,8 @@
 }
 
 html{
-	font: normal 16px sans-serif;
 	color: #555;
+	font: normal 16px sans-serif;
 }
 
 a{
@@ -24,7 +24,7 @@ a.btn{
 	color: #fff;
 	border-radius: 4px;
 	text-transform: uppercase;
-	background-color: orange;
+	background-color: #1D1D1E;
 	font-weight: 800;
 	text-align: center;
 }
@@ -33,30 +33,31 @@ section{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-
 	padding: 125px 100px;
 }
 
 /*----------------
- 	Container Section
+Container Section
 ----------------*/
 
 .container{
-	position: relative;
+	display: flex;
+	min-height: 100%;
 	justify-content: center;
-	min-height: 130px;
-	color: #fff;
+	color: #1D1D1E;
 	text-align: center;
+	align-items: center;
 }
 
 .container .background-image{
+	height: 100%;
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
 	background-size: cover;
-	background-color: #9da5f3;
+	background-color: #EEF3F6;
 	z-index: -1;
 }
 
@@ -66,7 +67,7 @@ section{
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: #414a4f;
+	background-color: #1D1D1E;
 	opacity: 0.75;
 }
 
