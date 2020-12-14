@@ -7,12 +7,14 @@
     <title>Home</title>
 </head>
 <body>
-    
     <?php include_once(dirname(__DIR__).'/Trip-Count/static/header.php'); ?>
+    <div class="main-content">
 
-    <h1>TRIP COUNT</h1>
-    <img src="img/portada.jpg" alt="test">
-
+        
+        <h1>TRIP COUNT</h1>
+        <img src="img/portada.jpg" alt="test">
+        
+    </div>
     <?php include_once(dirname(__DIR__).'/Trip-Count/static/footer.php'); ?>
 
 </body>

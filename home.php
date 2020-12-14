@@ -6,11 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home</title>
     <link rel="stylesheet" href="styles/landingpage.css">
+    <link rel="stylesheet" href="styles/main.css">
+
 
 <body>
   <div></div>
   <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
-	<section class="container">
+	<section class="container main-content">
 		<div class="background-image"></div>
 		<h1>TRIP-COUNT</h1>
 		<div class="container">

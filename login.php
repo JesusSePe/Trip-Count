@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Login</title>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="styles/login.css">
     <link rel="stylesheet" href="styles/main.css">
     <?php include_once(dirname(__DIR__).'/Trip-Count/static/php/functions.php'); ?>
@@ -32,22 +33,23 @@
      ?>
   <body>
     <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
-    <div class="menu">
+    <div class="menu main-content">
     <div class="container">
         <div></div>
         <div class="logo">LOGIN</div>
         <div class="loginitem">
           <form action="" method="post" class="form formlogin">
             <div class="formfield">
-              <label class="user" for="loginemail"><span class="hidden">Email</span></label>
+              <label class="user" for="loginemail"><span class="hidden"> Email</span></label>
               <input id="loginemail" type="text" class="forminput" name="username" placeholder="Email" required>
             </div>
             <div class="formfield">
-              <label class="lock" for="loginpassword"><span class="hidden">Password</span></label>
+              <label class="lock" for="loginpassword"><span class="hidden"> Password</span></label>
               <input id="loginpassword" name="userPass" type="password" class="forminput" placeholder="Password" required>
             </div>
             <div class="formfield">
-              <input type="submit" value="Login">
+              <input type="submit" value="Login" class="button">
+              <span></span>
             </div>
           </form>
         </div>
