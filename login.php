@@ -29,9 +29,10 @@
       }
      ?>
   <body>
+    <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
+    <div class="menu">
     <div class="container">
         <div></div>
-        <?php include_once(__DIR__ . "/Trip-Count/static/php/header.php");?>
         <div class="logo">LOGIN</div>
         <div class="loginitem">
           <form action="" method="post" class="form formlogin">
@@ -49,6 +50,7 @@
           </form>
         </div>
       </div>
-        <?php include_once(__DIR__ . "/Trip-Count/static/php/footer.php");?>
+    </div>
+      <?php include_once(dirname(__DIR__) . "/Trip-Count/static/footer.php");?>
   </body>
 </html>

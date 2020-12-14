@@ -3,22 +3,26 @@ html {
 }
 
 body {
-display: flex;
-justify-content: center;
-align-items: center;
 min-height: 100%;
 font-family: 'lato', sans-serif;
 color: #fff;
 background: #9da5f3;
 }
 
+.menu{
+  width:100%;
+  display: flex;  
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
 .container {
 	background:orange;
   border-radius: 5px;
   box-shadow: 0 1.5px 0 0 rgba(0,0,0,0.1);
-  width:450px;
-  display: flex;  
-  flex-direction: column;
 }
 .logo{
   font-family: "museo-slab";  

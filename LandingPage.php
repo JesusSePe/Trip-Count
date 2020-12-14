@@ -13,6 +13,7 @@
 </head>
 
 <body>
+	<div></div>
 	<section class="container">
 		<div class="background-image"></div>
 		<h1>TRIP-COUNT</h1>
