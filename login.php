@@ -5,9 +5,13 @@
     <title>Login</title>
     <link rel="stylesheet" href="styles/login.css">
     <link rel="stylesheet" href="styles/main.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
     <?php include_once(dirname(__DIR__).'/Trip-Count/static/php/functions.php'); ?>
   </head>
-<?php
+    <body>
+    <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
+    <?php
       if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["username"]) and isset($_POST["userPass"])) {
         $hostname = "localhost";
         $dbname = "Usuarios";
@@ -30,8 +34,6 @@
         }
       }
      ?>
-  <body>
-    <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
     <div class="menu">
     <div class="container">
         <div></div>
