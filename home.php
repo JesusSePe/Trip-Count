@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home</title>
-    <link rel="stylesheet" href="styles/landingpage.css">
+    <link rel="stylesheet" href="styles/home.css">
+    <link rel="stylesheet" href="styles/main.css">
 
 <body>
   <div></div>
@@ -24,7 +25,7 @@
       $busqueda->execute();
       $resultado = $busqueda->fetchAll();
       ?>
-      <table   class="table table-bordered">
+      <table class="table table-bordered">
         <tr>
           <th class="bg-primary" scope="col">Id</th>
           <th class="bg-primary" scope="col">Nombres</th>
