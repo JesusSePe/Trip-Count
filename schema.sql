@@ -60,4 +60,23 @@ CREATE TABLE user_expenses (
 	PRIMARY KEY(id_user, id_expense)
 );
 
+INSERT INTO users (id_user, name, last_name, mail, uname, pwd) VALUES (1, 'Check', 'Correct', 'mail@mail.com', 'Manolo', 'P@ssw0rd');
+INSERT INTO users (id_user, name, last_name, mail, uname, pwd) VALUES (2, 'Another', 'User', 'example@mail.com', 'Anon', 'AsDf 1243');
+INSERT INTO friends (id_user, id_friend) VALUES (1, 2); /*User 1 added user 2 as a friend*/
+INSERT INTO friends (id_user, id_friend) VALUES (2, 1); /*User 2 added user 1 as a friend*/
+INSERT INTO invitations (id_invitation, id_user_invitor, mail) VALUES (1, 1, 'example@mail.com');
+INSERT INTO invitations (id_invitation, id_user_invitor, mail) VALUES (2, 1, 'anotheruser@mail.com');
+INSERT INTO travels (id_travel, destination, origin, leaving_day, back_day) VALUES (1, 'Toronto', 'Madrid', STR_TO_DATE('21-12-2020', 'dd-mm-YYYY'), STR_TO_DATE('02-01-2021', 'dd-mm-YYYY'));
+INSERT INTO travels (id_travel, destination, origin, leaving_day, back_day) VALUES (2, 'Buenos Aires', 'Toronto', STR_TO_DATE('02-01-2021', 'dd-mm-YYYY'), STR_TO_DATE('15-01-2021', 'dd-mm-YYYY'));
+INSERT INTO travels (id_travel, destination, origin, leaving_day, back_day) VALUES (3, 'Paris', 'Buenos Aires', STR_TO_DATE('15-01-2021', 'dd-mm-YYYY'), STR_TO_DATE('27-01-2021', 'dd-mm-YYYY'));
+INSERT INTO users_travels (id_travel, id_user) VALUES (1, 1);
+INSERT INTO users_travels (id_travel, id_user) VALUES (1, 2);
+INSERT INTO users_travels (id_travel, id_user) VALUES (2, 1);
+INSERT INTO users_travels (id_travel, id_user) VALUES (2, 2);
+INSERT INTO users_travels (id_travel, id_user) VALUES (3, 1);
+INSERT INTO expenses (id_expense, amount, expense_date, id_travel) VALUES (1, 150, STR_TO_DATE('14-12-2020', 'dd-mm-YYYY'), 1);
+INSERT INTO expenses (id_expense, amount, expense_date, id_travel) VALUES (2, 130, STR_TO_DATE('14-12-2020', 'dd-mm-YYYY'), 1);
+INSERT INTO user_expenses (id_user, id_expense) VALUES (1, 1);
+INSERT INTO user_expenses (id_user, id_expense) VALUES (2, 1);
+
 COMMIT;
