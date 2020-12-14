@@ -18,7 +18,7 @@ body {
 /*  HEADER   */
   .header {
     display: flex;
-    background-color: orange;
+    background-color: #FF9000;
     padding: 10px 10px;
     color: #333334;
   }
@@ -128,6 +128,8 @@ header{
 }
 
 .main-content{
+  align-items: center;
+  display: flex;
   flex: 1 0 auto;
 }
 
@@ -140,7 +142,7 @@ footer{
   display: flex;
   flex: 0 0 auto;
   background-color: #333334;
-  color: orange;
+  color: #FF9000;
   text-align: center;
   justify-content: center;
   font-weight: bold;
@@ -153,7 +155,7 @@ footer{
     margin-right : 2rem;
     align-items: center;
     text-align: center;
-    border-right: solid orange 1px;
+    border-right: solid #FF9000 1px;
     height: 80%;
     padding-right: 2rem;
 }
@@ -212,3 +214,9 @@ span::before {
 
 }
 
+
+/* landing page */
+.spacebutt {
+  display: flex;
+  justify-content: space-around;
+} 
