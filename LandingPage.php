@@ -22,7 +22,6 @@
   		<a href="/login.php" class="btn">Login</a>
 		<a href="/register.php" class="btn">Register</a>
 		</div>
-
 	</section>
 </body>
 
