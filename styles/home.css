@@ -84,6 +84,16 @@ section{
 	padding: 20px 46px;
 }
 
+table {
+   border-collapse: separate;
+   border-spacing: 5px;
+   background: orange;
+   color: #fff;
+}
+td, th {
+   background: #fff;
+   color: #000;
+}
 .butonsGrup {
   display: flex;
   flex-direction: row;

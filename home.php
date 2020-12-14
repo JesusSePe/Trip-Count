@@ -7,7 +7,7 @@
     <title>Home</title>
     <link rel="stylesheet" href="styles/home.css">
     <link rel="stylesheet" href="styles/main.css">
-
+</head>
 <body>
   <div></div>
   <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
@@ -15,37 +15,57 @@
 		<div class="background-image"></div>
 		<h1>TRIP-COUNT</h1>
 		<div class="container">
-			<?php
-      $hostname = "localhost";
-      $dbname = "Usuarios";
-      $username = "adrian";
-      $pw = "Hakantor";
-      $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
-      $busqueda=$pdo->prepare("Select * from usuarios ORDER BY id");
-      $busqueda->execute();
-      $resultado = $busqueda->fetchAll();
-      ?>
-      <table class="table table-bordered">
-        <tr>
-          <th class="bg-primary" scope="col">Id</th>
-          <th class="bg-primary" scope="col">Nombres</th>
-          <th class="bg-primary" scope="col">Usuarios</th>
-          <th class="bg-primary" scope="col">Password</th>
-        </tr>
-        <?php
-        foreach($resultado as $res){
-          echo "<tr>";
-          echo "<td>".$res["id"]."</td>";
-          echo "<td>".$res["nombres"]."</td>";
-          echo "<td>".$res["usuario"]."</td>";
-          echo "<td>".$res["password"]."</td>";
-          echo "</tr>";
-        }   
-        ?>
-      </table>
+      <?php
+      $family = "";
+      if(isset($_POST['family'])) {
+         $family = $_POST['family'];
+      }
+
+      try {
+         $con= new PDO('mysql:host=localhost;dbname=tripcount', "adrian", "Hakantor");
+         $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+         if(!empty($family)) {
+          $query = "SELECT * FROM travels where id_travel ORDER BY '.$sort'";
+         }
+         else {
+        $query = "SELECT * FROM travels";
+         }
+
+         print "<table>";
+         $result = $con->query($query);
+
+         $row = $result->fetch(PDO::FETCH_ASSOC);
+         print " <tr>";
+         foreach ($row as $field => $value){
+        print " <th>$field</th>";
+         }
+         print " </tr>";
+         $data = $con->query($query);
+         $data->setFetchMode(PDO::FETCH_ASSOC);
+         foreach($data as $row){
+        print " <tr>";
+        foreach ($row as $name=>$value){
+           print " <td>$value</td>";
+        }
+        print " </tr>";
+         }
+         print "</table>";
+      } catch(PDOException $e) {
+      echo 'ERROR: ' . $e->getMessage();
+      }
+   ?>
+   </p>
+    <form action="home.php" method="post">
+      <select name="sort">
+         <option value="" selected="selected">Any Order</option>
+         <option value="ASC">Ascending</option>
+         <option value="DESC">Descending</option>
+      </select>
+      <input name="search" type="submit" value="Search"/>
+   </form>
 		</div>
   </section>
   <?php include_once(dirname(__DIR__) . "/Trip-Count/static/footer.php");?>
 </body>
-
 </html>
