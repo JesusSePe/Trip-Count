@@ -5,6 +5,7 @@
     <title>Login</title>
     <link rel="stylesheet" href="styles/login.css">
     <link rel="stylesheet" href="styles/main.css">
+    <?php include_once(dirname(__DIR__).'/Trip-Count/static/php/functions.php'); ?>
   </head>
 <?php
       if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["username"]) and isset($_POST["userPass"])) {
@@ -23,9 +24,9 @@
         $query->execute();
         $row = $query -> fetch();
         if ($row != false) {
-          echo "<p class='success'>Entraste</p>";
+          systemMSG('success', 'Usuario correcto');
         } else {
-          echo "<p class='fail'>ERROR</p>";
+          systemMSG('error', 'Usuario incorrecto');
         }
       }
      ?>
