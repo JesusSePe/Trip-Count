@@ -62,8 +62,8 @@ CREATE TABLE user_expenses (
 	PRIMARY KEY(id_user, id_expense)
 );
 
-INSERT INTO users (id_user, name, last_name, mail, uname, pwd) VALUES (1, 'Check', 'Correct', 'mail@mail.com', 'Manolo', 'P@ssw0rd');
-INSERT INTO users (id_user, name, last_name, mail, uname, pwd) VALUES (2, 'Another', 'User', 'example@mail.com', 'Anon', 'AsDf 1243');
+INSERT INTO users (id_user, name, last_name, mail, uname, pwd) VALUES (1, 'Check', 'Correct', 'mail@mail.com', 'Manolo', 'b03ddf3ca2e714a6548e7495e2a03f5e824eaac9837cd7f159c67b90fb4b7342');
+INSERT INTO users (id_user, name, last_name, mail, uname, pwd) VALUES (2, 'Another', 'User', 'example@mail.com', 'Anon', '1a4d8f9dabdf67491921cd1f528b27fcca35cc1e76afdb26ea1c4c237bf7e27b');
 INSERT INTO friends (id_user, id_friend) VALUES (1, 2); /*User 1 added user 2 as a friend*/
 INSERT INTO friends (id_user, id_friend) VALUES (2, 1); /*User 2 added user 1 as a friend*/
 INSERT INTO invitations (id_invitation, id_user_invitor, mail) VALUES (1, 1, 'example@mail.com');
