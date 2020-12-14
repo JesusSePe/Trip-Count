@@ -12,9 +12,9 @@
   <div></div>
   <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
 	<section class="container main-content">
-		<div class="background-image"></div>
 		<h1>TRIP-COUNT</h1>
-		<div class="container">
+		<div class="background-image"></div>
+		<div class="container espaciotabla">
       <?php
       $family = "";
       if(isset($_POST['family'])) {
@@ -22,7 +22,7 @@
       }
 
       try {
-         $con= new PDO('mysql:host=localhost;dbname=tripcount', "adrian", "Hakantor");
+         $con= new PDO('mysql:host=localhost;dbname=tripcount', "root", "");
          $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
          if(!empty($family)) {
@@ -32,7 +32,7 @@
         $query = "SELECT * FROM travels";
          }
 
-         print "<table>";
+         print "<table class='tabla'>";
          $result = $con->query($query);
 
          $row = $result->fetch(PDO::FETCH_ASSOC);
@@ -55,16 +55,17 @@
       echo 'ERROR: ' . $e->getMessage();
       }
    ?>
-   </p>
-    <form action="home.php" method="post">
-      <select name="sort">
-         <option value="" selected="selected">Any Order</option>
-         <option value="ASC">Ascending</option>
-         <option value="DESC">Descending</option>
-      </select>
-      <input name="search" type="submit" value="Search"/>
-   </form>
-		</div>
+   </div>
+   <div>
+      <form action="home.php" method="post">
+         <select name="sort">
+            <option value="" selected="selected">Any Order</option>
+            <option value="ASC">Ascending</option>
+            <option value="DESC">Descending</option>
+         </select>
+         <input name="search" type="submit" value="Search"/>
+      </form>
+   </div>
   </section>
   <?php include_once(dirname(__DIR__) . "/Trip-Count/static/footer.php");?>
 </body>

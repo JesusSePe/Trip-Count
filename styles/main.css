@@ -128,8 +128,8 @@ header{
 }
 
 .main-content{
-  align-items: center;
   display: flex;
+  align-items: center;
   flex: 1 0 auto;
 }
 
@@ -216,7 +216,3 @@ span::before {
 
 
 /* landing page */
-.spacebutt {
-  display: flex;
-  justify-content: space-around;
-} 

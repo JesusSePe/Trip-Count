@@ -33,8 +33,6 @@ section{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-
-	padding: 125px 100px;
 }
 
 /*----------------
@@ -42,8 +40,6 @@ section{
 ----------------*/
 
 .container{
-	position: relative;
-	justify-content: center;
 	min-height: 100%;
 	color: #1D1D1E;
 	text-align: center;
@@ -56,7 +52,7 @@ section{
 	width: 100%;
 	height: 100%;
 	background-size: cover;
-	background-color: #EEF3F6;;
+	background-color: #EEF3F6;
 	z-index: -1;
 }
 
@@ -72,7 +68,8 @@ section{
 
 .container h1{
 	font: bold 60px 'Open Sans', sans-serif;
-	margin-bottom: 15px;
+	margin-bottom: 2rem;
+	margin-top: 2rem;
 }
 
 .container h3{
@@ -84,18 +81,33 @@ section{
 	padding: 20px 46px;
 }
 
-table {
-   border-collapse: separate;
-   border-spacing: 5px;
-   background: orange;
-   color: #fff;
+.tabla {
+	border-collapse: collapse; 
+	color: #fff;
+	width: 100%;
+	height: 100%;
 }
-td, th {
+
+.espaciotabla {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 70%;
+	height: 250px;
+}
+
+th {
+	background-color: #FF9000;
+}
+
+td {
    background: #fff;
    color: #000;
+   border-top: 1px solid  #EEF3F6;
 }
-.butonsGrup {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+
+form {
+	display: flex;
+	justify-content: center;
+	margin-top: 2rem;
 }
