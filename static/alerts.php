@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style><?php include_once(dirname(__DIR__).'/styles/alerts.css'); ?></style>
+    <style><?php include_once(dirname(__DIR__).'/styles/main.css'); ?></style>
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <?php include_once(dirname(__DIR__).'/static/php/functions.php'); ?>
 </head>
