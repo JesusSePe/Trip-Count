@@ -1,5 +1,4 @@
 <header>
-  
   <div class="header">
     <div class="tripcount">
       <a class="logo">TRIP-COUNT</a>
