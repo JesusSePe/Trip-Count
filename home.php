@@ -26,7 +26,7 @@
             $pw = "";
             $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
             if(!$pdo){
-                systemMSG('error', 'Failed to coonect to database!');
+                systemMSG('error', 'No se ha conectado a la base de datos!');
             }
             ?>
             <table class='tabla'>
