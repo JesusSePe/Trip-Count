@@ -20,12 +20,12 @@ a:hover{
 	opacity: 1;
 }
 
-a.btn{
+button.btn{
 	color: #fff;
 	border-radius: 4px;
 	text-transform: uppercase;
 	background-color: orange;
-	font-weight: 800;
+	font-weight: 700px;
 	text-align: center;
 }
 
@@ -80,8 +80,8 @@ section{
 	margin-bottom: 40px;
 }
 
-.container a.btn{
-	padding: 20px 46px;
+.container button.btn{
+	padding: 10px 40px;
 }
 
 table {

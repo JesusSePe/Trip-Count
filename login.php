@@ -19,11 +19,11 @@
         $pw = "Hakantor";
         $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
 
-        $_username = $_POST["username"];
+        $_mail = $_POST["mail"];
         $_password = $_POST["userPass"];
           
-        $query = $pdo -> prepare("SELECT * FROM usuarios WHERE usuario = ? AND password = ?");
-        $query->bindParam(1, $_username);
+        $query = $pdo -> prepare("SELECT * FROM users WHERE mail = ? AND password = ?");
+        $query->bindParam(1, $_mail);
         $query->bindParam(2, $_password);
         $query->execute();
         $row = $query -> fetch();
@@ -39,10 +39,10 @@
         <div></div>
         <div class="logo">LOGIN</div>
         <div class="loginitem">
-          <form action="" method="post" class="form formlogin">
+          <form action="home.php" method="post" class="form formlogin">
             <div class="formfield">
               <label class="user" for="loginemail"><span class="hidden">Email</span></label>
-              <input id="loginemail" type="text" class="forminput" name="username" placeholder="Email" required>
+              <input id="loginemail" type="text" class="forminput" name="mail" placeholder="Email" required>
             </div>
             <div class="formfield">
               <label class="lock" for="loginpassword"><span class="hidden">Password</span></label>
