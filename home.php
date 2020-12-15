@@ -14,9 +14,64 @@
 <body>
   <div></div>
   <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
-	<section class="container">
-		<div class="background-image"></div>
+	<section class="container main-content">
 		<h1>TRIP-COUNT</h1>
+<<<<<<< HEAD
+		<div class="background-image"></div>
+		<div class="container espaciotabla">
+      <?php
+      $family = "";
+      if(isset($_POST['family'])) {
+         $family = $_POST['family'];
+      }
+
+      try {
+         $con= new PDO('mysql:host=localhost;dbname=tripcount', "root", "");
+         $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+         if(!empty($family)) {
+          $query = "SELECT * FROM travels where id_travel ORDER BY '.$sort'";
+         }
+         else {
+        $query = "SELECT * FROM travels";
+         }
+
+         print "<table class='tabla'>";
+         $result = $con->query($query);
+
+         $row = $result->fetch(PDO::FETCH_ASSOC);
+         print " <tr>";
+         foreach ($row as $field => $value){
+        print " <th>$field</th>";
+         }
+         print " </tr>";
+         $data = $con->query($query);
+         $data->setFetchMode(PDO::FETCH_ASSOC);
+         foreach($data as $row){
+        print " <tr>";
+        foreach ($row as $name=>$value){
+           print " <td>$value</td>";
+        }
+        print " </tr>";
+         }
+         print "</table>";
+      } catch(PDOException $e) {
+      echo 'ERROR: ' . $e->getMessage();
+      }
+   ?>
+   </div>
+   <div>
+      <form action="home.php" method="post">
+         <select name="sort">
+            <option value="" selected="selected">Any Order</option>
+            <option value="ASC">Ascending</option>
+            <option value="DESC">Descending</option>
+         </select>
+         <input name="search" type="submit" value="Search"/>
+      </form>
+   </div>
+  </section>
+=======
 		<div class="container">
             <?php
             $hostname = "localhost";
@@ -83,6 +138,7 @@
             </form>
         </div>
     </section>
+>>>>>>> adrian_dev
   <?php include_once(dirname(__DIR__) . "/Trip-Count/static/footer.php");?>
   <!--<script type="text/javascript" src="/home.js"></script>-->
 </body>
