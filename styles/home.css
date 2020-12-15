@@ -20,12 +20,12 @@ a:hover{
 	opacity: 1;
 }
 
-button.btn{
+a.btn{
 	color: #fff;
 	border-radius: 4px;
 	text-transform: uppercase;
 	background-color: orange;
-	font-weight: 700px;
+	font-weight: 800;
 	text-align: center;
 }
 
@@ -64,17 +64,12 @@ section{
 	height: 100%;
 	background-color: #1D1D1E;
 	opacity: 0.75;
-	margin-top: 0px;
 }
 
 .container h1{
 	font: bold 60px 'Open Sans', sans-serif;
-<<<<<<< HEAD
 	margin-bottom: 2rem;
 	margin-top: 2rem;
-=======
-	margin-bottom: 0px;
->>>>>>> adrian_dev
 }
 
 .container h3{
@@ -82,8 +77,8 @@ section{
 	margin-bottom: 40px;
 }
 
-.container button.btn{
-	padding: 10px 40px;
+.container a.btn{
+	padding: 20px 46px;
 }
 
 .tabla {
