@@ -12,41 +12,45 @@
     <body>
     <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
     <?php
-      if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST["username"]) and isset($_POST["userPass"])) {
-        $hostname = "localhost";
-        $dbname = "Usuarios";
-        $username = "adrian";
-        $pw = "Hakantor";
-        $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
+      if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['mail']) && isset($_POST['pwd'])) {
+            $hostname = "localhost";
+            $dbname = "tripcount";
+            $username = "adrian";
+            $pw = "Hakantor";
+            $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
 
-        $_mail = $_POST["mail"];
-        $_password = $_POST["userPass"];
-          
-        $query = $pdo -> prepare("SELECT * FROM users WHERE mail = ? AND password = ?");
-        $query->bindParam(1, $_mail);
-        $query->bindParam(2, $_password);
-        $query->execute();
-        $row = $query -> fetch();
-        if ($row != false) {
-          systemMSG('success', 'Usuario correcto');
-        } else {
-          systemMSG('error', 'Usuario incorrecto');
+            $_user = $_POST['mail'];
+            $_pwd = $_POST['pwd'];
+            $_pwdstrong = password_hash($_pwd, PASSWORD_DEFAULT);
+
+            $query = $pdo -> prepare('SELECT * FROM users WHERE mail= ? AND pwd= ?');
+            $query ->bindParam(1, $_user);
+            $query ->bindParam(2, $_pwd);
+            $query ->execute();
+            $result = $query -> fetch();
+            
+            if($result != false && password_verify($_pwd, $_pwdstrong)){
+                $_SESSION['name'] = $result['id_user'];
+                systemMSG('success', 'Usuario correcto');
+            } else {
+                systemMSG('error', 'Acceso Denegado');
+            }
+            unset($_POST['mail'], $_POST['pwd']);
         }
-      }
-     ?>
+    ?>
     <div class="menu">
     <div class="container">
         <div></div>
         <div class="logo">LOGIN</div>
         <div class="loginitem">
-          <form action="home.php" method="post" class="form formlogin">
+          <form action="login.php" method="post" class="form formlogin">
             <div class="formfield">
               <label class="user" for="loginemail"><span class="hidden">Email</span></label>
               <input id="loginemail" type="text" class="forminput" name="mail" placeholder="Email" required>
             </div>
             <div class="formfield">
               <label class="lock" for="loginpassword"><span class="hidden">Password</span></label>
-              <input id="loginpassword" name="userPass" type="password" class="forminput" placeholder="Password" required>
+              <input id="loginpassword" name="pwd" type="password" class="forminput" placeholder="Password" required>
             </div>
             <div class="formfield">
               <input type="submit" value="Login">

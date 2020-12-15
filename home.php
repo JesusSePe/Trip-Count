@@ -1,5 +1,3 @@
-<?php session_start(); 
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +31,6 @@
             <table>
                 <thead class="alert-info">
                     <tr>
-                        <th>id_travel</th>
                         <th>destination</th>
                         <th>origin</th>
                         <th>leaving_day</th>
@@ -48,7 +45,6 @@
                         $query->execute();
                         while($row = $query->fetch()){
                            echo "<tr>
-                           <td>".$row['id_travel']."</td>
                             <td>".$row['destination']."</td>
                             <td>".$row['origin']."</td>
                             <td>".$row['leaving_day']."</td>
@@ -60,7 +56,6 @@
                         $query->execute();
                 while($row = $query->fetch()){
                    echo "<tr>
-                       <td>".$row['id_travel']."</td>
                             <td>".$row['destination']."</td>
                             <td>".$row['origin']."</td>
                             <td>".$row['leaving_day']."</td>
@@ -68,11 +63,10 @@
                     </tr>";
                 }
             }else{
-                $query = $pdo->prepare("SELECT * FROM `travels`");
+                $query = $pdo->prepare("SELECT * FROM `travels`ORDER BY `id_travel` ASC");
                 $query->execute();
                 while($row = $query->fetch()){
                     echo "<tr>
-                       <td>".$row['id_travel']."</td>
                             <td>".$row['destination']."</td>
                             <td>".$row['origin']."</td>
                             <td>".$row['leaving_day']."</td>

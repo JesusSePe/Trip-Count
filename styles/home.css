@@ -68,11 +68,12 @@ section{
 	height: 100%;
 	background-color: #414a4f;
 	opacity: 0.75;
+	margin-top: 0px;
 }
 
 .container h1{
 	font: bold 60px 'Open Sans', sans-serif;
-	margin-bottom: 15px;
+	margin-bottom: 0px;
 }
 
 .container h3{
