@@ -84,6 +84,9 @@ body {
     border: solid 1px white;
     color: white;
     transition: 0.5s;
+    padding: 10px;
+    border-radius: 4px;
+    cursor:pointer
   }
   
   .button:hover {
@@ -247,3 +250,40 @@ span::before {
 
 /* FORM */
 
+.forminv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  align-items: center;
+}
+
+.forminv input {
+  margin: 10px;
+}
+
+.forminv h1 {
+  font: bold 40px 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.forminv button {
+  padding: 10px;
+  border-radius: 4px;
+
+}
+
+.forminv span::after {
+  font-family: FontAwesome;
+  content: "\f055";
+}
+
+.forminv input[type=email], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
