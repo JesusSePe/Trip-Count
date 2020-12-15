@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="../styles/main.css">
-
 <footer>
     <div class="footer">
         <div class="names">
