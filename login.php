@@ -32,6 +32,7 @@
             if($result != false && password_verify($_pwd, $_pwdstrong)){
                 $_SESSION['name'] = $result['id_user'];
                 systemMSG('success', 'Usuario correcto');
+            header("location:home.php");
             } else {
                 systemMSG('error', 'Acceso Denegado');
             }
