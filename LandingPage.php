@@ -8,21 +8,24 @@
 
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+	<link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/landingpage.css">
 
 </head>
 
 <body>
 	<div></div>
-	<section class="container">
-		<div class="background-image"></div>
-		<h1>TRIP-COUNT</h1>
-		<h3>No es necesario tener conocimientos técnicos o de diseño, con Sendinblue puedes crear tus correos en unos cuantos pasos. Al finalizar podrás automatizar el envío con el marketing automation</h3>
-		<div class="container">
-  		<a href="/login.php" class="btn">Login</a>
-		<a href="/register.php" class="btn">Register</a>
+		<div class="main-content">
+		<section class="container">
+			<div class="background-image"></div>
+			<h1>TRIP-COUNT</h1>
+			<h3>No es necesario tener conocimientos técnicos o de diseño, con Sendinblue puedes crear tus correos en unos cuantos pasos. Al finalizar podrás automatizar el envío con el marketing automation</h3>
+			<div class="container main-content spacebutt">
+				<a href="login.php" class="btn button"><span>Login</span></a>
+				<a href="register.php" class="btn button"><span>Register</span></a>
+			</div>
+		</section>
 		</div>
-	</section>
 </body>
 
 </html>
