@@ -216,3 +216,28 @@ span::before {
 
 
 /* landing page */
+
+/* Home */
+
+.aviaje {
+  margin: 1rem;
+  padding: 12px;
+  border-radius: 4px;
+}
+
+.aviaje span::after {
+  font-family: FontAwesome;
+  content: "\f055";
+}
+
+.formDinamic {
+  display: flex;
+  flex-direction: column;
+}
+ 
+
+.formDinamic h2 {
+  font: bold 35px 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}

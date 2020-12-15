@@ -88,7 +88,7 @@ section{
 	height: 100%;
 }
 
-.espaciotabla {
+.espacidotabla {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -98,6 +98,7 @@ section{
 
 th {
 	background-color: #FF9000;
+	padding: 10px;
 }
 
 td {

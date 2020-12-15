@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home</title>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
     <link rel="stylesheet" href="styles/home.css">
@@ -14,29 +15,27 @@
 <body>
   <div></div>
   <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
-	<section class="container main-content">
+  <section class="container main-content">
 		<h1>TRIP-COUNT</h1>
 		<div class="background-image"></div>
-		<div class="container espaciotabla">
-		<div class="container">
+		<div class="container espacidotabla">
             <?php
             $hostname = "localhost";
             $dbname = "tripcount";
-            $username = "adrian";
-            $pw = "Hakantor";
+            $username = "root";
+            $pw = "";
             $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
             if(!$pdo){
                 systemMSG('error', 'Failed to coonect to database!');
             }
             ?>
-            <table>
+            <table class='tabla'>
                 <thead class="alert-info">
                     <tr>
                         <th>destination</th>
                         <th>origin</th>
-                        <th>leaving_day</th>
-                        <th>back_day</th>
-
+                        <th>Dia de salida</th>
+                        <th>Dia de vuelta</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -78,13 +77,54 @@
         ?></p>
 <p> </tbody><br />
 </table></p>
-            <form method="POST" action=""><br/>
-                <button  class="btn" name="leaving_day">Order leaving_day</button>
-                <button  class="btn" name="back_day">Order back_day</button>
+</div>
+<div>
+
+   <form method="POST" action=""><br/>
+   <button  class="button aviaje" name="leaving_day">Ordenar dia de salida</button>
+   <button  class="button aviaje" name="back_day">Ordenar dia de vuelta</button>
             </form>
-        </div>
-    </section>
+</div>
+    <button class="button aviaje" onclick="wraper()" id="btnAñadirViaje"> <span>AÑADIR VIAJE</span></button>
+   <div id="+"></div>
+  </section>
   <?php include_once(dirname(__DIR__) . "/Trip-Count/static/footer.php");?>
-  <!--<script type="text/javascript" src="/home.js"></script>-->
 </body>
 </html>
+
+<script>
+   
+let newForm = document.getElementById('+');
+let lastFormElement = forms.lastElementChild;
+
+function newElement(tag, text, parent, attributes) {
+   let element = document.createElement(tag);
+   if(text) {
+      let txtNode = document.createTextNode(text);
+      element.appendChild(txtNode);
+   }
+   
+   parent.appendChild(element);
+   
+   if (attributes) {
+      element.setAttribute(key, value);
+   }
+   
+}
+
+function wraper(){
+   
+      newElement('h2', 'VIAJE', newForm);
+      newElement('label', 'Nombre: ', newForm);
+      newElement('input', 'undefined', newForm);
+      newElement('br', 'undefined', newForm);
+      newElement('label', 'Descripción: ', newForm);
+      newElement('input', 'undefined', newForm);
+      newElement('br', 'undefined', newForm);
+      newElement('label', 'Moneda: ', newForm);
+      newElement('select', 'undefined', newForm);
+      newElement('br', 'undefined', newForm);
+
+   }
+
+</script>
