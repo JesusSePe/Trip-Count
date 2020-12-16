@@ -19,7 +19,8 @@
   <div></div>
   <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
   <section class="container main-content">
-		<?php if(isset($_SESSION["mail"])){  
+
+		<?php if(isset($_SESSION)){  
       echo '<h1>TRIP-COUNT - '.$_SESSION["uname"].'</h1>';
     }
     else{
