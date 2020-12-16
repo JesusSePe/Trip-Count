@@ -1,19 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/main.css">
-    <title>Home</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LandingPage</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+	<link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/landingpage.css">
+
 </head>
+
 <body>
-    
-    <?php include_once(dirname(__DIR__).'/Trip-Count/static/header.php'); ?>
-
-    <h1>TRIP COUNT</h1>
-    <img src="img/portada.jpg" alt="test">
-
-    <?php include_once(dirname(__DIR__).'/Trip-Count/static/footer.php'); ?>
-
+	<div></div>
+		<div class="main-content">
+		<section class="container">
+			<div class="background-image"></div>
+			<h1>TRIP-COUNT</h1>
+			<h3>No es necesario tener conocimientos técnicos o de diseño, con Sendinblue puedes crear tus correos en unos cuantos pasos. Al finalizar podrás automatizar el envío con el marketing automation</h3>
+			<div class="container main-content ">
+				<div class="spacebutt">
+					<a href="login.php" class="btn button"><span>Login</span></a>
+					<a href="register.php" class="btn button"><span>Register</span></a>
+				</div>
+			</div>
+		</section>
+		</div>
 </body>
+
 </html>
