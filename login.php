@@ -6,22 +6,16 @@
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="styles/login.css">
     <link rel="stylesheet" href="styles/main.css">
-    <?php include_once(dirname(__DIR__).'/Trip-Count/static/php/functions.php'); ?>
   </head>
-    <body>
-    <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
   <body>
+    <?php include_once(dirname(__DIR__).'/Trip-Count/static/php/functions.php'); ?>
     <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
-    <div class="menu main-content">
-    <div class="container">
-        <div></div>
-        <div class="logo">LOGIN</div>
-        <div class="loginitem">
+    <div><?php systemMSG('info', 'Se te ha redirigido al login')?></div>
           <?php  
           session_start();  
           $host = "localhost";  
-          $username = "adrian";  
-          $password = "Hakantor";  
+          $username = "root";  
+          $password = "";  
           $database = "tripcount";  
           $message = "";  
           try{
@@ -69,6 +63,11 @@
               $message = $error->getMessage();
             }
             ?>
+            
+          <div class="menu main-content">
+          <div class="container">
+              <div class="logo">LOGIN</div>
+              <div class="loginitem">
           <form action="" method="post" class="form formlogin">
             <div class="formfield">
               <label class="user" for="loginemail"><span class="hidden"> Email</span></label>
