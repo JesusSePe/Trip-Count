@@ -33,24 +33,30 @@
                 else{
                   $usernameEmail = $_POST["mail"];
                   $pwd = $_POST["pwd"];
-                  /*$hash_password= hash('sha256', $pwd); //Password encryption */
-                  $query = "SELECT * FROM users WHERE mail = :mail AND pwd = :pwd";
+                  $hash_password= hash("sha256", $pwd); //Password encryption
+                  $query = "SELECT * FROM users WHERE mail = '$usernameEmail'  AND pwd = '$hash_password'";
                   $statement = $connect->prepare($query);
                   $statement->bindParam("mail", $usernameEmail) ;
-                  /*$statement->bindParam("hash_password", $hash_password) ;*/
-                  $statement->bindParam("pwd", $pwd) ;
+                  $statement->bindParam("hash_password", $hash_password) ;
+                  /*$statement->bindParam("pwd", $pwd) ;*/
                   $statement->execute(
                     array(
                       'mail'     =>     $_POST["mail"],
                       'pwd'     =>     $_POST["pwd"]
                     )
                   );
-                  /*$row = $statement->fetch();*/
+                  $row = $statement->fetch();
                   $count = $statement->rowCount();
                   if($count > 0)
-                  {
-                    $_SESSION["mail"] = $_POST["mail"];
+                  { 
+                    while ($row) {
+                      $uname = $row["uname"];
+                      $_SESSION["uname"] = $uname;
+                      $row = $statement->fetch();
+                    }
+                    /*$_SESSION["mail"] = $_POST["mail"];*/
                     header("location:home.php");
+
                   }
                   else
                   {
