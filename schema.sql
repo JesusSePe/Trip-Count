@@ -26,6 +26,14 @@ CREATE TABLE invitations (
 	FOREIGN KEY(id_user_invitor) references users(id_user)
 );
 
+CREATE TABLE currency (
+	country VARCHAR(100),
+	currency VARCHAR(100),
+	code VARCHAR(100),
+	symbol VARCHAR(100),
+	PRIMARY KEY(code)
+);
+
 CREATE TABLE travels (
 	id_travel CHAR(3) NOT NULL,
 	destination VARCHAR(100) NOT NULL,
@@ -64,13 +72,7 @@ CREATE TABLE user_expenses (
 	PRIMARY KEY(id_user, id_expense)
 );
 
-CREATE TABLE currency (
-	country VARCHAR(100),
-	currency VARCHAR(100),
-	code VARCHAR(100),
-	symbol VARCHAR(100),
-	PRIMARY KEY(code)
-);
+
 
 --Insert users
 INSERT INTO users (id_user, name, last_name, mail, uname, pwd) VALUES (1, 'Check', 'Correct', 'mail@mail.com', 'Manolo', 'b03ddf3ca2e714a6548e7495e2a03f5e824eaac9837cd7f159c67b90fb4b7342');
