@@ -74,7 +74,7 @@
         $mensajeInv = 'Has sido invitado a ' . $viaje;
         $cabecerasInv  = 'MIME-Version: 1.0' . "\r\n";
         $cabecerasInv .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-        $cabecerasInv .= 'From: INVITACION <davidcasthen@gmail.com' . "\r\n";
+        $cabecerasInv .= 'From: Trip-count <trip-count@mail.dchcobra.cf>' . "\r\n";
 
         foreach ($inv as $invitado) {
             mail($invitado, $tituloInv, $mensajeInv, $cabecerasInv);
@@ -85,7 +85,7 @@
         $mensajeReg = 'Has de registrarte en Trip-Count para poder ser invitado' ;
         $cabecerasReg  = 'MIME-Version: 1.0' . "\r\n";
         $cabecerasReg .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-        $cabecerasReg .= 'From: REGISTRARSE <davidcasthen@gmail.com' . "\r\n";
+        $cabecerasReg .= 'From: Trip-count <trip-count@mail.dchcobra.cf>' . "\r\n";
         foreach ($reg as $registrar) {
             mail($registrar, $tituloReg, $mensajeReg, $cabecerasReg);
             echo 'registrar: ' . $registrar;
