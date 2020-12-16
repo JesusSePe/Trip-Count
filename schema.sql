@@ -27,11 +27,12 @@ CREATE TABLE invitations (
 );
 
 CREATE TABLE currency (
+	id_currency MEDIUMINT NOT NULL AUTO_INCREMENT,
 	country VARCHAR(100),
 	currency VARCHAR(100),
 	code VARCHAR(100),
 	symbol VARCHAR(100),
-	PRIMARY KEY(code)
+	PRIMARY KEY(id_currency)
 );
 
 CREATE TABLE travels (
@@ -42,8 +43,8 @@ CREATE TABLE travels (
 	back_day DATE NOT NULL,
 	t_creation DATE NOT NULL,
 	t_update DATE NOT NULL,
-	currency VARCHAR(100),
-	FOREIGN KEY(currency) references currency(code),
+	id_currency MEDIUMINT,
+	FOREIGN KEY(id_currency) references currency(id_currency),
 	PRIMARY KEY(id_travel)
 );
 
@@ -74,33 +75,19 @@ CREATE TABLE user_expenses (
 
 
 
---Insert users
+/*Insert users*/
 INSERT INTO users (id_user, name, last_name, mail, uname, pwd) VALUES (1, 'Check', 'Correct', 'mail@mail.com', 'Manolo', 'b03ddf3ca2e714a6548e7495e2a03f5e824eaac9837cd7f159c67b90fb4b7342');
 INSERT INTO users (id_user, name, last_name, mail, uname, pwd) VALUES (2, 'Another', 'User', 'example@mail.com', 'Anon', '1a4d8f9dabdf67491921cd1f528b27fcca35cc1e76afdb26ea1c4c237bf7e27b');
---Insert friends
+
+/*Insert friends*/
 INSERT INTO friends (id_user, id_friend) VALUES (1, 2); /*User 1 added user 2 as a friend*/
 INSERT INTO friends (id_user, id_friend) VALUES (2, 1); /*User 2 added user 1 as a friend*/
---Insert Invitations
+
+/*Insert Invitations*/
 INSERT INTO invitations (id_invitation, id_user_invitor, mail) VALUES (1, 1, 'example@mail.com');
 INSERT INTO invitations (id_invitation, id_user_invitor, mail) VALUES (2, 1, 'anotheruser@mail.com');
---Insert travels
-INSERT INTO travels (id_travel, destination, origin, leaving_day, back_day, t_creation, t_update) VALUES (1, 'Toronto', 'Madrid', STR_TO_DATE('21-12-2020', '%d-%m-%Y'), STR_TO_DATE('02-01-2021', '%d-%m-%Y'), STR_TO_DATE('28-11-2020', '%d-%m-%Y'), STR_TO_DATE('30-11-2020', '%d-%m-%Y'), 'EUR');
-INSERT INTO travels (id_travel, destination, origin, leaving_day, back_day, t_creation, t_update) VALUES (2, 'Buenos Aires', 'Toronto', STR_TO_DATE('02-01-2021', '%d-%m-%Y'), STR_TO_DATE('15-01-2021', '%d-%m-%Y'), STR_TO_DATE('29-11-2020', '%d-%m-%Y'), STR_TO_DATE('1-12-2020', '%d-%m-%Y'), 'EUR');
-INSERT INTO travels (id_travel, destination, origin, leaving_day, back_day, t_creation, t_update) VALUES (3, 'Paris', 'Buenos Aires', STR_TO_DATE('15-01-2021', '%d-%m-%Y'), STR_TO_DATE('27-01-2021', '%d-%m-%Y'), STR_TO_DATE('30-11-2020', '%d-%m-%Y'), STR_TO_DATE('10-12-2020', '%d-%m-%Y'), 'EUR');
---Insert Users-travels relations
-INSERT INTO users_travels (id_travel, id_user) VALUES (1, 1);
-INSERT INTO users_travels (id_travel, id_user) VALUES (1, 2);
-INSERT INTO users_travels (id_travel, id_user) VALUES (2, 1);
-INSERT INTO users_travels (id_travel, id_user) VALUES (2, 2);
-INSERT INTO users_travels (id_travel, id_user) VALUES (3, 1);
---Insert expenses data
-INSERT INTO expenses (id_expense, amount, expense_date, id_travel) VALUES (1, 150, STR_TO_DATE('14-12-2020', '%d-%m-%Y'), 1);
-INSERT INTO expenses (id_expense, amount, expense_date, id_travel) VALUES (2, 130, STR_TO_DATE('14-12-2020', '%d-%m-%Y'), 1);
---Insert user-expenses relations
-INSERT INTO user_expenses (id_user, id_expense) VALUES (1, 1);
-INSERT INTO user_expenses (id_user, id_expense) VALUES (2, 1);
 
--- Insert currency records
+/*Insert currency records*/
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Albania', 'Leke', 'ALL', 'Lek');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('America', 'Dollars', 'USD', '$');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Afghanistan', 'Afghanis', 'AFN', '؋');
@@ -233,5 +220,26 @@ INSERT INTO currency (country, currency, code, symbol) VALUES ('Vietnam', 'Dong'
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Yemen', 'Rials', 'YER', '﷼');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Zimbabwe', 'Zimbabwe Dollars', 'ZWD', 'Z$');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('India', 'Rupees', 'INR', '₹');
+
+/*Insert travels*/
+INSERT INTO travels (id_travel, destination, origin, leaving_day, back_day, t_creation, t_update, id_currency) VALUES (1, 'Toronto', 'Madrid', STR_TO_DATE('21-12-2020', '%d-%m-%Y'), STR_TO_DATE('02-01-2021', '%d-%m-%Y'), STR_TO_DATE('28-11-2020', '%d-%m-%Y'), STR_TO_DATE('30-11-2020', '%d-%m-%Y'), 37);
+INSERT INTO travels (id_travel, destination, origin, leaving_day, back_day, t_creation, t_update, id_currency) VALUES (2, 'Buenos Aires', 'Toronto', STR_TO_DATE('02-01-2021', '%d-%m-%Y'), STR_TO_DATE('15-01-2021', '%d-%m-%Y'), STR_TO_DATE('29-11-2020', '%d-%m-%Y'), STR_TO_DATE('1-12-2020', '%d-%m-%Y'), 37);
+INSERT INTO travels (id_travel, destination, origin, leaving_day, back_day, t_creation, t_update, id_currency) VALUES (3, 'Paris', 'Buenos Aires', STR_TO_DATE('15-01-2021', '%d-%m-%Y'), STR_TO_DATE('27-01-2021', '%d-%m-%Y'), STR_TO_DATE('30-11-2020', '%d-%m-%Y'), STR_TO_DATE('10-12-2020', '%d-%m-%Y'), 37);
+
+/*Insert Users-travels relations*/
+INSERT INTO users_travels (id_travel, id_user) VALUES (1, 1);
+INSERT INTO users_travels (id_travel, id_user) VALUES (1, 2);
+INSERT INTO users_travels (id_travel, id_user) VALUES (2, 1);
+INSERT INTO users_travels (id_travel, id_user) VALUES (2, 2);
+INSERT INTO users_travels (id_travel, id_user) VALUES (3, 1);
+
+/*Insert expenses data*/
+INSERT INTO expenses (id_expense, amount, expense_date, id_travel) VALUES (1, 150, STR_TO_DATE('14-12-2020', '%d-%m-%Y'), 1);
+INSERT INTO expenses (id_expense, amount, expense_date, id_travel) VALUES (2, 130, STR_TO_DATE('14-12-2020', '%d-%m-%Y'), 1);
+
+/*Insert user-expenses relations*/
+INSERT INTO user_expenses (id_user, id_expense) VALUES (1, 1);
+INSERT INTO user_expenses (id_user, id_expense) VALUES (2, 1);
+
 
 COMMIT;
