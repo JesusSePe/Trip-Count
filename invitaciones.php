@@ -6,11 +6,11 @@
     <link rel="stylesheet" href="styles/main.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <script src="static/js/functions.js"></script>
-    <?php include_once(dirname(__DIR__).'/Trip-Count/static/php/functions.php'); ?>
+    <?php include_once(dirname(__DIR__).'/TripCount/static/php/functions.php'); ?>
     <title>Invitaciones</title>
 </head>
 <body>
-<?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
+<?php include_once(dirname(__DIR__) . "/TripCount/static/header.php");?>
 <?php $viaje = 'example'
 //div para los systemMSG
 
@@ -28,15 +28,15 @@
             </div>
             <input class="button" type="submit">
         </form>
-        <button onclick="crearInputInv()" id="emailsInv" class="button"><span>Añadir</span></button>
+        <button onclick="crearInputInv()" id="emailsInv" class="button"><span>AÃ±adir</span></button>
     </div>
 </div>
 <?php
     //CONEXION A BD
     $hostname = "localhost";
     $dbname = "tripcount";
-    $username = "root";
-    $pw = "";
+    $username = "tripcount";
+    $pw = "password";
     $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
     if ($dbname !== 'tripcount') {
         systemMSG('error', 'Base de datos no encontrada');
@@ -69,32 +69,32 @@
                 }
                 $count += 1;
             } 
-        }
+        }     
+        
+
         $tituloInv = 'INVITACION A UN VIAJE NUEVO';
         $mensajeInv = 'Has sido invitado a ' . $viaje;
         $cabecerasInv  = 'MIME-Version: 1.0' . "\r\n";
         $cabecerasInv .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-        $cabecerasInv .= 'From: Trip-count <trip-count@mail.dchcobra.cf>' . "\r\n";
-
+        $cabecerasInv .= 'From: TripCount <TripCount@tripcount.dchcobra.cf>' . "\r\n";
+        $para .= 'davidcasthen@gmail.com';
         foreach ($inv as $invitado) {
             mail($invitado, $tituloInv, $mensajeInv, $cabecerasInv);
-            echo 'invitar: '. $invitado;
-            echo '<br>';
+            
         }
-        $tituloReg = 'REGISTRATE A TRIP-COUNT';
-        $mensajeReg = 'Has de registrarte en Trip-Count para poder ser invitado' ;
+        $tituloReg = 'REGISTRATE A TripCount';
+        $mensajeReg = 'Has de registrarte en TripCount para poder ser invitado' ;
         $cabecerasReg  = 'MIME-Version: 1.0' . "\r\n";
         $cabecerasReg .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-        $cabecerasReg .= 'From: Trip-count <trip-count@mail.dchcobra.cf>' . "\r\n";
+        $cabecerasReg .= 'From: TripCount <trip-count@mail.dchcobra.cf>' . "\r\n";
         foreach ($reg as $registrar) {
             mail($registrar, $tituloReg, $mensajeReg, $cabecerasReg);
-            echo 'registrar: ' . $registrar;
-            echo '<br>';
+            
         }
     }
 
 ?>
-<?php include_once(dirname(__DIR__) . "/Trip-Count/static/footer.php");?>
+<?php include_once(dirname(__DIR__) . "/TripCount/static/footer.php");?>
 
 </body>
 </html>
