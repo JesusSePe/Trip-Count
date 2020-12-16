@@ -14,7 +14,8 @@ Linux: You need to have installed Apache and PHP.
   
 Windows: You need to have installed a XAMPP enviroment.
   1. Dowload and unzip the release or clone it at the default apache directory (By default: C:\xampp\htdocs)
-  
+
+# Retrospectives
 ## [Retrospectiva-1](https://github.com/dchcobra/Trip-Count/wiki/Retrospectiva-Sprint-1)
 
 ## Authors
