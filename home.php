@@ -1,3 +1,6 @@
+<?php  
+ session_start();  
+ ?>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,14 +19,19 @@
   <div></div>
   <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
   <section class="container main-content">
-		<h1>TRIP-COUNT</h1>
+		<?php if(isset($_SESSION["mail"])){  
+      echo '<h1>TRIP-COUNT - '.$_SESSION["uname"].'</h1>';
+    }
+    else{
+    }
+    ?>
 		<div class="background-image"></div>
 		<div class="container espacidotabla">
             <?php
             $hostname = "localhost";
             $dbname = "tripcount";
-            $username = "root";
-            $pw = "";
+            $username = "adrian";
+            $pw = "Hakantor";
             $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
             if(!$pdo){
                 systemMSG('error', 'No se ha conectado a la base de datos!');
