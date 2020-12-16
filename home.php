@@ -28,8 +28,8 @@
             <?php
             $hostname = "localhost";
             $dbname = "tripcount";
-            $username = "root";
-            $pw = "";
+            $username = "php";
+            $pw = "Php_1c4J8";
             $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
             if(!$pdo){
                 systemMSG('error', 'No se ha conectado a la base de datos!');
@@ -102,7 +102,7 @@
             </form>
 </div>
     <button class="button aviaje" onclick="wraper()" id="btnAñadirViaje"> <span>AÑADIR VIAJE</span></button>
-   <div id="+"></div>
+   <form class='forminv' id="+" action="./invitaciones.php"></form>
   </section>
   <?php include_once(dirname(__DIR__) . "/Trip-Count/static/footer.php");?>
 </body>
@@ -113,34 +113,53 @@
 let newForm = document.getElementById('+');
 let lastFormElement = forms.lastElementChild;
 
+
 function newElement(tag, text, parent, attributes) {
    let element = document.createElement(tag);
    if(text) {
       let txtNode = document.createTextNode(text);
       element.appendChild(txtNode);
    }
-   
-   parent.appendChild(element);
-   
-   if (attributes) {
-      element.setAttribute(key, value);
-   }
-   
+
+    if (attributes){
+        for (const attribute in attributes) {
+            const value = attributes[attribute];
+            element.setAttribute(attribute, value);
+        }
+    }
+
+    parent.appendChild(element);
+
 }
 
 function wraper(){
-   
-      newElement('h2', 'VIAJE', newForm);
-      newElement('label', 'Nombre: ', newForm);
-      newElement('input', 'undefined', newForm);
-      newElement('br', 'undefined', newForm);
-      newElement('label', 'Descripción: ', newForm);
-      newElement('input', 'undefined', newForm);
-      newElement('br', 'undefined', newForm);
-      newElement('label', 'Moneda: ', newForm);
-      newElement('select', 'undefined', newForm);
-      newElement('br', 'undefined', newForm);
-
+    newElement('h2', 'VIAJE', newForm);
+    newElement('label', 'Nombre: ', newForm);
+    newElement('input', 'undefined', newForm, {'type': 'text', 'name': 'Nombre'});
+    newElement('br', 'undefined', newForm);
+    newElement('label', 'Descripción: ', newForm);
+    newElement('input', 'undefined', newForm, {'type': 'text', 'name': 'Descripcion'});
+    newElement('br', 'undefined', newForm);
+    newElement('label', 'Moneda: ', newForm);
+    newElement('select', 'undefined', newForm, {'name': 'currency', 'id': 'curList'});
+    newElement('br', 'undefined', newForm);
+    newElement('input', 'undefined', newForm, {'type': 'submit'});
+    let optionsList = document.getElementById('curList');
+    let currencies = ['EUR', 'USD', 'AFN', 'BBD'];
+    addItems(currencies, optionsList);
    }
+
+function addItems(items, list){
+    for (let index = 0; index < items.length; index++) {
+        const item = items[index];
+        let option = document.createElement('option');
+        option.appendChild(document.createTextNode(item));
+        option.value = item;
+        list.appendChild(option);
+
+    }
+}
+
+
 
 </script>
