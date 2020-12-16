@@ -11,12 +11,16 @@
 </head>
 <body>
 <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
-<?php $viaje = 'example'?>
+<?php $viaje = 'example'
+//div para los systemMSG
+
+?>
+
+<div></div>
 <div class="main-content forminv">
     <h1><?php echo $viaje?></h1>
     <p>Introduce los correos para invitar a tus amigos:</p>
     <div">
-
         <div class="forminv">
             <form action="invitaciones.php" method="get">
                 <input name="emails[]" type="email" placeholder="example@gmail.com">
@@ -58,7 +62,7 @@
                 }
         }
         $count = 0;
-        //elimina aquellos correos que estan en inv[] de $reg[] 
+            //elimina aquellos correos que estan en inv[] de $reg[] 
             foreach ($reg as $temp) {
                 if (in_array($temp, $inv)) {
                     unset($reg[$count]);
@@ -66,9 +70,24 @@
                 $count += 1;
             } 
         }
+        $tituloInv = 'INVITACION A UN VIAJE NUEVO';
+        $mensajeinv = 'Has sido invitado a ' . $viaje;
+        $cabecerasInv .= 'From: Recordatorio <yw8ok94o@protonmail.ch' . "\r\n";
+        $cabecerasInv .= 'Cc: birthdayarchive@example.com' . "\r\n";
+        $cabecerasInv .= 'Bcc: birthdaycheck@example.com' . "\r\n";
+        foreach ($inv as $invitado) {
+            mail($invitado, $tituloInv, $mensajeinv, $cabecerasInv);
+
+            echo 'invitar: '. $invitado;
+            echo '<br>';
+        }
+        
+        foreach ($reg as $registrar) {
+            echo 'registrar: ' . $registrar;
+            echo '<br>';
+
+        }
     }
-    print_r($reg);
-    print_r($inv);
 
 ?>
 <?php include_once(dirname(__DIR__) . "/Trip-Count/static/footer.php");?>
