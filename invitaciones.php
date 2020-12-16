@@ -71,21 +71,25 @@
             } 
         }
         $tituloInv = 'INVITACION A UN VIAJE NUEVO';
-        $mensajeinv = 'Has sido invitado a ' . $viaje;
-        $cabecerasInv .= 'From: Recordatorio <yw8ok94o@protonmail.ch' . "\r\n";
-        $cabecerasInv .= 'Cc: birthdayarchive@example.com' . "\r\n";
-        $cabecerasInv .= 'Bcc: birthdaycheck@example.com' . "\r\n";
-        foreach ($inv as $invitado) {
-            mail($invitado, $tituloInv, $mensajeinv, $cabecerasInv);
+        $mensajeInv = 'Has sido invitado a ' . $viaje;
+        $cabecerasInv  = 'MIME-Version: 1.0' . "\r\n";
+        $cabecerasInv .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+        $cabecerasInv .= 'From: INVITACION <davidcasthen@gmail.com' . "\r\n";
 
+        foreach ($inv as $invitado) {
+            mail($invitado, $tituloInv, $mensajeInv, $cabecerasInv);
             echo 'invitar: '. $invitado;
             echo '<br>';
         }
-        
+        $tituloReg = 'REGISTRATE A TRIP-COUNT';
+        $mensajeReg = 'Has de registrarte en Trip-Count para poder ser invitado' ;
+        $cabecerasReg  = 'MIME-Version: 1.0' . "\r\n";
+        $cabecerasReg .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+        $cabecerasReg .= 'From: REGISTRARSE <davidcasthen@gmail.com' . "\r\n";
         foreach ($reg as $registrar) {
+            mail($registrar, $tituloReg, $mensajeReg, $cabecerasReg);
             echo 'registrar: ' . $registrar;
             echo '<br>';
-
         }
     }
 
