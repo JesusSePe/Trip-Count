@@ -1,5 +1,3 @@
-# Trip-Count
-
 ---
 
 ![](img/portada.jpg)
