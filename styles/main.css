@@ -20,17 +20,13 @@ body {
     display: flex;
     background-color: #FF9000;
     padding: 10px 10px;
-    color: #333334;
   }
   
   /* Quita la barra scrollbar*/
   *::-webkit-scrollbar {
-    scrollbar-color: rgba(0, 0, 0, .5) rgba(0, 0, 0, 0);
-    scrollbar-width: thin;
-  
-    /*display: none;*/
+    display: none;
   }
-  
+  /*
   *::-webkit-scrollbar-thumb {
     background-color: #797979;
     border-radius: 20px;
@@ -44,7 +40,7 @@ body {
   *::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
     display: none;
   } 
-  
+  */
   
   .header a {
     float: left;
@@ -64,6 +60,7 @@ body {
   .tripcount {
     border-right: solid #333334 1px;
     padding-right: 1.5rem;
+
   }
   
   .header a.active {
@@ -72,11 +69,16 @@ body {
   }
   
   .header-right {
-    width: 85%;
+    width: 75%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     
+  }
+
+  header span.user::before {
+    font-family: FontAwesome;
+    content: "\f007";
   }
   
   .button {
@@ -287,3 +289,5 @@ span::before {
   border-radius: 4px;
   box-sizing: border-box;
 }
+
+/**/
