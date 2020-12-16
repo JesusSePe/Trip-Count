@@ -6,39 +6,28 @@
     <link rel="stylesheet" href="styles/main.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <script src="static/js/functions.js"></script>
-    <?php include_once(dirname(__DIR__).'/TripCount/static/php/functions.php'); ?>
+    <?php include_once(dirname(__DIR__).'/Trip-Count/static/php/functions.php'); ?>
     <title>Invitaciones</title>
 </head>
 <body>
-<?php include_once(dirname(__DIR__) . "/TripCount/static/header.php");?>
-<?php $viaje = 'example'
+<?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
+<?php $viaje = $_GET['Nombre'];
 //div para los systemMSG
 
+ 
 ?>
 
-<div></div>
-<div class="main-content forminv">
-    <h1><?php echo $viaje?></h1>
-    <p>Introduce los correos para invitar a tus amigos:</p>
-    <div">
-        <div class="forminv">
-            <form action="invitaciones.php" method="get">
-                <input name="emails[]" type="email" placeholder="example@gmail.com">
-                <div id="form" class="forminv"></div>
-            </div>
-            <input class="button" type="submit">
-        </form>
-        <button onclick="crearInputInv()" id="emailsInv" class="button"><span>AÃ±adir</span></button>
-    </div>
-</div>
+<div><?php systemMSG('success', 'se ha creado el viaje ' . $_GET['Nombre'])?></div>
+
 <?php
     //CONEXION A BD
     $hostname = "localhost";
-    $dbname = "tripcount";
-    $username = "tripcount";
-    $pw = "password";
+    $dbname = "tripcount2";
+    $username = "root";
+    $pw = "";
     $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
-    if ($dbname !== 'tripcount') {
+    
+    if ($dbname !== 'tripcount2') {
         systemMSG('error', 'Base de datos no encontrada');
     }
     
@@ -94,7 +83,21 @@
     }
 
 ?>
-<?php include_once(dirname(__DIR__) . "/TripCount/static/footer.php");?>
+<div class="main-content forminv">
+    <h1><?php echo 'Viaje ' . $viaje?></h1>
+    <p>Introduce los correos para invitar a tus amigos:</p>
+    <div">
+        <div class="forminv">
+            <form action="invitaciones.php" method="get">
+                <input name="emails[]" type="email" placeholder="example@gmail.com">
+                <div id="form" class="forminv"></div>
+            </div>
+            <input class="button" type="submit">
+        </form>
+        <button onclick="crearInputInv()" id="emailsInv" class="button"><span>Añadir</span></button>
+    </div>
+</div>
+<?php include_once(dirname(__DIR__) . "/Trip-Count/static/footer.php");?>
 
 </body>
 </html>

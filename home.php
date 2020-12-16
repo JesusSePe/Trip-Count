@@ -28,8 +28,8 @@
             <?php
             $hostname = "localhost";
             $dbname = "tripcount";
-            $username = "php";
-            $pw = "Php_1c4J8";
+            $username = "root";
+            $pw = "";
             $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
             if(!$pdo){
                 systemMSG('error', 'No se ha conectado a la base de datos!');
@@ -97,9 +97,9 @@
 <div>
 
    <form method="POST" action=""><br/>
-   <button  class="button aviaje" name="t_creation">Fecha creacion</button>
-   <button  class="button aviaje" name="t_update">Fecha Modificacion</button>
-            </form>
+        <button  class="button aviaje" name="t_creation">Fecha creacion</button>
+        <button  class="button aviaje" name="t_update">Fecha Modificacion</button>
+    </form>
 </div>
     <button class="button aviaje" onclick="wraper()" id="btnAñadirViaje"> <span>AÑADIR VIAJE</span></button>
    <form class='forminv' id="+" action="./invitaciones.php"></form>

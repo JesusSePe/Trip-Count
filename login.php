@@ -16,7 +16,7 @@
           $host = "localhost";  
           $username = "root";  
           $password = "";  
-          $database = "tripcount";  
+          $database = "tripcount2";  
           $message = "";  
           try{
             $connect = new PDO("mysql:host=$host; dbname=$database", $username, $password);
