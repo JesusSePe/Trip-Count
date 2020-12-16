@@ -14,7 +14,10 @@ Linux: You need to have installed Apache and PHP.
   4. In the connection parts to the Database modify (username and password) by their own.
   
 Windows: You need to have installed a XAMPP enviroment.
-  1. Dowload and unzip the release or clone it at the default apache directory (By default: C:\xampp\htdocs)
+  1. Dowload and unzip the release or clone it at the default apache directory (By default: C:\xampp\htdocs).
+  2. Open controller of XAMPP and start service PHP & MySQL
+  3. Download and add file (schema.sql) in mysql.
+  4. Access to http://localhost/trip-count/.
 
 # Retrospectives
 ## [Retrospectiva-1](https://github.com/dchcobra/Trip-Count/wiki/Retrospectiva-Sprint-1)
