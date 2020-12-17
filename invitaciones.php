@@ -1,3 +1,6 @@
+<?php  
+ session_start();  
+ ?>  
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,12 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/main.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link rel="icon" href="img/coin.png" type="image/png">
     <script src="static/js/functions.js"></script>
-    <?php include_once(dirname(__DIR__).'/Trip-Count/static/php/functions.php'); ?>
+    <?php include_once(dirname(__DIR__).'/TripCount/static/php/functions.php'); ?>
     <title>Invitaciones</title>
 </head>
 <body>
-<?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
+<?php include_once(dirname(__DIR__) . "/TripCount/static/header.php");?>
 <?php $viaje = $_GET['Nombre'];
 //div para los systemMSG
 
@@ -23,8 +27,8 @@
     //CONEXION A BD
     $hostname = "localhost";
     $dbname = "tripcount2";
-    $username = "root";
-    $pw = "";
+    $username = "tripcount";
+    $pw = "password";
     $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
     
     if ($dbname !== 'tripcount2') {
@@ -62,14 +66,13 @@
         
 
         $tituloInv = 'INVITACION A UN VIAJE NUEVO';
-        $mensajeInv = 'Has sido invitado a ' . $viaje;
+        $mensajeInv = 'Has sido invitado a un viaje';
         $cabecerasInv  = 'MIME-Version: 1.0' . "\r\n";
         $cabecerasInv .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
         $cabecerasInv .= 'From: TripCount <TripCount@tripcount.dchcobra.cf>' . "\r\n";
         $para .= 'davidcasthen@gmail.com';
         foreach ($inv as $invitado) {
             mail($invitado, $tituloInv, $mensajeInv, $cabecerasInv);
-            
         }
         $tituloReg = 'REGISTRATE A TripCount';
         $mensajeReg = 'Has de registrarte en TripCount para poder ser invitado' ;
@@ -78,8 +81,8 @@
         $cabecerasReg .= 'From: TripCount <trip-count@mail.dchcobra.cf>' . "\r\n";
         foreach ($reg as $registrar) {
             mail($registrar, $tituloReg, $mensajeReg, $cabecerasReg);
-            
         }
+        Redirect('home.php');
     }
 
 ?>
@@ -94,10 +97,17 @@
             </div>
             <input class="button" type="submit">
         </form>
-        <button onclick="crearInputInv()" id="emailsInv" class="button"><span>Añadir</span></button>
+        <button onclick="crearInputInv()" id="emailsInv" class="button"><span>Anadir</span></button>
     </div>
 </div>
-<?php include_once(dirname(__DIR__) . "/Trip-Count/static/footer.php");?>
+<?php include_once(dirname(__DIR__) . "/TripCount/static/footer.php");?>
+<?php
+function Redirect($url, $permanent = false)
+{
+    header('Location: ' . $url, true, $permanent ? 301 : 302);
 
+    exit();
+}
+?>
 </body>
 </html>
