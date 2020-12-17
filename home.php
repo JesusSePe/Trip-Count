@@ -140,7 +140,7 @@ function wraper(){
     newElement('label', 'Nombre: ', newForm);
     newElement('input', 'undefined', newForm, {'type': 'text', 'name': 'Nombre'});
     newElement('br', 'undefined', newForm);
-    newElement('label', 'DescripciÃ³n: ', newForm);
+    newElement('label', 'Descripcion: ', newForm);
     newElement('input', 'undefined', newForm, {'type': 'text', 'name': 'Descripcion'});
     newElement('br', 'undefined', newForm);
     newElement('label', 'Moneda: ', newForm);
