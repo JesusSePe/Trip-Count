@@ -1,1 +1,293 @@
-f
+* { 
+    margin: 0; 
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+html {
+  height: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background: #EEF3F6;
+} 
+
+/*  HEADER   */
+  .header {
+    display: flex;
+    background-color: #FF9000;
+    padding: 10px 10px;
+  }
+  
+  /* Quita la barra scrollbar*/
+  *::-webkit-scrollbar {
+    display: none;
+  }
+  /*
+  *::-webkit-scrollbar-thumb {
+    background-color: #797979;
+    border-radius: 20px;
+    border: 2px solid #f1f2f3;
+  }
+  
+  *::-webkit-scrollbar {
+    -webkit-appearance: none;
+  }
+  
+  *::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+    display: none;
+  } 
+  */
+  
+  .header a {
+    float: left;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px; 
+    line-height: 25px;
+    border-radius: 4px;
+  }
+  
+  .header a.logo {
+    font-size: 25px;
+    font-weight: bold;
+  }
+  
+  .tripcount {
+    border-right: solid #333334 1px;
+    padding-right: 1.5rem;
+
+  }
+  
+  .header a.active {
+    background-color: dodgerblue;
+    color: white;
+  }
+  
+  .header-right {
+    width: 70%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    
+  }
+
+  header span.user::before {
+    font-family: FontAwesome;
+    content: "\f007";
+  }
+  
+  .button {
+    background-color: #333334;
+    border: solid 1px white;
+    color: white;
+    transition: 0.5s;
+    padding: 10px;
+    border-radius: 4px;
+    cursor:pointer
+  }
+  
+  .button:hover {
+    transition: 0.3s;
+    background-color: #3392ff;
+  }
+  
+  .button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+   }
+  
+  .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -50px;
+    transition: 0.5s;
+  }
+  
+  .button:hover span {
+    padding-right: 25px;
+  }
+  
+  .button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+
+  
+  /*  FOOTER  */
+  
+  
+  ul {
+    list-style: none;
+  }
+header{
+  flex: 0 0 auto;
+}
+
+.main-content{
+  display: flex;
+  align-items: center;
+  flex: 1 0 auto;
+  flex-direction: column;
+  justify-content: center;
+}
+
+footer{
+  flex: 0 0 auto;
+}
+
+.footer {
+  width: 100%;
+  display: flex;
+  flex: 0 0 auto;
+  background-color: #333334;
+  color: #FF9000;
+  text-align: center;
+  justify-content: center;
+  font-weight: bold;
+  align-items: center;
+  padding: 1rem;
+}
+
+.names {
+    display: flex;
+    margin-right : 2rem;
+    align-items: center;
+    text-align: center;
+    border-right: solid #FF9000 1px;
+    height: 80%;
+    padding-right: 2rem;
+}
+
+.copyright {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-right : 2%; 
+}
+
+/* ALERTS */
+
+span::before {
+    margin-right: 10px;
+}
+
+.info {
+    background-color: #11D0D0;
+    padding: 20px;
+}
+
+.info span::before {
+    font-family: FontAwesome;
+    content: '\f05a';
+}
+
+.warning {
+    background-color: #FFEB3B;
+    padding: 20px;
+}
+
+.warning span::before {
+    font-family: FontAwesome;
+    content: '\f06a';
+}
+
+.success {
+    background-color: #4CAF50;
+    padding: 20px;
+}
+
+.success span::before {
+    font-family: FontAwesome;
+    content: '\f058';
+}
+
+.error {
+    background-color: #FF5C5C;
+    padding: 20px;
+}
+
+.error span::before {
+    font-family: FontAwesome;
+    content: '\f057';
+
+}
+
+
+/* landing page */
+
+
+/* Home */
+
+.aviaje {
+  margin: 1rem;
+  padding: 12px;
+  border-radius: 4px;
+}
+
+.aviaje span::after {
+  font-family: FontAwesome;
+  content: "\f055";
+}
+
+.formDinamic {
+  display: flex;
+  flex-direction: column;
+}
+ 
+
+.formDinamic h2 {
+  font: bold 35px 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+/* FORM */
+
+.forminv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  align-items: center;
+}
+
+.forminv input {
+  margin: 10px;
+}
+
+.forminv h1 {
+  font: bold 40px 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.forminv button {
+  padding: 10px;
+  border-radius: 4px;
+
+}
+
+.forminv span::after {
+  font-family: FontAwesome;
+  content: "\f055";
+}
+
+.forminv input[type=email], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/**/

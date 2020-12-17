@@ -1,0 +1,114 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html{
+	font: normal 16px sans-serif;
+	color: #1D1D1E;
+}
+
+a{
+	text-decoration: none;
+	color: inherit;
+	cursor: pointer;
+	opacity: 0.9;
+}
+
+a:hover{
+	opacity: 1;
+}
+
+a.btn{
+	color: #fff;
+	border-radius: 4px;
+	text-transform: uppercase;
+	background-color: orange;
+	font-weight: 800;
+	text-align: center;
+}
+
+section{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+/*----------------
+ 	Container Section
+----------------*/
+
+.container{
+	min-height: 100%;
+	color: #1D1D1E;
+	text-align: center;
+}
+
+.container .background-image{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-color: #EEF3F6;
+	z-index: -1;
+}
+
+.container .background-image:after{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #1D1D1E;
+	opacity: 0.75;
+}
+
+.container h1{
+	font: bold 60px 'Open Sans', sans-serif;
+	margin-bottom: 2rem;
+	margin-top: 2rem;
+}
+
+.container h3{
+	font: normal 28px 'Open Sans', sans-serif;
+	margin-bottom: 40px;
+}
+
+.container a.btn{
+	padding: 20px 46px;
+}
+
+.tabla {
+	border-collapse: collapse; 
+	color: #fff;
+	width: 100%;
+	height: 100%;
+}
+
+.espacidotabla {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 70%;
+	height: 250px;
+}
+
+th {
+	background-color: #FF9000;
+	padding: 10px;
+}
+
+td {
+   background: #fff;
+   color: #000;
+   border-top: 1px solid  #EEF3F6;
+}
+
+form {
+	display: flex;
+	justify-content: center;
+	margin-top: 2rem;
+}
