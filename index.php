@@ -20,7 +20,8 @@
 		<section class="container">
 			<div class="background-image"></div>
 			<h1>TRIP-COUNT</h1>
-			<h3>No es necesario tener conocimientos tÃ©cnicos o de diseÃ±o, con Sendinblue puedes crear tus correos en unos cuantos pasos. Al finalizar podrÃ¡s automatizar el envÃ­o con el marketing automation</h3>
+			<h3><pre>Bienvenidos a nuestra aplicacion de Trip-Count,
+se encarga de la gestion de gastos en viajes y salidas.</pre></h3>
 			<div class="container main-content ">
 				<div class="spacebutt">
 					<a href="login.php" class="btn button"><span>Login</span></a>

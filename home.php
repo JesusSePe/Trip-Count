@@ -14,11 +14,11 @@
     <link rel="stylesheet" href="styles/home.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="icon" href="img/coin.png" type="image/png">
-    <?php include_once(dirname(__DIR__).'/TripCount/static/php/functions.php'); ?>
+    <?php include_once(dirname(__DIR__).'/Trip-Count/static/php/functions.php'); ?>
 </head>
 <body>
   
-  <?php include_once(dirname(__DIR__) . "/TripCount/static/header.php");?>
+  <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
 
     
   <div><?php systemMSG('success', 'Has accedido con el usuario ' . $_SESSION["uname"])?></div>
@@ -29,8 +29,8 @@
             <?php
             $hostname = "localhost";
             $dbname = "tripcount2";
-            $username = "tripcount";
-            $pw = "password";
+            $username = "root";
+            $pw = "";
             $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
             if(!$pdo){
                 systemMSG('error', 'No se ha conectado a la base de datos!');
@@ -104,10 +104,10 @@
         <button  class="button aviaje" name="t_update">Fecha Modificacion</button>
     </form>
 </div>
-    <button class="button aviaje" onclick="wraper()" id="btnAÃ±adirViaje"> <span>AÃ‘ADIR VIAJE</span></button>
+    <button class="button aviaje" onclick="wraper()" id="btnAÃ±adirViaje"> <span>AÑADIR VIAJE</span></button>
    <form class='forminv' id="+" action="./invitaciones.php"></form>
   </section>
-  <?php include_once(dirname(__DIR__) . "/TripCount/static/footer.php");?>
+  <?php include_once(dirname(__DIR__) . "/Trip-Count/static/footer.php");?>
 </body>
 </html>
 

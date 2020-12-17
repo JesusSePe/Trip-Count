@@ -9,14 +9,14 @@
     <link rel="icon" href="img/coin.png" type="image/png">
   </head>
   <body>
-    <?php include_once(dirname(__DIR__).'/TripCount/static/php/functions.php'); ?>
-    <?php include_once(dirname(__DIR__) . "/TripCount/static/header.php");?>
+    <?php include_once(dirname(__DIR__).'/Trip-Count/static/php/functions.php'); ?>
+    <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
     <div><?php systemMSG('info', 'Se te ha redirigido al login')?></div>
           <?php  
           session_start();  
           $host = "localhost";  
-          $username = "tripcount";  
-          $password = "password";  
+          $username = "root";  
+          $password = "";  
           $database = "tripcount2";  
           $message = "";  
           try{
@@ -86,7 +86,7 @@
         </div>
       </div>
     </div>
-      <?php include_once(dirname(__DIR__) . "/TripCount/static/footer.php");?>
+      <?php include_once(dirname(__DIR__) . "/Trip-Count/static/footer.php");?>
   </body>
 </html>
 
