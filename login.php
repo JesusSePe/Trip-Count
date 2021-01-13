@@ -11,7 +11,6 @@
   <body>
     <?php include_once(dirname(__DIR__).'/Trip-Count/static/php/functions.php'); ?>
     <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
-<<<<<<< HEAD
     <ul class="breadcrumb">
       <li><a href="index.php">Index</a></li>
       <li>Login</li>
@@ -21,14 +20,12 @@
         <div></div>
         <div class="logo">LOGIN</div>
         <div class="loginitem">
-=======
     <div><?php systemMSG('info', 'Se te ha redirigido al login')?></div>
->>>>>>> 9dab3c388b4f6fff92d8c125ae4456b9c29a4299
           <?php  
           session_start();  
           $host = "localhost";  
-          $username = "root";  
-          $password = "";  
+          $username = "adrian";  
+          $password = "Hakantor";  
           $database = "tripcount";  
           $message = "";  
           try{

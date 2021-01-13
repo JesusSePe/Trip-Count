@@ -29,8 +29,8 @@
             <?php
             $hostname = "localhost";
             $dbname = "tripcount";
-            $username = "root";
-            $pw = "";
+            $username = "adrian";
+            $pw = "Hakantor";
             $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
             if(!$pdo){
                 systemMSG('error', 'No se ha conectado a la base de datos!');
@@ -39,10 +39,8 @@
             <table class='tabla'>
                 <thead class="alert-info">
                     <tr>
-                        <th>destination</th>
-                        <th>origin</th>
-                        <th>Dia de salida</th>
-                        <th>Dia de vuelta</th>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
                         <th>Fecha creacion</th>
                         <th>Fecha Modificacion</th>
 
@@ -56,10 +54,8 @@
                         systemMSG('info', 'Se ha ordenado por fecha de creacion ');
                         while($row = $query->fetch()){
                            echo "<tr>
-                            <td>".$row['destination']."</td>
-                            <td>".$row['origin']."</td>
-                            <td>".$row['leaving_day']."</td>
-                            <td>".$row['back_day']."</td>
+                            <td>".$row['t_name']."</td>
+                            <td>".$row['t_description']."</td>
                             <td>".$row['t_creation']."</td>
                             <td>".$row['t_update']."</td>
                             </tr>";
@@ -70,10 +66,8 @@
                         systemMSG('info', 'Se ha ordenado por fecha de actualizacion ');
                 while($row = $query->fetch()){
                    echo "<tr>
-                            <td>".$row['destination']."</td>
-                            <td>".$row['origin']."</td>
-                            <td>".$row['leaving_day']."</td>
-                            <td>".$row['back_day']."</td>
+                             <td>".$row['t_name']."</td>
+                            <td>".$row['t_description']."</td>
                             <td>".$row['t_creation']."</td>
                             <td>".$row['t_update']."</td>
 
@@ -84,10 +78,8 @@
                 $query->execute();
                 while($row = $query->fetch()){
                     echo "<tr>
-                            <td>".$row['destination']."</td>
-                            <td>".$row['origin']."</td>
-                            <td>".$row['leaving_day']."</td>
-                            <td>".$row['back_day']."</td>
+                            <td>".$row['t_name']."</td>
+                            <td>".$row['t_description']."</td>
                             <td>".$row['t_creation']."</td>
                             <td>".$row['t_update']."</td>
                     </tr>";

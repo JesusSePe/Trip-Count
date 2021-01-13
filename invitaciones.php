@@ -27,8 +27,8 @@
     //CONEXION A BD
     $hostname = "localhost";
     $dbname = "tripcount";
-    $username = "root";
-    $pw = "";
+    $username = "adrian";
+    $pw = "Hakantor";
     $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
     
     if ($dbname !== 'tripcount') {
