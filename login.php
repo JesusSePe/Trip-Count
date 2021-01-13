@@ -11,16 +11,11 @@
   <body>
     <?php include_once(dirname(__DIR__).'/Trip-Count/static/php/functions.php'); ?>
     <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
+    <div><?php systemMSG('info', 'Se te ha redirigido al login')?></div>
     <ul class="breadcrumb">
-      <li><a href="index.php">Index</a></li>
+      <li><a href="index.php">Inicio</a></li>
       <li>Login</li>
 </ul>
-    <div class="menu main-content">
-    <div class="container">
-        <div></div>
-        <div class="logo">LOGIN</div>
-        <div class="loginitem">
-    <div><?php systemMSG('info', 'Se te ha redirigido al login')?></div>
           <?php  
           session_start();  
           $host = "localhost";  

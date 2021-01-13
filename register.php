@@ -5,11 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/register.css">
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" href="img/coin.png" type="image/png">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <title>Register</title>
 </head>
 <body>
+<?php include_once(dirname(__DIR__).'/Trip-Count/static/php/functions.php'); ?>
 <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
+<div><?php systemMSG('info', 'La pagina esta en produccion construccion ')?></div>
+<ul class="breadcrumb">
+      <li><a href="index.php">Inicio</a></li>
+      <li>Register</li>
+</ul>
 <div class="menu main-content">
     <div class="container">
         <div></div>

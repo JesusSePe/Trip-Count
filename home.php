@@ -22,6 +22,11 @@
 
     
   <div><?php systemMSG('success', 'Has accedido con el usuario ' . $_SESSION["uname"])?></div>
+  <ul class="breadcrumb">
+    <li><a href="index.php">Inicio</a></li>
+    <li><a href="login.php">Login</a></li>
+    <li>Home</li>
+</ul>
   <section class="container main-content">
         <h1>TRIP-COUNT </h1>       
       <div class="background-image"></div>

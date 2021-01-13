@@ -17,12 +17,15 @@
 <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
 <?php $viaje = $_GET['Nombre'];
 //div para los systemMSG
-
- 
 ?>
 
 <div><?php systemMSG('success', 'se ha creado el viaje ' . $_GET['Nombre'])?></div>
-
+<ul class="breadcrumb">
+    <li><a href="index.php">Inicio</a></li>
+    <li><a href="login.php">Login</a></li>
+    <li><a href="home.php">Home</a></li>
+    <li>Invitation</li>
+</ul>
 <?php
     //CONEXION A BD
     $hostname = "localhost";
