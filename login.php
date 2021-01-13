@@ -6,24 +6,18 @@
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="styles/login.css">
     <link rel="stylesheet" href="styles/main.css">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-    <?php include_once(dirname(__DIR__).'/Trip-Count/static/php/functions.php'); ?>
+    <link rel="icon" href="img/coin.png" type="image/png">
   </head>
-    <body>
-    <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
   <body>
+    <?php include_once(dirname(__DIR__).'/Trip-Count/static/php/functions.php'); ?>
     <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
-    <div class="menu main-content">
-    <div class="container">
-        <div></div>
-        <div class="logo">LOGIN</div>
-        <div class="loginitem">
+    <div><?php systemMSG('info', 'Se te ha redirigido al login')?></div>
           <?php  
           session_start();  
           $host = "localhost";  
-          $username = "adrian";  
-          $password = "Hakantor";  
-          $database = "tripcount";  
+          $username = "root";  
+          $password = "";  
+          $database = "tripcount2";  
           $message = "";  
           try{
             $connect = new PDO("mysql:host=$host; dbname=$database", $username, $password);
@@ -70,6 +64,11 @@
               $message = $error->getMessage();
             }
             ?>
+            
+          <div class="menu main-content">
+          <div class="container">
+              <div class="logo">LOGIN</div>
+              <div class="loginitem">
           <form action="" method="post" class="form formlogin">
             <div class="formfield">
               <label class="user" for="loginemail"><span class="hidden"> Email</span></label>

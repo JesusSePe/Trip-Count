@@ -30,10 +30,6 @@ a.btn{
 	margin: 2rem;
 }
 
-a.btn:hover {
-	background-color: ;
-}
-
 section{
 	display: flex;
 	flex-direction: column;

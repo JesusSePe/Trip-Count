@@ -20,17 +20,13 @@ body {
     display: flex;
     background-color: #FF9000;
     padding: 10px 10px;
-    color: #333334;
   }
   
   /* Quita la barra scrollbar*/
   *::-webkit-scrollbar {
-    scrollbar-color: rgba(0, 0, 0, .5) rgba(0, 0, 0, 0);
-    scrollbar-width: thin;
-  
-    /*display: none;*/
+    display: none;
   }
-  
+  /*
   *::-webkit-scrollbar-thumb {
     background-color: #797979;
     border-radius: 20px;
@@ -44,7 +40,7 @@ body {
   *::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
     display: none;
   } 
-  
+  */
   
   .header a {
     float: left;
@@ -64,6 +60,7 @@ body {
   .tripcount {
     border-right: solid #333334 1px;
     padding-right: 1.5rem;
+
   }
   
   .header a.active {
@@ -72,11 +69,16 @@ body {
   }
   
   .header-right {
-    width: 85%;
+    width: 70%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     
+  }
+
+  header span.user::before {
+    font-family: FontAwesome;
+    content: "\f007";
   }
   
   .button {
@@ -84,6 +86,9 @@ body {
     border: solid 1px white;
     color: white;
     transition: 0.5s;
+    padding: 10px;
+    border-radius: 4px;
+    cursor:pointer
   }
   
   .button:hover {
@@ -131,6 +136,8 @@ header{
   display: flex;
   align-items: center;
   flex: 1 0 auto;
+  flex-direction: column;
+  justify-content: center;
 }
 
 footer{
@@ -217,10 +224,12 @@ span::before {
 
 /* landing page */
 
+
 /* Home */
 
 .aviaje {
   margin: 1rem;
+  margin-top: 4rem;
   padding: 12px;
   border-radius: 4px;
 }
@@ -241,3 +250,45 @@ span::before {
   text-transform: uppercase;
   margin-bottom: 1rem;
 }
+
+/* FORM */
+
+.forminv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  align-items: center;
+}
+
+.forminv input {
+  margin: 10px;
+}
+
+.forminv h1 {
+  font: bold 40px 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.forminv button {
+  padding: 10px;
+  border-radius: 4px;
+
+}
+
+.forminv span::after {
+  font-family: FontAwesome;
+  content: "\f055";
+}
+
+.forminv input[type=email], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/**/

@@ -13,29 +13,27 @@
     <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
     <link rel="stylesheet" href="styles/home.css">
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" href="img/coin.png" type="image/png">
     <?php include_once(dirname(__DIR__).'/Trip-Count/static/php/functions.php'); ?>
 </head>
 <body>
-  <div></div>
+  
   <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
-  <section class="container main-content">
 
-		<?php if(isset($_SESSION)){  
-      echo '<h1>TRIP-COUNT - '.$_SESSION["uname"].'</h1>';
-    }
-    else{
-    }
-    ?>
-		<div class="background-image"></div>
+    
+  <div><?php systemMSG('success', 'Has accedido con el usuario ' . $_SESSION["uname"])?></div>
+  <section class="container main-content">
+        <h1>TRIP-COUNT </h1>       
+	    <div class="background-image"></div>
 		<div class="container espacidotabla">
             <?php
             $hostname = "localhost";
-            $dbname = "tripcount";
-            $username = "adrian";
-            $pw = "Hakantor";
+            $dbname = "tripcount2";
+            $username = "root";
+            $pw = "";
             $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
             if(!$pdo){
-                systemMSG('error', 'Failed to coonect to database!');
+                systemMSG('error', 'No se ha conectado a la base de datos!');
             }
             ?>
             <table class='tabla'>
@@ -45,30 +43,40 @@
                         <th>origin</th>
                         <th>Dia de salida</th>
                         <th>Dia de vuelta</th>
+                        <th>Fecha creacion</th>
+                        <th>Fecha Modificacion</th>
+
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    if(ISSET($_POST['leaving_day'])){
-                        $query = $pdo->prepare("SELECT * FROM `travels` ORDER BY `leaving_day` ASC");
+                    if(ISSET($_POST['t_creation'])){
+                        $query = $pdo->prepare("SELECT * FROM `travels` ORDER BY `t_creation` ASC");
                         $query->execute();
+                        systemMSG('info', 'Se ha ordenado por fecha de creacion ');
                         while($row = $query->fetch()){
                            echo "<tr>
                             <td>".$row['destination']."</td>
                             <td>".$row['origin']."</td>
                             <td>".$row['leaving_day']."</td>
                             <td>".$row['back_day']."</td>
+                            <td>".$row['t_creation']."</td>
+                            <td>".$row['t_update']."</td>
                             </tr>";
                         }
-                    }else if(ISSET($_POST['back_day'])){
-                        $query = $pdo->prepare("SELECT * FROM `travels` ORDER BY `back_day` DESC");
+                    }else if(ISSET($_POST['t_update'])){
+                        $query = $pdo->prepare("SELECT * FROM `travels` ORDER BY `t_update` DESC");
                         $query->execute();
+                        systemMSG('info', 'Se ha ordenado por fecha de actualizacion ');
                 while($row = $query->fetch()){
                    echo "<tr>
                             <td>".$row['destination']."</td>
                             <td>".$row['origin']."</td>
                             <td>".$row['leaving_day']."</td>
                             <td>".$row['back_day']."</td>
+                            <td>".$row['t_creation']."</td>
+                            <td>".$row['t_update']."</td>
+
                     </tr>";
                 }
             }else{
@@ -80,6 +88,8 @@
                             <td>".$row['origin']."</td>
                             <td>".$row['leaving_day']."</td>
                             <td>".$row['back_day']."</td>
+                            <td>".$row['t_creation']."</td>
+                            <td>".$row['t_update']."</td>
                     </tr>";
                 }
             }
@@ -90,12 +100,12 @@
 <div>
 
    <form method="POST" action=""><br/>
-   <button  class="button aviaje" name="leaving_day">Ordenar dia de salida</button>
-   <button  class="button aviaje" name="back_day">Ordenar dia de vuelta</button>
-            </form>
+        <button  class="button aviaje" name="t_creation">Fecha creacion</button>
+        <button  class="button aviaje" name="t_update">Fecha Modificacion</button>
+    </form>
 </div>
-    <button class="button aviaje" onclick="wraper()" id="btnAñadirViaje"> <span>AÑADIR VIAJE</span></button>
-   <div id="+"></div>
+    <button class="button aviaje" onclick="wraper()" id="btnAÃ±adirViaje"> <span>AÑADIR VIAJE</span></button>
+   <form class='forminv' id="+" action="./invitaciones.php"></form>
   </section>
   <?php include_once(dirname(__DIR__) . "/Trip-Count/static/footer.php");?>
 </body>
@@ -106,34 +116,53 @@
 let newForm = document.getElementById('+');
 let lastFormElement = forms.lastElementChild;
 
+
 function newElement(tag, text, parent, attributes) {
    let element = document.createElement(tag);
    if(text) {
       let txtNode = document.createTextNode(text);
       element.appendChild(txtNode);
    }
-   
-   parent.appendChild(element);
-   
-   if (attributes) {
-      element.setAttribute(key, value);
-   }
-   
+
+    if (attributes){
+        for (const attribute in attributes) {
+            const value = attributes[attribute];
+            element.setAttribute(attribute, value);
+        }
+    }
+
+    parent.appendChild(element);
+
 }
 
 function wraper(){
-   
-      newElement('h2', 'VIAJE', newForm);
-      newElement('label', 'Nombre: ', newForm);
-      newElement('input', 'undefined', newForm);
-      newElement('br', 'undefined', newForm);
-      newElement('label', 'Descripción: ', newForm);
-      newElement('input', 'undefined', newForm);
-      newElement('br', 'undefined', newForm);
-      newElement('label', 'Moneda: ', newForm);
-      newElement('select', 'undefined', newForm);
-      newElement('br', 'undefined', newForm);
-
+    newElement('h2', 'VIAJE', newForm);
+    newElement('label', 'Nombre: ', newForm);
+    newElement('input', 'undefined', newForm, {'type': 'text', 'name': 'Nombre'});
+    newElement('br', 'undefined', newForm);
+    newElement('label', 'Descripcion: ', newForm);
+    newElement('input', 'undefined', newForm, {'type': 'text', 'name': 'Descripcion'});
+    newElement('br', 'undefined', newForm);
+    newElement('label', 'Moneda: ', newForm);
+    newElement('select', 'undefined', newForm, {'name': 'currency', 'id': 'curList'});
+    newElement('br', 'undefined', newForm);
+    newElement('input', 'undefined', newForm, {'type': 'submit'});
+    let optionsList = document.getElementById('curList');
+    let currencies = ['EUR', 'USD', 'AFN', 'BBD'];
+    addItems(currencies, optionsList);
    }
+
+function addItems(items, list){
+    for (let index = 0; index < items.length; index++) {
+        const item = items[index];
+        let option = document.createElement('option');
+        option.appendChild(document.createTextNode(item));
+        option.value = item;
+        list.appendChild(option);
+
+    }
+}
+
+
 
 </script>
