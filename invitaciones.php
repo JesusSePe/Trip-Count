@@ -10,11 +10,11 @@
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link rel="icon" href="img/coin.png" type="image/png">
     <script src="static/js/functions.js"></script>
-    <?php include_once(dirname(__DIR__).'/TripCount/static/php/functions.php'); ?>
+    <?php include_once(dirname(__DIR__).'/Trip-Count/static/php/functions.php'); ?>
     <title>Invitaciones</title>
 </head>
 <body>
-<?php include_once(dirname(__DIR__) . "/TripCount/static/header.php");?>
+<?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
 <?php $viaje = $_GET['Nombre'];
 //div para los systemMSG
 
@@ -27,8 +27,8 @@
     //CONEXION A BD
     $hostname = "localhost";
     $dbname = "tripcount2";
-    $username = "tripcount";
-    $pw = "password";
+    $username = "root";
+    $pw = "";
     $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
     
     if ($dbname !== 'tripcount2') {
@@ -100,7 +100,7 @@
         <button onclick="crearInputInv()" id="emailsInv" class="button"><span>Anadir</span></button>
     </div>
 </div>
-<?php include_once(dirname(__DIR__) . "/TripCount/static/footer.php");?>
+<?php include_once(dirname(__DIR__) . "/Trip-Count/static/footer.php");?>
 <?php
 function Redirect($url, $permanent = false)
 {
