@@ -85,7 +85,6 @@ INSERT INTO invitations (id_user_invitor, mail) VALUES (1, 'anotheruser@mail.com
 
 /*Insert currency records*/
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Albania', 'Leke', 'ALL', 'Lek');
-INSERT INTO currency (country, currency, code, symbol) VALUES ('America', 'Dollars', 'USD', '$');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Afghanistan', 'Afghanis', 'AFN', '؋');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Argentina', 'Pesos', 'ARS', '$');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Aruba', 'Guilders', 'AWG', 'ƒ');
@@ -113,25 +112,19 @@ INSERT INTO currency (country, currency, code, symbol) VALUES ('Colombia', 'Peso
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Costa Rica', 'Colón', 'CRC', '₡');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Croatia', 'Kuna', 'HRK', 'kn');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Cuba', 'Pesos', 'CUP', '₱');
-INSERT INTO currency (country, currency, code, symbol) VALUES ('Cyprus', 'Euro', 'EUR', '€');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Czech Republic', 'Koruny', 'CZK', 'Kč');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Denmark', 'Kroner', 'DKK', 'kr');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Dominican Republic', 'Pesos', 'DOP ', 'RD$');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('East Caribbean', 'Dollars', 'XCD', '$');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Egypt', 'Pounds', 'EGP', '£');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('El Salvador', 'Colones', 'SVC', '$');
-INSERT INTO currency (country, currency, code, symbol) VALUES ('England (United Kingdom)', 'Pounds', 'GBP', '£');
-INSERT INTO currency (country, currency, code, symbol) VALUES ('Euro', 'Euro', 'EUR', '€');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Falkland Islands', 'Pounds', 'FKP', '£');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Fiji', 'Dollars', 'FJD', '$');
-INSERT INTO currency (country, currency, code, symbol) VALUES ('France', 'Euro', 'EUR', '€');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Ghana', 'Cedis', 'GHC', '¢');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Gibraltar', 'Pounds', 'GIP', '£');
-INSERT INTO currency (country, currency, code, symbol) VALUES ('Greece', 'Euro', 'EUR', '€');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Guatemala', 'Quetzales', 'GTQ', 'Q');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Guernsey', 'Pounds', 'GGP', '£');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Guyana', 'Dollars', 'GYD', '$');
-INSERT INTO currency (country, currency, code, symbol) VALUES ('Holland (Netherlands)', 'Euro', 'EUR', '€');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Honduras', 'Lempiras', 'HNL', 'L');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Hong Kong', 'Dollars', 'HKD', '$');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Hungary', 'Forint', 'HUF', 'Ft');
@@ -139,10 +132,8 @@ INSERT INTO currency (country, currency, code, symbol) VALUES ('Iceland', 'Kronu
 INSERT INTO currency (country, currency, code, symbol) VALUES ('India', 'Rupees', 'INR', 'Rp');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Indonesia', 'Rupiahs', 'IDR', 'Rp');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Iran', 'Rials', 'IRR', '﷼');
-INSERT INTO currency (country, currency, code, symbol) VALUES ('Ireland', 'Euro', 'EUR', '€');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Isle of Man', 'Pounds', 'IMP', '£');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Israel', 'New Shekels', 'ILS', '₪');
-INSERT INTO currency (country, currency, code, symbol) VALUES ('Italy', 'Euro', 'EUR', '€');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Jamaica', 'Dollars', 'JMD', 'J$');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Japan', 'Yen', 'JPY', '¥');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Jersey', 'Pounds', 'JEP', '£');
@@ -156,10 +147,8 @@ INSERT INTO currency (country, currency, code, symbol) VALUES ('Lebanon', 'Pound
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Liberia', 'Dollars', 'LRD', '$');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Liechtenstein', 'Switzerland Francs', 'CHF', 'CHF');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Lithuania', 'Litai', 'LTL', 'Lt');
-INSERT INTO currency (country, currency, code, symbol) VALUES ('Luxembourg', 'Euro', 'EUR', '€');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Macedonia', 'Denars', 'MKD', 'ден');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Malaysia', 'Ringgits', 'MYR', 'RM');
-INSERT INTO currency (country, currency, code, symbol) VALUES ('Malta', 'Euro', 'EUR', '€');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Mauritius', 'Rupees', 'MUR', '₨');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Mexico', 'Pesos', 'MXN', '$');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Mongolia', 'Tugriks', 'MNT', '₮');
@@ -167,7 +156,6 @@ INSERT INTO currency (country, currency, code, symbol) VALUES ('Mozambique', 'Me
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Namibia', 'Dollars', 'NAD', '$');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Nepal', 'Rupees', 'NPR', '₨');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Netherlands Antilles', 'Guilders', 'ANG', 'ƒ');
-INSERT INTO currency (country, currency, code, symbol) VALUES ('Netherlands', 'Euro', 'EUR', '€');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('New Zealand', 'Dollars', 'NZD', '$');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Nicaragua', 'Cordobas', 'NIO', 'C$');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Nigeria', 'Nairas', 'NGN', '₦');
@@ -188,12 +176,10 @@ INSERT INTO currency (country, currency, code, symbol) VALUES ('Saudi Arabia', '
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Serbia', 'Dinars', 'RSD', 'Дин.');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Seychelles', 'Rupees', 'SCR', '₨');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Singapore', 'Dollars', 'SGD', '$');
-INSERT INTO currency (country, currency, code, symbol) VALUES ('Slovenia', 'Euro', 'EUR', '€');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Solomon Islands', 'Dollars', 'SBD', '$');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Somalia', 'Shillings', 'SOS', 'S');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('South Africa', 'Rand', 'ZAR', 'R');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('South Korea', 'Won', 'KRW', '₩');
-INSERT INTO currency (country, currency, code, symbol) VALUES ('Spain', 'Euro', 'EUR', '€');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Sri Lanka', 'Rupees', 'LKR', '₨');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Sweden', 'Kronor', 'SEK', 'kr');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Switzerland', 'Francs', 'CHF', 'CHF');
@@ -205,12 +191,10 @@ INSERT INTO currency (country, currency, code, symbol) VALUES ('Trinidad and Tob
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Turkey', 'Lira', 'TRY', 'TL');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Turkey', 'Liras', 'TRL', '£');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Tuvalu', 'Dollars', 'TVD', '$');
-INSERT INTO currency (country, currency, code, symbol) VALUES ('Ukraine', 'Hryvnia', 'UAH', '₴');
-INSERT INTO currency (country, currency, code, symbol) VALUES ('United Kingdom', 'Pounds', 'GBP', '£');
+INSERT INTO currency (country, currency, code, symbol) VALUES ('Ukraine', 'Hryvnia', 'UAH', '₴'); 
 INSERT INTO currency (country, currency, code, symbol) VALUES ('United States of America', 'Dollars', 'USD', '$');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Uruguay', 'Pesos', 'UYU', '$U');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Uzbekistan', 'Sums', 'UZS', 'лв');
-INSERT INTO currency (country, currency, code, symbol) VALUES ('Vatican City', 'Euro', 'EUR', '€');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Venezuela', 'Bolivares Fuertes', 'VEF', 'Bs');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Vietnam', 'Dong', 'VND', '₫');
 INSERT INTO currency (country, currency, code, symbol) VALUES ('Yemen', 'Rials', 'YER', '﷼');
