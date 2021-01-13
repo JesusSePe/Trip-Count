@@ -26,12 +26,12 @@
 <?php
     //CONEXION A BD
     $hostname = "localhost";
-    $dbname = "tripcount2";
+    $dbname = "tripcount";
     $username = "root";
     $pw = "";
     $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
     
-    if ($dbname !== 'tripcount2') {
+    if ($dbname !== 'tripcount') {
         systemMSG('error', 'Base de datos no encontrada');
     }
     
@@ -95,9 +95,9 @@
                 <input name="emails[]" type="email" placeholder="example@gmail.com">
                 <div id="form" class="forminv"></div>
             </div>
-            <input class="button" type="submit">
+            <input class="button" type="submit" accesskey="e">
         </form>
-        <button onclick="crearInputInv()" id="emailsInv" class="button"><span>Anadir</span></button>
+        <button onclick="crearInputInv()" id="emailsInv" class="button" accesskey="a"><span><u>A</u>nadir</span></button>
     </div>
 </div>
 <?php include_once(dirname(__DIR__) . "/Trip-Count/static/footer.php");?>
