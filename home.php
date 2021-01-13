@@ -28,7 +28,7 @@
 		<div class="container espacidotabla">
             <?php
             $hostname = "localhost";
-            $dbname = "tripcount2";
+            $dbname = "tripcount";
             $username = "root";
             $pw = "";
             $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
@@ -100,11 +100,11 @@
 <div>
 
    <form method="POST" action=""><br/>
-        <button  class="button aviaje" name="t_creation">Fecha creacion</button>
-        <button  class="button aviaje" name="t_update">Fecha Modificacion</button>
+        <button  class="button aviaje" name="t_creation" accesskey="c">Fecha <u>C</u>reacion</button>
+        <button  class="button aviaje" name="t_update" accesskey="m">Fecha <u>M</u>odificacion</button>
     </form>
 </div>
-    <button class="button aviaje" onclick="wraper()" id="btnAÃ±adirViaje"> <span>AÑADIR VIAJE</span></button>
+    <button class="button aviaje" onclick="wraper()" id="btnAÃ±adirViaje" accesskey="v"> <span>AÑADIR <u>V</u>IAJE</span></button>
    <form class='forminv' id="+" action="./invitaciones.php"></form>
   </section>
   <?php include_once(dirname(__DIR__) . "/Trip-Count/static/footer.php");?>
@@ -146,7 +146,7 @@ function wraper(){
     newElement('label', 'Moneda: ', newForm);
     newElement('select', 'undefined', newForm, {'name': 'currency', 'id': 'curList'});
     newElement('br', 'undefined', newForm);
-    newElement('input', 'undefined', newForm, {'type': 'submit'});
+    newElement('input', 'undefined', newForm, {'type': 'submit', 'value' : 'ENVIAR' ,'class' : 'button', 'accesskey' : 'e'});
     let optionsList = document.getElementById('curList');
     let currencies = ['EUR', 'USD', 'AFN', 'BBD'];
     addItems(currencies, optionsList);
