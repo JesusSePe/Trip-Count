@@ -10,7 +10,7 @@
     ?>
     </div>
     <div class="header-right">
-      <a class="button" href="home.php"><span>Home</span></a>
+      <a class="button" href="home.php" accesskey="h"><span><u>H</u>ome</span></a>
     </div>
   </div>
 </header>
