@@ -21,7 +21,7 @@
   <section class="container main-content">
 
 		<?php if(isset($_SESSION)){  
-      echo '<h1>TRIP-COUNT - '.$_SESSION["uname"].'</h1>';
+      echo '<h1>TRIP-COUNT'.$_SESSION["uname"].'</h1>';
     }
     else{
     }
@@ -41,34 +41,34 @@
             <table class='tabla'>
                 <thead class="alert-info">
                     <tr>
-                        <th>destination</th>
-                        <th>origin</th>
-                        <th>Dia de salida</th>
-                        <th>Dia de vuelta</th>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
+                        <th>Fecha Creacion</th>
+                        <th>Fecha Modificacion</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    if(ISSET($_POST['leaving_day'])){
-                        $query = $pdo->prepare("SELECT * FROM `travels` ORDER BY `leaving_day` ASC");
+                    if(ISSET($_POST['t_creation'])){
+                        $query = $pdo->prepare("SELECT * FROM `travels` ORDER BY `t_creation` ASC");
                         $query->execute();
                         while($row = $query->fetch()){
                            echo "<tr>
-                            <td>".$row['destination']."</td>
-                            <td>".$row['origin']."</td>
-                            <td>".$row['leaving_day']."</td>
-                            <td>".$row['back_day']."</td>
+                             <td>".$row['t_name']."</td>
+                            <td>".$row['t_description']."</td>
+                            <td>".$row['t_creation']."</td>
+                            <td>".$row['t_update']."</td>
                             </tr>";
                         }
-                    }else if(ISSET($_POST['back_day'])){
-                        $query = $pdo->prepare("SELECT * FROM `travels` ORDER BY `back_day` DESC");
+                    }else if(ISSET($_POST['t_update'])){
+                        $query = $pdo->prepare("SELECT * FROM `travels` ORDER BY `t_update` DESC");
                         $query->execute();
                 while($row = $query->fetch()){
                    echo "<tr>
-                            <td>".$row['destination']."</td>
-                            <td>".$row['origin']."</td>
-                            <td>".$row['leaving_day']."</td>
-                            <td>".$row['back_day']."</td>
+                             <td>".$row['t_name']."</td>
+                            <td>".$row['t_description']."</td>
+                            <td>".$row['t_creation']."</td>
+                            <td>".$row['t_update']."</td>
                     </tr>";
                 }
             }else{
@@ -76,10 +76,10 @@
                 $query->execute();
                 while($row = $query->fetch()){
                     echo "<tr>
-                            <td>".$row['destination']."</td>
-                            <td>".$row['origin']."</td>
-                            <td>".$row['leaving_day']."</td>
-                            <td>".$row['back_day']."</td>
+                            <td>".$row['t_name']."</td>
+                            <td>".$row['t_description']."</td>
+                            <td>".$row['t_creation']."</td>
+                            <td>".$row['t_update']."</td>
                     </tr>";
                 }
             }
@@ -90,8 +90,8 @@
 <div>
 
    <form method="POST" action=""><br/>
-   <button  class="button aviaje" name="leaving_day">Ordenar dia de salida</button>
-   <button  class="button aviaje" name="back_day">Ordenar dia de vuelta</button>
+   <button  class="button aviaje" name="t_creation">Ordenar dia de salida</button>
+   <button  class="button aviaje" name="t_update">Ordenar dia de vuelta</button>
             </form>
 </div>
     <button class="button aviaje" onclick="wraper()" id="btnAñadirViaje"> <span>AÑADIR VIAJE</span></button>
