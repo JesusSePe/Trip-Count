@@ -96,7 +96,7 @@
 </div>
 <div>
 
-   <form method="POST" action=""><br/>
+   <form method="POST" action="invitaciones.php"><br/>
    <button  class="button aviaje" name="t_creation">Fecha creacion</button>
    <button  class="button aviaje" name="t_update">Fecha Modificacion</button>
             </form>
@@ -107,6 +107,32 @@
   <?php include_once(dirname(__DIR__) . "/Trip-Count/static/footer.php");?>
 </body>
 </html>
+
+<?php
+    // Get all currency IDs
+    $hostname = "localhost";
+    $dbname = "tripcount";
+    $username = "php";
+    $pw = "Php_1c4J8";
+    try {
+        $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
+    } catch (PDOException $e){
+        echo $e->getMessage();
+    }
+    if ($pdo == null) {
+        echo('error: Base de datos no encontrada');
+    }
+
+    // Query to get currency codes
+    $codes = [];
+    $stmt = $pdo->prepare("SELECT distinct(code) FROM currency ORDER BY code");
+    $stmt->execute();
+    $stmt_result = $stmt-> fetchAll(PDO::FETCH_ASSOC);
+    foreach ($stmt_result as $result){
+        array_push($codes, $result['code']);
+    }
+?>
+
 
 <script>
    
@@ -145,7 +171,10 @@ function wraper(){
     newElement('br', 'undefined', newForm);
     newElement('input', 'undefined', newForm, {'type': 'submit'});
     let optionsList = document.getElementById('curList');
-    let currencies = ['EUR', 'USD', 'AFN', 'BBD'];
+    let currencies = [<?php
+        foreach($codes as $code){
+            echo( '"'.$code.'", ');
+        }?>];
     addItems(currencies, optionsList);
    }
 
@@ -155,11 +184,7 @@ function addItems(items, list){
         let option = document.createElement('option');
         option.appendChild(document.createTextNode(item));
         option.value = item;
-        list.appendChild(option);
-
+        list.appendChild(option)
     }
 }
-
-
-
 </script>
