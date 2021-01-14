@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
     <link rel="stylesheet" href="styles/home.css">
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" href="img/coin.png" type="image/png">
     <?php include_once(dirname(__DIR__).'/Trip-Count/static/php/functions.php'); ?>
 </head>
 <body>
@@ -27,9 +28,9 @@
 		<div class="container espacidotabla">
             <?php
             $hostname = "localhost";
-            $dbname = "tripcount";
-            $username = "php";
-            $pw = "Php_1c4J8";
+            $dbname = "tripcount2";
+            $username = "root";
+            $pw = "";
             $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
             if(!$pdo){
                 systemMSG('error', 'No se ha conectado a la base de datos!');
@@ -52,6 +53,7 @@
                     if(ISSET($_POST['t_creation'])){
                         $query = $pdo->prepare("SELECT * FROM `travels` ORDER BY `t_creation` ASC");
                         $query->execute();
+                        systemMSG('info', 'Se ha ordenado por fecha de creacion ');
                         while($row = $query->fetch()){
                            echo "<tr>
                             <td>".$row['destination']."</td>
@@ -65,6 +67,7 @@
                     }else if(ISSET($_POST['t_update'])){
                         $query = $pdo->prepare("SELECT * FROM `travels` ORDER BY `t_update` DESC");
                         $query->execute();
+                        systemMSG('info', 'Se ha ordenado por fecha de actualizacion ');
                 while($row = $query->fetch()){
                    echo "<tr>
                             <td>".$row['destination']."</td>
@@ -95,13 +98,12 @@
 </table></p>
 </div>
 <div>
-
    <form method="POST" action="invitaciones.php"><br/>
    <button  class="button aviaje" name="t_creation">Fecha creacion</button>
    <button  class="button aviaje" name="t_update">Fecha Modificacion</button>
             </form>
 </div>
-    <button class="button aviaje" onclick="wraper()" id="btnAñadirViaje"> <span>AÑADIR VIAJE</span></button>
+    <button class="button aviaje" onclick="wraper()" id="btnAÃ±adirViaje"> <span>AÑADIR VIAJE</span></button>
    <form class='forminv' id="+" action="./invitaciones.php"></form>
   </section>
   <?php include_once(dirname(__DIR__) . "/Trip-Count/static/footer.php");?>
@@ -163,7 +165,7 @@ function wraper(){
     newElement('label', 'Nombre: ', newForm);
     newElement('input', 'undefined', newForm, {'type': 'text', 'name': 'Nombre'});
     newElement('br', 'undefined', newForm);
-    newElement('label', 'Descripción: ', newForm);
+    newElement('label', 'Descripcion: ', newForm);
     newElement('input', 'undefined', newForm, {'type': 'text', 'name': 'Descripcion'});
     newElement('br', 'undefined', newForm);
     newElement('label', 'Moneda: ', newForm);
