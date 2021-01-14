@@ -71,7 +71,7 @@
                         systemMSG('info', 'Se ha ordenado por fecha de actualizacion ');
                 while($row = $query->fetch()){
                    echo "<tr>
-                             <td>".$row['t_name']."</td>
+                            <td>".$row['t_name']."</td>
                             <td>".$row['t_description']."</td>
                             <td>".$row['t_creation']."</td>
                             <td>".$row['t_update']."</td>
