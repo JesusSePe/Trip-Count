@@ -16,7 +16,6 @@
 
 <?php
 	
-	//Como el elemento es un arreglos utilizamos foreach para extraer todos los valores
 	foreach($_FILES["archivo"]['tmp_name'] as $key => $tmp_name)
 	{
 		//Validamos que el archivo exista
@@ -32,7 +31,7 @@
 			}
 			
 			$dir=opendir($directorio); //Abrimos el directorio de destino
-			$target_path = $directorio.'/'.$filename; //Indicamos la ruta de destino, así como el nombre del archivo
+			$target_path = $directorio.'/'.$filename; //Indicamos la ruta de destino
 			
 			//Movemos y validamos que el archivo se haya cargado correctamente
 			//El primer campo es el origen y el segundo el destino
@@ -41,7 +40,7 @@
 				} else {	
 				echo "Ha ocurrido un error, por favor inténtelo de nuevo.<br>";
 			}
-			closedir($dir); //Cerramos el directorio de destino
+			closedir($dir);
 		}
 	}
 ?>
