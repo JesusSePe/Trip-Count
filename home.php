@@ -22,15 +22,20 @@
 
     
   <div><?php systemMSG('success', 'Has accedido con el usuario ' . $_SESSION["uname"])?></div>
+  <ul class="breadcrumb">
+    <li><a href="index.php">Inicio</a></li>
+    <li><a href="login.php">Login</a></li>
+    <li>Home</li>
+</ul>
   <section class="container main-content">
         <h1>TRIP-COUNT </h1>       
-	    <div class="background-image"></div>
-		<div class="container espacidotabla">
+      <div class="background-image"></div>
+    <div class="container espacidotabla">
             <?php
             $hostname = "localhost";
-            $dbname = "tripcount2";
-            $username = "root";
-            $pw = "";
+            $dbname = "tripcount";
+            $username = "adrian";
+            $pw = "Hakantor";
             $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
             if(!$pdo){
                 systemMSG('error', 'No se ha conectado a la base de datos!');
@@ -39,10 +44,8 @@
             <table class='tabla'>
                 <thead class="alert-info">
                     <tr>
-                        <th>destination</th>
-                        <th>origin</th>
-                        <th>Dia de salida</th>
-                        <th>Dia de vuelta</th>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
                         <th>Fecha creacion</th>
                         <th>Fecha Modificacion</th>
 
@@ -56,10 +59,8 @@
                         systemMSG('info', 'Se ha ordenado por fecha de creacion ');
                         while($row = $query->fetch()){
                            echo "<tr>
-                            <td>".$row['destination']."</td>
-                            <td>".$row['origin']."</td>
-                            <td>".$row['leaving_day']."</td>
-                            <td>".$row['back_day']."</td>
+                            <td>".$row['t_name']."</td>
+                            <td>".$row['t_description']."</td>
                             <td>".$row['t_creation']."</td>
                             <td>".$row['t_update']."</td>
                             </tr>";
@@ -70,10 +71,8 @@
                         systemMSG('info', 'Se ha ordenado por fecha de actualizacion ');
                 while($row = $query->fetch()){
                    echo "<tr>
-                            <td>".$row['destination']."</td>
-                            <td>".$row['origin']."</td>
-                            <td>".$row['leaving_day']."</td>
-                            <td>".$row['back_day']."</td>
+                             <td>".$row['t_name']."</td>
+                            <td>".$row['t_description']."</td>
                             <td>".$row['t_creation']."</td>
                             <td>".$row['t_update']."</td>
 
@@ -84,10 +83,8 @@
                 $query->execute();
                 while($row = $query->fetch()){
                     echo "<tr>
-                            <td>".$row['destination']."</td>
-                            <td>".$row['origin']."</td>
-                            <td>".$row['leaving_day']."</td>
-                            <td>".$row['back_day']."</td>
+                            <td>".$row['t_name']."</td>
+                            <td>".$row['t_description']."</td>
                             <td>".$row['t_creation']."</td>
                             <td>".$row['t_update']."</td>
                     </tr>";
@@ -98,43 +95,18 @@
 </table></p>
 </div>
 <div>
-   <form method="POST" action="invitaciones.php"><br/>
-   <button  class="button aviaje" name="t_creation">Fecha creacion</button>
-   <button  class="button aviaje" name="t_update">Fecha Modificacion</button>
-            </form>
+
+   <form method="POST" action=""><br/>
+        <button  class="button aviaje" name="t_creation" accesskey="c">Fecha <u>C</u>reacion</button>
+        <button  class="button aviaje" name="t_update" accesskey="m">Fecha <u>M</u>odificacion</button>
+    </form>
 </div>
-    <button class="button aviaje" onclick="wraper()" id="btnAÃ±adirViaje"> <span>AÑADIR VIAJE</span></button>
+    <button class="button aviaje" onclick="wraper()" id="btnAÃ±adirViaje" accesskey="v"> <span>AÑADIR <u>V</u>IAJE</span></button>
    <form class='forminv' id="+" action="./invitaciones.php"></form>
   </section>
   <?php include_once(dirname(__DIR__) . "/Trip-Count/static/footer.php");?>
 </body>
 </html>
-
-<?php
-    // Get all currency IDs
-    $hostname = "localhost";
-    $dbname = "tripcount";
-    $username = "php";
-    $pw = "Php_1c4J8";
-    try {
-        $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
-    } catch (PDOException $e){
-        echo $e->getMessage();
-    }
-    if ($pdo == null) {
-        echo('error: Base de datos no encontrada');
-    }
-
-    // Query to get currency codes
-    $codes = [];
-    $stmt = $pdo->prepare("SELECT distinct(code) FROM currency ORDER BY code");
-    $stmt->execute();
-    $stmt_result = $stmt-> fetchAll(PDO::FETCH_ASSOC);
-    foreach ($stmt_result as $result){
-        array_push($codes, $result['code']);
-    }
-?>
-
 
 <script>
    
@@ -171,12 +143,9 @@ function wraper(){
     newElement('label', 'Moneda: ', newForm);
     newElement('select', 'undefined', newForm, {'name': 'currency', 'id': 'curList'});
     newElement('br', 'undefined', newForm);
-    newElement('input', 'undefined', newForm, {'type': 'submit'});
+    newElement('input', 'undefined', newForm, {'type': 'submit', 'value' : 'ENVIAR' ,'class' : 'button', 'accesskey' : 'e'});
     let optionsList = document.getElementById('curList');
-    let currencies = [<?php
-        foreach($codes as $code){
-            echo( '"'.$code.'", ');
-        }?>];
+    let currencies = ['EUR', 'USD', 'AFN', 'BBD'];
     addItems(currencies, optionsList);
    }
 
@@ -186,7 +155,11 @@ function addItems(items, list){
         let option = document.createElement('option');
         option.appendChild(document.createTextNode(item));
         option.value = item;
-        list.appendChild(option)
+        list.appendChild(option);
+
     }
 }
+
+
+
 </script>

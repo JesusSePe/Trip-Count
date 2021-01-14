@@ -12,12 +12,16 @@
     <?php include_once(dirname(__DIR__).'/Trip-Count/static/php/functions.php'); ?>
     <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
     <div><?php systemMSG('info', 'Se te ha redirigido al login')?></div>
+    <ul class="breadcrumb">
+      <li><a href="index.php">Inicio</a></li>
+      <li>Login</li>
+</ul>
           <?php  
           session_start();  
           $host = "localhost";  
-          $username = "root";  
-          $password = "";  
-          $database = "tripcount2";  
+          $username = "adrian";  
+          $password = "Hakantor";  
+          $database = "tripcount";  
           $message = "";  
           try{
             $connect = new PDO("mysql:host=$host; dbname=$database", $username, $password);
@@ -71,15 +75,16 @@
               <div class="loginitem">
           <form action="" method="post" class="form formlogin">
             <div class="formfield">
-              <label class="user" for="loginemail"><span class="hidden"> Email</span></label>
-              <input id="loginemail" type="text" class="forminput" name="mail" placeholder="Email" required>
+              <label class="user" for="loginemail"><span class="hidden"> <u>E</u>mail</span></label>
+              <input id="loginemail" type="text" class="forminput" name="mail" placeholder="Email" accesskey="e" required>
             </div>
             <div class="formfield">
-              <label class="lock" for="loginpassword"><span class="hidden"> Password</span></label>
-              <input id="loginpassword" name="pwd" type="password" class="forminput" placeholder="Password" required>
+              <label class="lock" for="loginpassword"><span class="hidden"> <u>P</u>assword</span></label>
+              <input id="loginpassword" name="pwd" type="password" class="forminput" placeholder="Password" accesskey="p" required>
             </div>
             <div class="formfield">
-              <input type="submit" name="submit" value="Login" class="button">
+              <input type="submit" name="submit" value="Login" class="button" accesskey="l"> 
+              <!--preguntar a xavi como subrayar la l de login para el acceso directo-->
               <span></span>
             </div>
           </form>
