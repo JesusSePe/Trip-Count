@@ -42,6 +42,7 @@ catch(PDOException $e)
 
     $user_name = $_POST['uname'];
     $user_pass = $_POST['pwd'];
+    $user_passCon = $_POST['pwdcom'];
     $clave_cifrada = password_hash($user_pass, PASSWORD_DEFAULT, array("cost"=>15));
 
     $user_email = $_POST['mail'];
@@ -61,7 +62,10 @@ catch(PDOException $e)
         exit();
         }
 
-
+        if($user_pass!=$user_passCon){
+        echo "<script>alert('The two passwords match')</script>";
+        exit();
+        }
 
     $stmt = $conn->prepare("SELECT * FROM users WHERE mail=?");
     $stmt->execute(array($user_email));
@@ -74,7 +78,6 @@ catch(PDOException $e)
     $query = "insert into users(`name`,`mail`,`pwd`) values (?,?,?)";
     $sql_query = $conn->prepare($query);
      if($sql_query->execute(array($user_name,$user_email,$clave_cifrada))){
-        echo "<script>window.open('index.php','_self')</script>";
         exit();
     } 
 
@@ -92,6 +95,10 @@ catch(PDOException $e)
             <div class="formfield">
               <label class="lock" for="loginpassword"><span class="hidden"> Password</span></label>
               <input id="loginpassword" name="pwd" type="password" class="forminput" placeholder="Password" required>
+            </div>
+            <div class="formfield">
+              <label class="lock" for="loginpassword"><span class="hidden"> Confirm Password</span></label>
+              <input id="loginpassword" name="pwdcom" type="password" class="forminput" placeholder="Password" required>
             </div>
             <div class="formfield">
               <input type="submit" name="submit" value="Login" class="button">
