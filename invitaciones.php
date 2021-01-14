@@ -3,6 +3,40 @@
  ?>  
 <!DOCTYPE html>
 <html lang="es">
+<?php
+    $hostname = "localhost";
+    $dbname = "tripcount";
+    $username = "php";
+    $pw = "Php_1c4J8";
+    try {
+        $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
+    } catch (PDOException $e){
+        echo $e->getMessage();
+    }
+    if ($pdo == null) {
+        echo('error: Base de datos no encontrada');
+    }
+    // Query to get currency ID
+    $cur = $_GET['currency']; 
+    $stmt = $pdo->prepare("SELECT id_currency FROM currency WHERE code = :cur LIMIT 1");
+    $stmt->bindParam(':cur', $cur);
+    $stmt->execute();
+    $stmt_result = $stmt-> fetch(PDO::FETCH_OBJ);
+    foreach ($stmt_result as $result){
+    $curid = strval($result);
+}
+
+    // Query to add new travel to database
+    $insert = $pdo->prepare("INSERT INTO travels (t_name, t_description, t_creation, t_update, id_currency) VALUES (:nombre, :desc, :date, :date, :cur)");
+    $nombre = $_GET['Nombre'];
+    $desc = $_GET['Descripcion'];
+    $date = date("Y-m-d");
+    $insert->bindParam(':nombre', $nombre);
+    $insert->bindParam(':desc', $desc);
+    $insert->bindParam(':date', $date);
+    $insert->bindParam(':cur', $curid);
+    $insert->execute();
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +49,9 @@
 </head>
 <body>
 <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
+
 <?php $viaje = $_GET['Nombre'];
+
 //div para los systemMSG
 ?>
 
