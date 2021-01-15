@@ -21,12 +21,7 @@ body {
     background-color: #FF9000;
     padding: 10px 10px;
   }
-  
-  /* Quita la barra scrollbar*/
-  *::-webkit-scrollbar {
-    display: none;
-  }
-  /*
+
   *::-webkit-scrollbar-thumb {
     background-color: #797979;
     border-radius: 20px;
@@ -250,6 +245,11 @@ span::before {
   text-transform: uppercase;
   margin-bottom: 1rem;
 }
+
+.details {
+  display: none;
+}
+/*JS NOTE: To show a travel's details: .details[travel_id]{display:table-row;}*/
 
 /* FORM */
 

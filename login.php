@@ -15,9 +15,9 @@
           <?php  
           session_start();  
           $host = "localhost";  
-          $username = "root";  
-          $password = "";  
-          $database = "tripcount2";  
+          $username = "php";  
+          $password = "Php_1c4J8";  
+          $database = "tripcount";  
           $message = "";  
           try{
             $connect = new PDO("mysql:host=$host; dbname=$database", $username, $password);
@@ -46,7 +46,9 @@
                   { 
                     while ($row) {
                       $uname = $row["uname"];
+                      $user_id = $row["id_user"];
                       $_SESSION["uname"] = $uname;
+                      $_SESSION["user_id"] = $user_id;
                       $row = $statement->fetch();
                     }
                     /*$_SESSION["mail"] = $_POST["mail"];*/
