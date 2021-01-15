@@ -53,18 +53,21 @@
 <?php $viaje = $_GET['Nombre'];
 
 //div para los systemMSG
-
- 
 ?>
 
 <div><?php systemMSG('success', 'se ha creado el viaje ' . $_GET['Nombre'])?></div>
-
+<ul class="breadcrumb">
+    <li><a href="index.php">Inicio</a></li>
+    <li><a href="login.php">Login</a></li>
+    <li><a href="home.php">Home</a></li>
+    <li>Invitation</li>
+</ul>
 <?php
     //CONEXION A BD
     $hostname = "localhost";
     $dbname = "tripcount";
-    $username = "php";
-    $pw = "Php_1c4J8";
+    $username = "adrian";
+    $pw = "Hakantor";
     $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
     
     if ($dbname !== 'tripcount') {
@@ -131,10 +134,10 @@
                 <input name="emails[]" type="email" placeholder="example@gmail.com">
                 <div id="form" class="forminv"></div>
             </div>
-            <input class="button" type="submit">
+            <input class="button" type="submit" accesskey="e">
         </form>
-        <button onclick="crearInputInv()" id="emailsInv" class="button"><span>Anadir</span></button>
-        <button onclick="eliminarInputInv()" id="emailsInvDel" class="button"><span>Eliminar</span></button>
+        <button onclick="crearInputInv()" id="emailsInv" class="button" accesskey="a"><span><u>A</u>nadir</span></button>
+        <button onclick="eliminarInputInv()" id="emailsInvDel" class="button">accesskey="E"><span><u>E</u>liminar</span></button>
     </div>
 </div>
 <?php include_once(dirname(__DIR__) . "/Trip-Count/static/footer.php");?>
