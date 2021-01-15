@@ -28,9 +28,9 @@
 		<div class="container espacidotabla">
             <?php
             $hostname = "localhost";
-            $dbname = "tripcount2";
-            $username = "root";
-            $pw = "";
+            $dbname = "tripcount";
+            $username = "php";
+            $pw = "Php_1c4J8";
             $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
             if(!$pdo){
                 systemMSG('error', 'No se ha conectado a la base de datos!');
@@ -39,57 +39,53 @@
             <table class='tabla'>
                 <thead class="alert-info">
                     <tr>
-                        <th>destination</th>
-                        <th>origin</th>
-                        <th>Dia de salida</th>
-                        <th>Dia de vuelta</th>
-                        <th>Fecha creacion</th>
-                        <th>Fecha Modificacion</th>
-
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
+                        <th>Fecha de creación</th>
+                        <th>Última actualización</th>
+                        <th>Moneda</th>
+                        <th>Detalles</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     if(ISSET($_POST['t_creation'])){
-                        $query = $pdo->prepare("SELECT * FROM `travels` ORDER BY `t_creation` ASC");
+                        $query = $pdo->prepare("SELECT t_name, t_description, t_creation, t_update, code FROM travels tra LEFT JOIN currency cur ON tra.id_currency = cur.id_currency ORDER BY `t_creation` ASC");
                         $query->execute();
                         systemMSG('info', 'Se ha ordenado por fecha de creacion ');
                         while($row = $query->fetch()){
                            echo "<tr>
-                            <td>".$row['destination']."</td>
-                            <td>".$row['origin']."</td>
-                            <td>".$row['leaving_day']."</td>
-                            <td>".$row['back_day']."</td>
+                            <td>".$row['t_name']."</td>
+                            <td>".$row['t_description']."</td>
                             <td>".$row['t_creation']."</td>
                             <td>".$row['t_update']."</td>
+                            <td>".$row['code']."</td>
                             </tr>";
+                            // SELECT expense_date, amount FROM expenses exp INNER JOIN user_expenses ue ON exp.id_expense = ue.id_expense INNER JOIN users u ON ue.id_user = u.id_user WHERE id_travel = 1 ORDER by 1;
                         }
                     }else if(ISSET($_POST['t_update'])){
-                        $query = $pdo->prepare("SELECT * FROM `travels` ORDER BY `t_update` DESC");
+                        $query = $pdo->prepare("SELECT t_name, t_description, t_creation, t_update, code FROM travels tra LEFT JOIN currency cur ON tra.id_currency = cur.id_currency ORDER BY t_update DESC");
                         $query->execute();
                         systemMSG('info', 'Se ha ordenado por fecha de actualizacion ');
                 while($row = $query->fetch()){
                    echo "<tr>
-                            <td>".$row['destination']."</td>
-                            <td>".$row['origin']."</td>
-                            <td>".$row['leaving_day']."</td>
-                            <td>".$row['back_day']."</td>
+                            <td>".$row['t_name']."</td>
+                            <td>".$row['t_description']."</td>
                             <td>".$row['t_creation']."</td>
                             <td>".$row['t_update']."</td>
-
+                            <td>".$row['code']."</td>
                     </tr>";
                 }
             }else{
-                $query = $pdo->prepare("SELECT * FROM `travels`ORDER BY `id_travel` ASC");
+                $query = $pdo->prepare("SELECT t_name, t_description, t_creation, t_update, code FROM travels tra LEFT JOIN currency cur ON tra.id_currency = cur.id_currency ORDER BY `id_travel` ASC");
                 $query->execute();
                 while($row = $query->fetch()){
                     echo "<tr>
-                            <td>".$row['destination']."</td>
-                            <td>".$row['origin']."</td>
-                            <td>".$row['leaving_day']."</td>
-                            <td>".$row['back_day']."</td>
+                            <td>".$row['t_name']."</td>
+                            <td>".$row['t_description']."</td>
                             <td>".$row['t_creation']."</td>
                             <td>".$row['t_update']."</td>
+                            <td>".$row['code']."</td>
                     </tr>";
                 }
             }
@@ -98,12 +94,12 @@
 </table></p>
 </div>
 <div>
-   <form method="POST" action="invitaciones.php"><br/>
+   <form method="POST" action=""><br/>
    <button  class="button aviaje" name="t_creation">Fecha creacion</button>
    <button  class="button aviaje" name="t_update">Fecha Modificacion</button>
             </form>
 </div>
-    <button class="button aviaje" onclick="wraper()" id="btnAÃ±adirViaje"> <span>AÑADIR VIAJE</span></button>
+    <button class="button aviaje" onclick="wraper()" id="btnanadirViaje"> <span>AÑADIR VIAJE</span></button>
    <form class='forminv' id="+" action="./invitaciones.php"></form>
   </section>
   <?php include_once(dirname(__DIR__) . "/Trip-Count/static/footer.php");?>

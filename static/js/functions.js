@@ -9,6 +9,12 @@ function crearInputInv(){
    div.appendChild(input);
 } 
 
+function eliminarInputInv() {
+
+   var div = document.getElementById("form");
+   var del = div.removeChild(div.lastChild);
+} 
+
 window.onload = function(){
    
    var btnAdd = document.getEmentById("emailsInv");   
