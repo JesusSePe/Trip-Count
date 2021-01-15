@@ -19,8 +19,10 @@
           <?php  
           session_start();  
           $host = "localhost";  
+<<<<<<< HEAD
           $username = "php";  
           $password = "Php_1c4J8";  
+
           $database = "tripcount";  
           $message = "";  
           try{
