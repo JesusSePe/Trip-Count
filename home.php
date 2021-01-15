@@ -46,15 +46,16 @@
                     <tr>
                         <th>Nombre</th>
                         <th>Descripcion</th>
-                        <th>Fecha creacion</th>
-                        <th>Fecha Modificacion</th>
-
+                        <th>Fecha de creación</th>
+                        <th>Última actualización</th>
+                        <th>Moneda</th>
+                        <th>Detalles</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     if(ISSET($_POST['t_creation'])){
-                        $query = $pdo->prepare("SELECT * FROM `travels` ORDER BY `t_creation` ASC");
+                        $query = $pdo->prepare("SELECT t_name, t_description, t_creation, t_update, code FROM travels tra LEFT JOIN currency cur ON tra.id_currency = cur.id_currency ORDER BY `t_creation` ASC");
                         $query->execute();
                         systemMSG('info', 'Se ha ordenado por fecha de creacion ');
                         while($row = $query->fetch()){
@@ -63,23 +64,25 @@
                             <td>".$row['t_description']."</td>
                             <td>".$row['t_creation']."</td>
                             <td>".$row['t_update']."</td>
+                            <td>".$row['code']."</td>
                             </tr>";
+                            // SELECT expense_date, amount FROM expenses exp INNER JOIN user_expenses ue ON exp.id_expense = ue.id_expense INNER JOIN users u ON ue.id_user = u.id_user WHERE id_travel = 1 ORDER by 1;
                         }
                     }else if(ISSET($_POST['t_update'])){
-                        $query = $pdo->prepare("SELECT * FROM `travels` ORDER BY `t_update` DESC");
+                        $query = $pdo->prepare("SELECT t_name, t_description, t_creation, t_update, code FROM travels tra LEFT JOIN currency cur ON tra.id_currency = cur.id_currency ORDER BY t_update DESC");
                         $query->execute();
                         systemMSG('info', 'Se ha ordenado por fecha de actualizacion ');
                 while($row = $query->fetch()){
                    echo "<tr>
-                             <td>".$row['t_name']."</td>
+                            <td>".$row['t_name']."</td>
                             <td>".$row['t_description']."</td>
                             <td>".$row['t_creation']."</td>
                             <td>".$row['t_update']."</td>
-
+                            <td>".$row['code']."</td>
                     </tr>";
                 }
             }else{
-                $query = $pdo->prepare("SELECT * FROM `travels`ORDER BY `id_travel` ASC");
+                $query = $pdo->prepare("SELECT t_name, t_description, t_creation, t_update, code FROM travels tra LEFT JOIN currency cur ON tra.id_currency = cur.id_currency ORDER BY `id_travel` ASC");
                 $query->execute();
                 while($row = $query->fetch()){
                     echo "<tr>
@@ -87,6 +90,7 @@
                             <td>".$row['t_description']."</td>
                             <td>".$row['t_creation']."</td>
                             <td>".$row['t_update']."</td>
+                            <td>".$row['code']."</td>
                     </tr>";
                 }
             }

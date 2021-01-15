@@ -137,6 +137,7 @@
             <input class="button" type="submit" accesskey="e">
         </form>
         <button onclick="crearInputInv()" id="emailsInv" class="button" accesskey="a"><span><u>A</u>nadir</span></button>
+        <button onclick="eliminarInputInv()" id="emailsInvDel" class="button">accesskey="E"><span><u>E</u>liminar</span></button>
     </div>
 </div>
 <?php include_once(dirname(__DIR__) . "/Trip-Count/static/footer.php");?>
