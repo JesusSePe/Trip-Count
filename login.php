@@ -45,8 +45,8 @@
                   if($count > 0)
                   { 
                     while ($row) {
-                      $uname = $row["uname"];
-                      $_SESSION["uname"] = $uname;
+                      $uname = $row["name"];
+                      $_SESSION["name"] = $uname;
                       $row = $statement->fetch();
                     }
                     /*$_SESSION["mail"] = $_POST["mail"];*/
