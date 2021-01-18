@@ -152,21 +152,23 @@ function newElement(tag, text, parent, attributes) {
 }
 
 function wraper(){
-    newElement('h2', 'VIAJE', newForm);
-    newElement('label', 'Nombre: ', newForm);
-    newElement('input', 'undefined', newForm, {'type': 'text', 'name': 'Nombre'});
-    newElement('br', 'undefined', newForm);
-    newElement('label', 'Descripcion: ', newForm);
-    newElement('input', 'undefined', newForm, {'type': 'text', 'name': 'Descripcion'});
-    newElement('br', 'undefined', newForm);
-    newElement('label', 'Moneda: ', newForm);
-    newElement('select', 'undefined', newForm, {'name': 'currency', 'id': 'curList'});
-    newElement('br', 'undefined', newForm);
-    newElement('input', 'undefined', newForm, {'type': 'submit', 'value' : 'ENVIAR' ,'class' : 'button', 'accesskey' : 'e'});
-    let optionsList = document.getElementById('curList');
-    let currencies = ['EUR', 'USD', 'AFN', 'BBD'];
-    addItems(currencies, optionsList);
-   }
+    if (newForm.length < 1) {
+        newElement('h2', 'VIAJE', newForm);
+        newElement('label', 'Nombre: ', newForm);
+        newElement('input', 'undefined', newForm, {'type': 'text', 'name': 'Nombre'});
+        newElement('br', 'undefined', newForm);
+        newElement('label', 'Descripcion: ', newForm);
+        newElement('input', 'undefined', newForm, {'type': 'text', 'name': 'Descripcion'});
+        newElement('br', 'undefined', newForm);
+        newElement('label', 'Moneda: ', newForm);
+        newElement('select', 'undefined', newForm, {'name': 'currency', 'id': 'curList'});
+        newElement('br', 'undefined', newForm);
+        newElement('input', 'undefined', newForm, {'type': 'submit', 'value' : 'ENVIAR' ,'class' : 'button', 'accesskey' : 'e'});
+        let optionsList = document.getElementById('curList');
+        let currencies = ['EUR', 'USD', 'AFN', 'BBD'];
+        addItems(currencies, optionsList);
+    }
+}
 
 function addItems(items, list){
     for (let index = 0; index < items.length; index++) {
