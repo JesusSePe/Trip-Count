@@ -16,7 +16,7 @@
 <ul class="breadcrumb">
     <li><a href="index.php">Inicio</a></li>
     <li><a href="login.php">Login</a></li>
-    <li><a href="home.php">Home</a></li>
+    <li><a href="home.php">Travels</a></li>
     <li><a href="enter_payments.php">Payments</a></li>
     <li>Balanç</li>
 </ul>

@@ -13,7 +13,7 @@ html {
 }
 
 .container {
-	background:#FF9000;
+  background:#FF9000;
   border-radius: 5px;
   box-shadow: 0 1.5px 0 0 rgba(0,0,0,0.1);
 }
@@ -27,10 +27,10 @@ html {
 }
 
 .loginitem {
-	color: #ffff;
-	padding:25px 25px 0;
-	margin: 20px 20px 0;	
-	border-radius: 3px;
+  color: #ffff;
+  padding:25px 25px 0;
+  margin: 20px 20px 0;  
+  border-radius: 3px;
 }
 
 input {
@@ -52,7 +52,6 @@ label.lock {
 }
 
 .user:before {
-  content: '\f007';
   font: 14px fontawesome;
   color: #ffffff;
   width: 353px;
@@ -60,19 +59,18 @@ label.lock {
 }
 
 .lock:before {
-  content: '\f023';
   font: 14px fontawesome;
   color: #ffffff;
   width: 353px;
 }
 
-.form input[type="box"], .form input[type="text"], .form input[type="submit"] {
+.form input[type="password"], .form input[type="text"], .form input[type="submit"] {
   width: 100%;
 }
 
 .formlogin label,
 .formlogin input[type="text"],
-.formlogin input[type="textarea"],
+.formlogin input[type="password"],
 .formlogin input[type="submit"] {
   border-radius: 0.25rem;
   padding: 1rem;
@@ -88,13 +86,13 @@ label.lock {
   color:#ffffff;
 }
 
-.formlogin input[type="text"], .form-login input[type="textarea"] {
+.formlogin input[type="text"] {
   background-color: #ffffff;
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
 }
 
-.formlogin input[type="text"]:focus, .form-login input[type="text"]:hover, .form-login input[type="textarea"]:focus, .form-login input[type="textarea"]:hover {
+.formlogin input[type="text"]:focus, .form-login input[type="text"]:hover{
   background-color: #eeeeee;
 }
 

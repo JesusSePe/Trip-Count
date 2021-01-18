@@ -1,3 +1,61 @@
+<?php
+ 
+$databaseHost = 'localhost';
+$databaseName = 'tripcount';
+$databaseUsername = 'adrian';
+$databasePassword = 'Hakantor';
+ 
+try {
+    $dbConn = new PDO("mysql:host={$databaseHost};dbname={$databaseName}", $databaseUsername, $databasePassword);
+    
+    $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(PDOException $e) {
+    echo $e->getMessage();
+}
+ 
+?>
+<?php
+if(isset($_POST['update']))
+{    
+    $id = $_POST['id'];
+    
+    $name=$_POST['name'];
+    $description=$_POST['description'];
+    
+    if(empty($name) || empty($description)) {    
+            
+        if(empty($name)) {
+            echo "<font color='red'>Name field is empty.</font><br/>";
+        }
+        
+        if(empty($description)) {
+            echo "<font color='red'>Age field is empty.</font><br/>";
+        }     
+    } else {    
+        $sql = "UPDATE travels SET t_name=:name, t_description=:description WHERE id_travel=:id";
+        $query = $dbConn->prepare($sql);
+                
+        $query->bindparam(':id', $id);
+        $query->bindparam(':name', $name);
+        $query->bindparam(':description', $description);
+        $query->execute();
+        header("Location: home.php");
+    }
+}
+?>
+<?php
+$id = $_GET['id_travel'];
+ 
+$sql = "SELECT * FROM travels WHERE id_travel=:id";
+$query = $dbConn->prepare($sql);
+$query->execute(array(':id' => $id));
+ 
+while($row = $query->fetch(PDO::FETCH_ASSOC))
+{
+    $name = $row['t_name'];
+    $description = $row['t_description'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,73 +66,35 @@
     <link rel="stylesheet" href="styles/main.css">
     <?php include_once(dirname(__DIR__).'/Trip-Count/static/php/functions.php'); ?>
     <link rel="icon" href="img/coin.png" type="image/png">
-    <title>Edit Trip</title>
+    <title>Editar</title>
 </head>
 <body>
 <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
-<div><?php systemMSG('info', 'Se te ha redirigido a la pagina de Edit Trip');
+<div><?php systemMSG('info', 'Se te ha redirigido a la pagina de balanç');
             systemMSG('warning', 'Esta pagina esta en construccion');?></div>
 <ul class="breadcrumb">
     <li><a href="index.php">Inicio</a></li>
     <li><a href="login.php">Login</a></li>
-    <li><a href="home.php">Home</a></li>
+    <li><a href="home.php">Travels</a></li>
     <li>Edit Trip</li>
 </ul>
-<div class="main-content">
-     <div class="container">
-        <div></div>
-        <div class="logo">Edit Trip</div>
-        <div class="loginitem">
- <?php  
-          session_start();  
-          $host = "localhost";  
-          $username = "adrian";  
-          $password = "Hakantor";  
-          $database = "tripcount";  
-          $message = "";  
-          try{
-            $connect = new PDO("mysql:host=$host; dbname=$database", $username, $password);
-            $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
-
-            if(isset($_POST['actualizar'])){
-              $id=trim($_POST['id']);
-              $nombres=trim($_POST['nombres']);
-              $apellidos=trim($_POST['descripcion']);
-
-              $consulta = "UPDATE travels SET `t_name`= :nombres, `t_description` = :descripcion WHERE `id_travel` = :id";
-              $sql = $connect->prepare($consulta);
-              $sql->bindParam(':nombres',$nombres,PDO::PARAM_STR, 25);
-              $sql->bindParam(':description',$apellidos,PDO::PARAM_STR, 25);
-              $sql->bindParam(':id',$id,PDO::PARAM_INT);
-              $sql->execute();
-
-              if($sql->rowCount() > 0){
-                $count = $sql -> rowCount();
-                echo "<div class='content alert alert-primary' > 
-                OK: $count registro ha sido actualizado  </div>";
-              }else{
-                echo "<div class='content alert alert-danger'> No se pudo actulizar el registro  </div>";
-                print_r($sql->errorInfo()); 
-              }
-              }
-            }
-            catch(PDOException $error){
-              $message = $error->getMessage();
-            }
-            ?>
-            
-        <form action="" method="post" name="submit" class="form formlogin">
+  <div class="menu main-content">
+          <div class="container">
+              <div class="logo">Editar</div>
+              <div class="loginitem">
+          <form name="form1" method="post" action="edit_trip.php" class="form formlogin">
             <div class="formfield">
-              <label class="user" for="Usuario"><span class="hidden"> Usuario</span></label>
-              <input id="usuario" type="text" class="forminput" name="usuario" placeholder="Usuario">
+              <label class="user" for="loginemail"><span class="hidden"> <u>N</u>ombre</span></label>
+              <input id="loginemail" type="text" class="forminput" name="name" placeholder="Nombre" accesskey="n" value="<?php echo $name;?>">
             </div>
             <div class="formfield">
-              <label class="lock" for="Descripcion"><span class="hidden">Descripcion</span></label>
-              <input name="descripcion" type="text" class="form-control" id="descripcion" placeholder="Descripcion">
-
+              <label class="lock" for="loginpassword"><span class="hidden"> <u>D</u>escripcion</span></label>
+              <input id="loginpassword" name="description" type="text" class="forminput" placeholder="Descripcion" accesskey="d" value="<?php echo $description;?>">
             </div>
             <div class="formfield">
-              <input type="submit" name="submit" value="Edit" class="button">
+              <input type="hidden" name="id" value=<?php echo $_GET['id_travel'];?>>
+              <input type="submit" name="update" value="Update"> 
+              <!--preguntar a xavi como subrayar la l de login para el acceso directo-->
               <span></span>
             </div>
           </form>
@@ -83,9 +103,4 @@
     </div>
       <?php include_once(dirname(__DIR__) . "/Trip-Count/static/footer.php");?>
   </body>
-</html>
-</div>
-<?php include_once(dirname(__DIR__) . "/Trip-Count/static/footer.php");?>
-
-</body>
 </html>

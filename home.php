@@ -21,11 +21,11 @@
   <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
 
     
-  <div><?php systemMSG('success', 'Has accedido con el usuario ' . $_SESSION["uname"])?></div>
+  <div><?php systemMSG('success', 'Has accedido con el usuario ' . $_SESSION["name"])?></div>
   <ul class="breadcrumb">
     <li><a href="index.php">Inicio</a></li>
     <li><a href="login.php">Login</a></li>
-    <li>Home</li>
+    <li>Travels</li>
 </ul>
   <section class="container main-content">
         <h1>TRIP-COUNT </h1>       
@@ -50,12 +50,13 @@
                         <th>Última actualización</th>
                         <th>Moneda</th>
                         <th>Detalles</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     if(ISSET($_POST['t_creation'])){
-                        $query = $pdo->prepare("SELECT t_name, t_description, t_creation, t_update, code FROM travels tra LEFT JOIN currency cur ON tra.id_currency = cur.id_currency ORDER BY `t_creation` ASC");
+                        $query = $pdo->prepare("SELECT id_travel, t_name, t_description, t_creation, t_update, code FROM travels tra LEFT JOIN currency cur ON tra.id_currency = cur.id_currency ORDER BY `t_creation` ASC");
                         $query->execute();
                         systemMSG('info', 'Se ha ordenado por fecha de creacion ');
                         while($row = $query->fetch()){
@@ -65,11 +66,13 @@
                             <td>".$row['t_creation']."</td>
                             <td>".$row['t_update']."</td>
                             <td>".$row['code']."</td>
+                            <td><a href='edit_trip.php?id_travel=".$row['id_travel']."'>Edit</a></td>
+
                             </tr>";
                             // SELECT expense_date, amount FROM expenses exp INNER JOIN user_expenses ue ON exp.id_expense = ue.id_expense INNER JOIN users u ON ue.id_user = u.id_user WHERE id_travel = 1 ORDER by 1;
                         }
                     }else if(ISSET($_POST['t_update'])){
-                        $query = $pdo->prepare("SELECT t_name, t_description, t_creation, t_update, code FROM travels tra LEFT JOIN currency cur ON tra.id_currency = cur.id_currency ORDER BY t_update DESC");
+                        $query = $pdo->prepare("SELECT id_travel, t_name, t_description, t_creation, t_update, code FROM travels tra LEFT JOIN currency cur ON tra.id_currency = cur.id_currency ORDER BY t_update DESC");
                         $query->execute();
                         systemMSG('info', 'Se ha ordenado por fecha de actualizacion ');
                 while($row = $query->fetch()){
@@ -79,10 +82,11 @@
                             <td>".$row['t_creation']."</td>
                             <td>".$row['t_update']."</td>
                             <td>".$row['code']."</td>
+                            <td><a href='edit_trip.php?id_travel=".$row['id_travel']."'>Edit</a></td>
                     </tr>";
                 }
             }else{
-                $query = $pdo->prepare("SELECT t_name, t_description, t_creation, t_update, code FROM travels tra LEFT JOIN currency cur ON tra.id_currency = cur.id_currency ORDER BY `id_travel` ASC");
+                $query = $pdo->prepare("SELECT id_travel, t_name, t_description, t_creation, t_update, code FROM travels tra LEFT JOIN currency cur ON tra.id_currency = cur.id_currency ORDER BY `id_travel` ASC");
                 $query->execute();
                 while($row = $query->fetch()){
                     echo "<tr>
@@ -91,6 +95,7 @@
                             <td>".$row['t_creation']."</td>
                             <td>".$row['t_update']."</td>
                             <td>".$row['code']."</td>
+                            <td><a href='edit_trip.php?id_travel=".$row['id_travel']."'>Edit</a></td>
                     </tr>";
                 }
             }
