@@ -2,8 +2,8 @@
  
 $databaseHost = 'localhost';
 $databaseName = 'tripcount';
-$databaseUsername = 'adrian';
-$databasePassword = 'Hakantor';
+$databaseUsername = 'root';
+$databasePassword = '';
  
 try {
     $dbConn = new PDO("mysql:host={$databaseHost};dbname={$databaseName}", $databaseUsername, $databasePassword);

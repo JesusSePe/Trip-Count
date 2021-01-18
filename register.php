@@ -24,8 +24,8 @@
         <div class="loginitem">
 <?php
 $servername = "localhost";
-$username = "adrian";
-$password = "Hakantor";
+$username = "root";
+$password = "";
 $dbname = "tripcount";
 
 try {

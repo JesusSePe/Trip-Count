@@ -6,8 +6,8 @@
 <?php
     $hostname = "localhost";
     $dbname = "tripcount";
-    $username = "adrian";
-    $pw = "Hakantor";
+    $username = "root";
+    $pw = "";
     try {
         $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
     } catch (PDOException $e){
@@ -66,8 +66,8 @@
     //CONEXION A BD
     $hostname = "localhost";
     $dbname = "tripcount";
-    $username = "adrian";
-    $pw = "Hakantor";
+    $username = "root";
+    $pw = "";
     $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
     
     if ($dbname !== 'tripcount') {
@@ -105,7 +105,50 @@
         
 
         $tituloInv = 'INVITACION A UN VIAJE NUEVO';
-        $mensajeInv = 'Has sido invitado a un viaje, revisa en tu cuenta de tripcount para ver los detalles del viaje';
+        $mensajeInv = 'HAS SIDO INVITADO A UN VIAJE EN TRIPCOUNT
+        Has sido invitado a un viaje en la plataforma TripCount.
+        Para unirte inicia sesion en nuestra plataforma de
+        TripCount ves a https://tripcount.dchcobra.cf/login.php y inicia sesion para poder ver el viaje.
+        <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Mi Plantilla para Mailing</title>
+    </head>
+    <body>
+        <table bgcolor="#EEF3F6" cellspacing="1" cellpadding="3" width="600">
+            <tr>
+                <td width="600" style="text-align: center; color: #FF9000;"><h1>INICIA SESION EN TRIPCOUNT</h1> </td>
+            </tr>
+            <tr>
+                <td><hr width=500></td>
+            </tr>
+            <tr>
+                <td width="400" style="text-align:center">
+                    <h4>Has sido invitado a un viaje en la plataforma TripCount.<br/>
+                        Para unirte al viaje inicia sesion en nuestra plataforma de<br/>
+                        TripCount dandole click en el boton de abajo
+                    </h4>
+                </td>
+            </tr>
+            <tr>
+                <td style="height: 1rem;"></td>
+            </tr>
+            <tr>
+                <td style="text-align: center;"><a style="text-decoration: none; background-color: #333334; color:white; padding:1rem;" https://tripcount.dchcobra.cf/login.php" class="button">INICIA SESION!</a></td>
+            </tr>
+            <tr>
+                <td style="height: 2rem;"></td>
+            </tr>
+            <tr>
+                <td style="text-align: center;"><img width="225px" height="200px" src="https://tripcount.dchcobra.cf/img/tripcount.png" alt="TripCount"></td>
+            </tr>
+            <tr>
+                <td style="height: 2rem;"></td>
+            </tr>
+        </table>
+    </body>
+</html>' ;
         $cabecerasInv  = 'MIME-Version: 1.0' . "\r\n";
         $cabecerasInv .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
         $cabecerasInv .= 'From: TripCount <TripCount@tripcount.dchcobra.cf>' . "\r\n";
@@ -114,7 +157,11 @@
             mail($invitado, $tituloInv, $mensajeInv, $cabecerasInv);
         }
         $tituloReg = 'REGISTRATE A TripCount';
-        $mensajeReg = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+        $mensajeReg = 'REGISTRATE EN TRIPCOUNT
+        Has sido invitado a un viaje en la plataforma TripCount.
+        Para unirte al viaje registrate en nuestra plataforma de
+        TripCount ves a https://tripcount.dchcobra.cf/register.php y registrate para poder acceder al viaje.
+        <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
         <html xmlns="http://www.w3.org/1999/xhtml">
             <head>
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -140,7 +187,7 @@
                         <td style="height: 1rem;"></td>
                     </tr>
                     <tr>
-                        <td style="text-align: center;"><a style="text-decoration: none; background-color: #333334; color:white; padding:1rem;" href="https://tripcount.dchcobra.cf/register.php" class="button">REGISTRARSE!</a></td>
+                        <td style="text-align: center;"><a style="text-decoration: none; background-color: #333334; color:white; padding:1rem;" href="https://tripcount.dchcobra.cf/register.php" class="button">REGISTRATE!</a></td>
                     </tr>
                     <tr>
                         <td style="height: 2rem;"></td>
