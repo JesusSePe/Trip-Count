@@ -12,7 +12,7 @@
 <body>
 <?php include_once(dirname(__DIR__).'/Trip-Count/static/php/functions.php'); ?>
 <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
-<div><?php systemMSG('info', 'La pagina esta en produccion construccion ')?></div>
+<div><?php systemMSG('info', 'Se te ha redirigido al register')?></div>
 <ul class="breadcrumb">
       <li><a href="index.php">Inicio</a></li>
       <li>Register</li>
@@ -27,6 +27,7 @@ $servername = "localhost";
 $username = "adrian";
 $password = "Hakantor";
 $dbname = "tripcount";
+$message = "";  
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -48,22 +49,19 @@ catch(PDOException $e)
     $user_email = $_POST['mail'];
 
         if($user_name==''){
-        echo "<script>alert('Please enter your name!')</script>";
-        exit();
+          $message = systemMSG('info', 'Please enter your User!');
         }
 
         if($user_pass==''){
-        echo "<script>alert('Please enter a password!')</script>";
-        exit();
+          $message = systemMSG('info', 'Please enter your Password!');
         }
 
         if($user_email==''){
-        echo "<script>alert('Please enter your email!')</script>";
-        exit();
+          $message = systemMSG('info', 'Please enter your email!');
         }
 
         if($user_pass!=$user_passCon){
-        echo "<script>alert('The two passwords match')</script>";
+          $message = systemMSG('error', 'The two passwords not match');
         exit();
         }
 
@@ -71,7 +69,7 @@ catch(PDOException $e)
     $stmt->execute(array($user_email));
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
   if(count($rows)>0){
-        echo "<script>alert('Email $user_email already exist!')</script>";
+        $message = systemMSG('info', 'Email $user_email already exist!');
         exit();
     }
 
@@ -83,7 +81,7 @@ catch(PDOException $e)
 
     }
 ?>
-          <form action="" method="post" name="submit" class="form formlogin">
+          <form action="register.php" method="post" name="submit" class="form formlogin">
             <div class="formfield">
               <label class="user" for="loginuname"><span class="hidden"> Usuario</span></label>
               <input id="loginuname" type="text" class="forminput" name="uname" placeholder="Usuario" required>

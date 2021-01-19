@@ -12,14 +12,6 @@ html {
   margin-bottom: 3rem;
 }
 
-.ocultar {
-    display: none;
-}
- 
-.mostrar {
-    display: block;
-}
-
 .container {
 	background:#FF9000;
   border-radius: 5px;
@@ -62,7 +54,7 @@ label.lock {
 .user:before {
   content: '\f007';
   font: 14px fontawesome;
-  color: #ffffff;
+  color: black;
   width: 353px;
 
 }
