@@ -208,6 +208,33 @@
             mail($registrar, $tituloReg, $mensajeReg, $cabecerasReg);
         }
         Redirect('home.php');
+
+        //insert to database
+        if(isset($_POST['submit'])){
+
+            $user_name = $_POST['uname'];
+            $user_pass = $_POST['pwd'];
+            $user_passCon = $_POST['pwdcom'];
+            $clave_cifrada = password_hash($user_pass, PASSWORD_DEFAULT, array("cost"=>15));
+        
+            $user_email = $_POST['mail'];
+        
+            $stmt = $conn->prepare("SELECT * FROM users WHERE mail=?");
+            $stmt->execute(array($user_email));
+            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+          if(count($rows)>0){
+                echo "<script>alert('Email $user_email already exist!')</script>";
+                exit();
+            }
+        
+            $query = "insert into invitations(`name`,`mail`,`pwd`) values (?,?,?)";
+            $sql_query = $conn->prepare($query);
+             if($sql_query->execute(array($user_name,$user_email,$clave_cifrada))){
+              header("location:index.php");
+            } 
+        
+            }
+
     }
 
 ?>
