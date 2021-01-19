@@ -135,7 +135,7 @@
                         <td style="height: 1rem;"></td>
                     </tr>
                     <tr>
-                        <td style="text-align: center;"><a style="text-decoration: none; background-color: #333334; color:white; padding:1rem;" https://tripcount.dchcobra.cf/login.php" class="button">INICIA SESION!</a></td>
+                        <td style="text-align: center;"><a style="text-decoration: none; background-color: #333334; color:white; padding:1rem;" href="https://tripcount.dchcobra.cf/login.php" class="button">INICIA SESION!</a></td>
                     </tr>
                     <tr>
                         <td style="height: 2rem;"></td>
