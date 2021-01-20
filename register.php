@@ -1,7 +1,7 @@
 <?php
   $servername = "localhost";
-  $username = "root";
-  $password = "";
+  $username = "root";  
+  $password = "";  
   $dbname = "tripcount";
   try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -16,6 +16,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/register.css">
+    <link rel="stylesheet" href="styles/login.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="icon" href="img/coin.png" type="image/png">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
@@ -70,7 +71,7 @@ if (isset($_POST['mail'], $_POST['pwd'], $_POST['name'], $_POST['pwd2'])){
     $query->bindParam(2, $password);
     $query->execute();
     $msg = 'Nuevo usuario creado correctamente, redireccionando...';
-    header("refresh:1;url=index.php");
+    header("location:index.php");
   } else {
     $errors = true;
     array_push($message, "Hay otro usuario con este nombre.");

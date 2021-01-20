@@ -11,8 +11,9 @@
         <?php
         $sname = 'localhost'; // Server Name
         $dbname = 'tripcount'; // DB name
-        $uname = 'adrian'; // Login Username
-        $pwd = 'Hakantor'; // Login Password
+        $username = "proyecto";  
+        $password = "P@ssw0rd";  
+
 
         // DATABASE CONNECTION.
 
