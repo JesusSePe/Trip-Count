@@ -1,0 +1,127 @@
+html {
+   height: 100%;
+}
+
+.menu{
+  width:100%;
+  display: flex;  
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.container {
+  background:#FF9000;
+  border-radius: 5px;
+  box-shadow: 0 1.5px 0 0 rgba(0,0,0,0.1);
+}
+
+.logo{
+  font-size:40px;
+  text-align: center;
+  padding: 20px 20px 0;
+  margin:0;
+  color: black;
+}
+
+.loginitem {
+  color: #ffff;
+  padding:25px 25px 0;
+  margin: 20px 20px 0;  
+  border-radius: 3px;
+}
+
+input {
+  border: 0;
+  color: inherit;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+}
+
+
+label.user {
+  width: 150px;
+}
+
+label.lock {
+  width: 150px;
+}
+
+.user:before {
+  font: 14px fontawesome;
+  color: #ffffff;
+  width: 353px;
+
+}
+
+.lock:before {
+  font: 14px fontawesome;
+  color: #ffffff;
+  width: 353px;
+}
+
+.form input[type="password"], .form input[type="text"], .form input[type="submit"] {
+  width: 100%;
+}
+
+.formlogin label,
+.formlogin input[type="text"],
+.formlogin input[type="password"],
+.formlogin input[type="submit"] {
+  border-radius: 0.25rem;
+  padding: 1rem;
+  color: #3A3F44;  
+}
+
+.formlogin label {
+  background-color: #3A3F44;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  color:#ffffff;
+}
+
+.formlogin input[type="text"] {
+  background-color: #ffffff;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.formlogin input[type="text"]:focus, .form-login input[type="text"]:hover{
+  background-color: #eeeeee;
+}
+
+.formlogin input[type="submit"] {
+  background-color: #3A3F44;
+  color: #eee;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.formlogin input[type="submit"]:hover {
+  transition: 0.3s;
+  background-color: #3392ff;
+  cursor: pointer;
+}
+
+.formlogin input[type="submit"] span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+ }
+
+.formfield {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.text--center {
+  text-align: center;
+}
+

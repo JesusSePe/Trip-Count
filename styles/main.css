@@ -300,7 +300,11 @@ span::before {
 
 }
 
-.forminv span::after {
+#emailsInvDel span::after{
+  font-family: FontAwesome;
+  content: "\f056";
+}
+#emailsInv span::after {
   font-family: FontAwesome;
   content: "\f055";
 }

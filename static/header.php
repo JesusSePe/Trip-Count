@@ -5,7 +5,7 @@
     </div>
     <div>
     <?php if(isset($_SESSION)){  
-      echo '<a class="logo"><span class="user">' . $_SESSION["uname"] . '</span></a>';    
+      echo '<a class="logo"><span class="user">' . $_SESSION["name"] . '</span></a>';    
     }
     ?>
     </div>

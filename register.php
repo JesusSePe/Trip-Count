@@ -24,8 +24,8 @@
         <div class="loginitem">
 <?php
 $servername = "localhost";
-$username = "adrian";
-$password = "Hakantor";
+$username = "root";
+$password = "";
 $dbname = "tripcount";
 
 try {
@@ -78,7 +78,7 @@ catch(PDOException $e)
     $query = "insert into users(`name`,`mail`,`pwd`) values (?,?,?)";
     $sql_query = $conn->prepare($query);
      if($sql_query->execute(array($user_name,$user_email,$clave_cifrada))){
-        exit();
+      header("location:index.php");
     } 
 
     }
