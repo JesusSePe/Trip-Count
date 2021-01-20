@@ -35,8 +35,8 @@
             <?php
             $hostname = "localhost";
             $dbname = "tripcount";
-            $username = "root";
-            $pw = "";
+            $username = "php";
+            $pw = "Php_1c4J8";
             $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
             if(!$pdo){
                 systemMSG('error', 'No se ha conectado a la base de datos!');
@@ -83,15 +83,27 @@
                                 <td>Quantitat: ".$details_row['amount']."</td>
                                 <td>Usuari: ".$details_row['name']."</td>
                                 </tr>";
+                            
                             }
                             // BOTONES E INFORMACIÓN EXTRA.
                             $total_query = $pdo->prepare("SELECT sum(amount) FROM expenses WHERE id_travel = :id GROUP BY id_travel");
                             $total_query->bindParam(':id', $row['id_travel']);
                             $total_query->execute();
+                            $found = False;
                             while($total = $total_query->fetch()){
+                                $found = True;
                                 echo "
                                 <tr class = 'details details".$row['id_travel']."'>
                                 <td>Despesa total: ".$total['sum(amount)']."</td>
+                                <td><a href='./enter_payments.php'>Afegir pagament</a></td>
+                                <td><a href=''>Gestionar usuaris</a></td>
+                                <td><a href='./balanç.php'>Balanç</a></td>
+                                </tr>";
+                            }
+                            if ($found == False) {
+                                echo "
+                                <tr class = 'details details".$row['id_travel']."'>
+                                <td>Despesa total: 0</td>
                                 <td><a href='./enter_payments.php'>Afegir pagament</a></td>
                                 <td><a href=''>Gestionar usuaris</a></td>
                                 <td><a href='./balanç.php'>Balanç</a></td>
@@ -129,10 +141,21 @@
                             $total_query = $pdo->prepare("SELECT sum(amount) FROM expenses WHERE id_travel = :id GROUP BY id_travel");
                             $total_query->bindParam(':id', $row['id_travel']);
                             $total_query->execute();
+                            $found = False;
                             while($total = $total_query->fetch()){
+                                $found = True;
                                 echo "
                                 <tr class = 'details details".$row['id_travel']."'>
                                 <td>Despesa total: ".$total['sum(amount)']."</td>
+                                <td><a href='./enter_payments.php'>Afegir pagament</a></td>
+                                <td><a href=''>Gestionar usuaris</a></td>
+                                <td><a href='./balanç.php'>Balanç</a></td>
+                                </tr>";
+                            }
+                            if ($found == False) {
+                                echo "
+                                <tr class = 'details details".$row['id_travel']."'>
+                                <td>Despesa total: 0</td>
                                 <td><a href='./enter_payments.php'>Afegir pagament</a></td>
                                 <td><a href=''>Gestionar usuaris</a></td>
                                 <td><a href='./balanç.php'>Balanç</a></td>
@@ -168,10 +191,21 @@
                             $total_query = $pdo->prepare("SELECT sum(amount) FROM expenses WHERE id_travel = :id GROUP BY id_travel");
                             $total_query->bindParam(':id', $row['id_travel']);
                             $total_query->execute();
+                            $found = False;
                             while($total = $total_query->fetch()){
+                                $found = True;
                                 echo "
                                 <tr class = 'details details".$row['id_travel']."'>
                                 <td>Despesa total: ".$total['sum(amount)']."</td>
+                                <td><a href='./enter_payments.php'>Afegir pagament</a></td>
+                                <td><a href=''>Gestionar usuaris</a></td>
+                                <td><a href='./balanç.php'>Balanç</a></td>
+                                </tr>";
+                            }
+                            if ($found == False) {
+                                echo "
+                                <tr class = 'details details".$row['id_travel']."'>
+                                <td>Despesa total: 0</td>
                                 <td><a href='./enter_payments.php'>Afegir pagament</a></td>
                                 <td><a href=''>Gestionar usuaris</a></td>
                                 <td><a href='./balanç.php'>Balanç</a></td>
