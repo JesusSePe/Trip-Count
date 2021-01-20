@@ -22,7 +22,7 @@
   <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
 
     
-  <div><?php systemMSG('success', 'Has accedido con el usuario ' . $_SESSION["name"])?></div>
+  <div><?php systemMSG('success', 'Has accedido con el usuario ' . $_SESSION["uname"])?></div>
   <ul class="breadcrumb">
     <li><a href="index.php">Inicio</a></li>
     <li><a href="login.php">Login</a></li>
@@ -35,8 +35,8 @@
             <?php
             $hostname = "localhost";
             $dbname = "tripcount";
-            $username = "root";
-            $pw = "";
+            $username = "php";
+            $pw = "Php_1c4J8";
             $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
             if(!$pdo){
                 systemMSG('error', 'No se ha conectado a la base de datos!');
@@ -197,6 +197,30 @@
 </body>
 </html>
 
+<?php
+    // Get all currency IDs
+    $hostname = "localhost";
+    $dbname = "tripcount";
+    $username = "php";
+    $pw = "Php_1c4J8";
+    try {
+        $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
+    } catch (PDOException $e){
+        echo $e->getMessage();
+    }
+    if ($pdo == null) {
+        echo('error: Base de datos no encontrada');
+    }
+    // Query to get currency codes
+    $codes = [];
+    $stmt = $pdo->prepare("SELECT distinct(code) FROM currency ORDER BY code");
+    $stmt->execute();
+    $stmt_result = $stmt-> fetchAll(PDO::FETCH_ASSOC);
+    foreach ($stmt_result as $result){
+        array_push($codes, $result['code']);
+    }
+?>
+
 <script>
    
 let newForm = document.getElementById('+');
@@ -235,7 +259,10 @@ function wraper(){
         newElement('br', 'undefined', newForm);
         newElement('input', 'undefined', newForm, {'type': 'submit', 'value' : 'ENVIAR' ,'class' : 'button', 'accesskey' : 'e'});
         let optionsList = document.getElementById('curList');
-        let currencies = ['EUR', 'USD', 'AFN', 'BBD'];
+        let currencies = [<?php
+            foreach($codes as $code){
+                echo( '"'.$code.'", ');
+            }?>];
         addItems(currencies, optionsList);
     }
 }
