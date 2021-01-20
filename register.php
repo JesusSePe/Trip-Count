@@ -1,5 +1,17 @@
+<?php
+  $servername = "localhost";
+  $username = "adrian";
+  $password = "Hakantor";
+  $dbname = "tripcount";
+  try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    }catch(PDOException $e){
+      echo "Connection failed: " . $e->getMessage();
+    }
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,103 +21,109 @@
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <title>Register</title>
 </head>
+<?php
+$messages = [];
+$errors = false;
+if (isset($_POST['mail'], $_POST['pwd'], $_POST['name'], $_POST['pwd2'])){
+  if (empty($_POST['pwd']) && empty($_POST['pwd2'])) {
+    if (empty($_POST['pwd'])) {
+      $errors = true;
+      array_push($messages, '<b>ERROR:</b> No se ha proporcionado el campo de contraseña.');
+    }
+    if (empty($_POST['pwd2'])) {
+      $errors = true;
+      array_push($messages, '<b>ERROR:</b> No se ha confirmado la segunda  contraseña.');
+    }
+  } else {
+  if ($_POST['pwd'] != $_POST['pwd2']) {
+    $errors = true;
+    array_push($messages, '<b>ERROR:</b> Las contraseñas no coinciden.');
+  }
+}
+if (empty($_POST['name'])) {
+  $errors = true;
+  array_push($messages, '<b>ERROR:</b> No se un ha proporcionado un nombre de usuario.');
+} 
+}
+
+if (empty($_POST['mail'])) {
+  $errors = true;
+  array_push($messages, '<b>ERROR:</b> No se ha proporcionado el campo de correo electrónico.');
+}
+
+if (!$errors) {
+  $sentencia = $conn->prepare("SELECT * FROM users WHERE mail = ? ");
+  $sentencia->bindParam(1, $email);
+  $sentencia->execute();
+  if ($sentencia->rowCount() == 0) {
+  $password = hash('sha256', filter_var($_POST['pwd'], FILTER_SANITIZE_STRING)); // 
+  $query = $conn->prepare("INSERT INTO users (name, pwd, mail) VALUES (?, ?, ?)");
+  $query->bindParam(1, $_POST['name']);
+  $query->bindParam(3, $email);
+  $query->bindParam(2, $password);
+  $query->execute();
+  $msg = 'Nuevo usuario creado correctamente, redireccionando...';
+  header("refresh:1;url=index.php");
+} else {
+  $errors = true;
+  array_push($message, "<b>ERROR:</b>Hay otro usuario con este nombre.");
+}
+}
+unset($_POST['mail'], $_POST['pwd'], $_POST['pwd2']);
+}
+?>
 <body>
-<?php include_once(dirname(__DIR__).'/Trip-Count/static/php/functions.php'); ?>
-<?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
-<div><?php systemMSG('info', 'Se te ha redirigido al register')?></div>
-<ul class="breadcrumb">
+  <?php include_once(dirname(__DIR__).'/Trip-Count/static/php/functions.php'); ?>
+  <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
+  <div><?php systemMSG('info', 'Se te ha redirigido al register')?></div>
+  <ul class="breadcrumb">
       <li><a href="index.php">Inicio</a></li>
       <li>Register</li>
-</ul>
-<div class="menu main-content">
+    </ul>
+    <div class="menu main-content">
     <div class="container">
         <div></div>
         <div class="logo">REGISTER</div>
         <div class="loginitem">
-<?php
-$servername = "localhost";
-$username = "adrian";
-$password = "Hakantor";
-$dbname = "tripcount";
-$message = "";  
-
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    }
-catch(PDOException $e)
-    {
-    echo "Connection failed: " . $e->getMessage();
-    }
-
-
-    if(isset($_POST['submit'])){
-
-    $user_name = $_POST['uname'];
-    $user_pass = $_POST['pwd'];
-    $user_passCon = $_POST['pwdcom'];
-    $clave_cifrada = password_hash($user_pass, PASSWORD_DEFAULT, array("cost"=>15));
-
-    $user_email = $_POST['mail'];
-
-        if($user_name==''){
-          $message = systemMSG('info', 'Please enter your User!');
-        }
-
-        if($user_pass==''){
-          $message = systemMSG('info', 'Please enter your Password!');
-        }
-
-        if($user_email==''){
-          $message = systemMSG('info', 'Please enter your email!');
-        }
-
-        if($user_pass!=$user_passCon){
-          $message = systemMSG('error', 'The two passwords not match');
-        exit();
-        }
-
-    $stmt = $conn->prepare("SELECT * FROM users WHERE mail=?");
-    $stmt->execute(array($user_email));
-    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-  if(count($rows)>0){
-        $message = systemMSG('info', 'Email $user_email already exist!');
-        exit();
-    }
-
-    $query = "insert into users(`name`,`mail`,`pwd`) values (?,?,?)";
-    $sql_query = $conn->prepare($query);
-     if($sql_query->execute(array($user_name,$user_email,$clave_cifrada))){
-      header("location:index.php");
-    } 
-
-    }
-?>
-          <form action="register.php" method="post" name="submit" class="form formlogin">
+            <?php
+            if ($has_errors) {
+              echo '<div class=\'message error-message\'>';
+                foreach ($messages as $key => $error) {
+                    echo $error . "</br>";
+                }
+                echo '</div>';
+            } else {
+                echo '<div class=\'message\'>';
+                echo '<p></p>';
+                echo '</div>';
+            }
+            ?>
+          <form action="register2.php" method="post" name="submit" class="form formlogin">
             <div class="formfield">
-              <label class="user" for="loginuname"><span class="hidden"> Usuario</span></label>
-              <input id="loginuname" type="text" class="forminput" name="uname" placeholder="Usuario" required>
+                <label for="name">Nombre</label>
+                <input type="text" name="name" id="userName">
             </div>
             <div class="formfield">
-              <label class="user" for="loginemail"><span class="hidden"> Email</span></label>
-              <input id="loginemail" name="mail" type="text" class="forminput" placeholder="email" required>
+              <label for="userMail">Correo electrónico</label>
+              <input type="text" name="mail" id="userMail" placeholder="user@mail.com">
             </div>
             <div class="formfield">
-              <label class="lock" for="loginpassword"><span class="hidden"> Password</span></label>
-              <input id="loginpassword" name="pwd" type="password" class="forminput" placeholder="Password" required>
+                <label for="userPass">Contraseña</label>
+                <input type="password" name="pwd" id="userPass">
+                </div>
+            <div class="formfield">
+                <label for="userPass2">Confirmar contraseña</label>
+                <input type="password" name="pwd2" id="userPass2">
             </div>
             <div class="formfield">
-              <label class="lock" for="loginpassword"><span class="hidden"> Confirm Password</span></label>
-              <input id="loginpassword" name="pwdcom" type="password" class="forminput" placeholder="Password" required>
+                <button class="button-primary" type="submit" accesskey="r"><u>R</u>EGISTRAR</button>
             </div>
-            <div class="formfield">
-              <input type="submit" name="submit" value="Login" class="button">
-              <span></span>
-            </div>
-          </form>
-        </div>
+            </form>
+         </div>
       </div>
     </div>
+
       <?php include_once(dirname(__DIR__) . "/Trip-Count/static/footer.php");?>
-  </body>
+</body>
+
 </html>
