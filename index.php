@@ -25,7 +25,7 @@ se encarga de la gestion de gastos en viajes y salidas.</pre></h3>
 			<div class="container main-content ">
 				<div class="spacebutt">
 					<a href="login.php" class="btn button" accesskey="l" ><span><u>L</u>ogin</span></a>
-					<a href="register.php" class="btn button" accesskey="r" ><span><u>R</u>egister</span></a>
+					<a href="register2.php" class="btn button" accesskey="r" ><span><u>R</u>egister</span></a>
 				</div>
 			</div>
 		</section>
