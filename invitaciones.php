@@ -6,10 +6,10 @@
 <?php
     $hostname = "localhost";
     $dbname = "tripcount";
-    $username = "root";
-    $pw = "";
+    $username = "proyecto";  
+    $password = "P@ssw0rd"; 
     try {
-        $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
+        $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
     } catch (PDOException $e){
         echo $e->getMessage();
     }
@@ -62,18 +62,7 @@
     <li><a href="home.php">Travels</a></li>
     <li>Invitation</li>
 </ul>
-<?php
-    //CONEXION A BD
-    $hostname = "localhost";
-    $dbname = "tripcount";
-    $username = "root";
-    $pw = "";
-    $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
-    
-    if ($dbname !== 'tripcount') {
-        systemMSG('error', 'Base de datos no encontrada');
-    }
-    
+<?php    
     $query = $pdo->prepare("SELECT * FROM `users`");
     $query->execute();
     //array para los correos que se les enviara correo de inv al viaje
@@ -154,6 +143,10 @@
         $cabecerasInv .= 'From: TripCount <TripCount@tripcount.dchcobra.cf>' . "\r\n";
         $para .= 'davidcasthen@gmail.com';
         foreach ($inv as $invitado) {
+            $inv = $pdo->prepare("INSERT INTO invitations (id_user_invitor, mail) VALUES (?, ?)");
+            $inv->bindParam(1, $_SESSION['user_id']);
+            $inv->bindParam(2, $invitado);
+            $inv->execute();
             mail($invitado, $tituloInv, $mensajeInv, $cabecerasInv);
         }
         $tituloReg = 'REGISTRATE A TripCount';
@@ -205,6 +198,13 @@
         $cabecerasReg .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
         $cabecerasReg .= 'From: TripCount <trip-count@mail.dchcobra.cf>' . "\r\n";
         foreach ($reg as $registrar) {
+            $reg = $pdo->prepare("INSERT INTO invitations (id_user_invitor, mail) VALUES (?, ?)");
+            $reg->bindParam(1, $_SESSION['user_id']);
+            $reg->bindParam(2, $registrar);
+            $reg->execute();
+        
+            
+            
             mail($registrar, $tituloReg, $mensajeReg, $cabecerasReg);
         }
         Redirect('home.php');
