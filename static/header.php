@@ -7,7 +7,7 @@ if (($_SERVER['REQUEST_URI'] === '/Trip-Count/login.php') || ($_SERVER['REQUEST_
     </div>
     <div>';
     if(isset($_SESSION)){  
-      echo '<a class="logo"><span class="user">' . $_SESSION["name"] . '</span></a>';    
+      echo '<span class="user">' . $_SESSION["name"] . '</span>';    
     }
     echo '
     </div>

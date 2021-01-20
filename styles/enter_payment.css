@@ -1,129 +1,62 @@
-html {
-   height: 100%;
+body { font-family: Arial, Helvetica, sans-serif;}
+form {border: 1px solid black;}
+
+.form{background: #8bb9dd;
+border: 3px solid black;
 }
 
-.menu{
-  width:100%;
-  display: flex;  
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 3rem;
-  margin-bottom: 5rem;
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
-.container {
-	background:#FF9000;
-  border-radius: 5px;
-  box-shadow: 0 1.5px 0 0 rgba(0,0,0,0.1);
-}
-
-.logo{
-  font-size:40px;
-  text-align: center;
-  padding: 20px 20px 0;
-  margin:0;
-  color: black;
-}
-
-.loginitem {
-	color: #ffff;
-	padding:25px 25px 0;
-	margin: 20px 20px 0;	
-	border-radius: 3px;
-}
-
-input {
-  border: 0;
-  color: inherit;
-  font: inherit;
-  margin: 0;
-  outline: 0;
-  padding: 0;
-}
-
-
-label.user {
-  width: 150px;
-}
-
-label.lock {
-  width: 150px;
-}
-
-.user:before {
-  content: '\f007';
-  font: 14px fontawesome;
-  color: #ffffff;
-  width: 353px;
-
-}
-
-.lock:before {
-  content: '\f023';
-  font: 14px fontawesome;
-  color: #ffffff;
-  width: 353px;
-}
-
-.form input[type="password"], .form input[type="text"], .form input[type="submit"] {
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
   width: 100%;
 }
 
-.formlogin label,
-.formlogin input[type="text"],
-.formlogin input[type="password"],
-.formlogin input[type="submit"] {
-  border-radius: 0.25rem;
-  padding: 1rem;
-  color: #3A3F44;  
+button:hover {
+  opacity: 0.8;
 }
 
-.formlogin label {
-  background-color: #3A3F44;
-  border-bottom-right-radius: 0;
-  border-top-right-radius: 0;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-  color:#ffffff;
+.avanzado {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
 }
 
-.formlogin input[type="text"], .form-login input[type="password"] {
-  background-color: #ffffff;
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
-}
-
-.formlogin input[type="text"]:focus, .form-login input[type="text"]:hover, .form-login input[type="password"]:focus, .form-login input[type="password"]:hover {
-  background-color: #eeeeee;
-}
-
-.formlogin input[type="submit"] {
-  background-color: #3A3F44;
-  color: #eee;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-.formlogin input[type="submit"]:hover {
-  transition: 0.3s;
-  background-color: #3392ff;
-  cursor: pointer;
-}
-
-.formlogin input[type="submit"] span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
- }
-
-.formfield {
-  display: flex;
-  margin-bottom: 2rem;
-}
-
-.text--center {
+.loginitem {
   text-align: center;
+  color: black;
+  font-size: 30px;  
+  border-radius: 3px;
 }
 
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}

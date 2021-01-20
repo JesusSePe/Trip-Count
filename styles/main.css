@@ -72,6 +72,7 @@ ul.breadcrumb li a:hover {
   .header a.logo {
     font-size: 25px;
     font-weight: bold;
+    margin-left: 1rem;
   }
   
   .tripcount {

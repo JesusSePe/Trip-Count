@@ -6,8 +6,8 @@
 <?php
     $hostname = "localhost";
     $dbname = "tripcount";
-    $username = "proyecto";  
-    $password = "P@ssw0rd"; 
+    $username = "root";  
+    $password = ""; 
     try {
         $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
     } catch (PDOException $e){
@@ -241,6 +241,7 @@
             } 
         
             }
+
     }
 
 ?>
@@ -264,6 +265,7 @@
 function Redirect($url, $permanent = false)
 {
     header('Location: ' . $url, true, $permanent ? 301 : 302);
+
     exit();
 }
 ?>

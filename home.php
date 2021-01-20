@@ -22,7 +22,7 @@
   <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
 
     
-  <div><?php systemMSG('success', 'Has accedido con el usuario ' . $_SESSION["uname"])?></div>
+  <div><?php systemMSG('success', 'Has accedido con el usuario ' . $_SESSION["name"])?></div>
   <ul class="breadcrumb">
     <li><a href="index.php">Inicio</a></li>
     <li><a href="login.php">Login</a></li>
