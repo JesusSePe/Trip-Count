@@ -12,15 +12,11 @@
     <?php include_once(dirname(__DIR__).'/Trip-Count/static/php/functions.php'); ?>
     <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
     <div><?php systemMSG('info', 'Se te ha redirigido al login')?></div>
-    <ul class="breadcrumb">
-      <li><a href="index.php">Inicio</a></li>
-      <li>Login</li>
-</ul>
           <?php  
           session_start();  
           $host = "localhost";  
-          $username = "adrian";  
-          $password = "Hakantor";  
+          $username = "root";  
+          $password = "";  
           $database = "tripcount";  
           $message = "";  
           try{
@@ -49,8 +45,11 @@
                   if($count > 0)
                   { 
                     while ($row) {
+
                       $uname = $row["name"];
-                      $_SESSION["name"] = $uname;
+                      $user_id = $row["id_user"];
+                      $_SESSION["uname"] = $uname;
+                      $_SESSION["user_id"] = $user_id;
                       $row = $statement->fetch();
                     }
                     /*$_SESSION["mail"] = $_POST["mail"];*/
@@ -59,7 +58,7 @@
                   }
                   else
                   {
-                    $message = systemMSG('error', 'Wrong Data');
+                    $message = systemMSG('error', 'Usuario o contraseña mal introducido');
                   }
                 }
               }
@@ -68,7 +67,10 @@
               $message = $error->getMessage();
             }
             ?>
-            
+          <ul class="breadcrumb">
+            <li><a href="index.php">Inicio</a></li>
+            <li>Login</li>
+          </ul>
           <div class="menu main-content">
           <div class="container">
               <div class="logo">LOGIN</div>
