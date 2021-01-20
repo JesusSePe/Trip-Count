@@ -6,8 +6,8 @@
 <?php
     $hostname = "localhost";
     $dbname = "tripcount";
-    $username = "php";
-    $pw = "Php_1c4J8";
+    $username = "root";
+    $pw = "";
     try {
         $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
     } catch (PDOException $e){
@@ -74,8 +74,8 @@
     //CONEXION A BD
     $hostname = "localhost";
     $dbname = "tripcount";
-    $username = "php";
-    $pw = "Php_1c4J8";
+    $username = "root";
+    $pw = "";
     $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
     
     if ($dbname !== 'tripcount') {
