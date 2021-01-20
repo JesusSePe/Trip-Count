@@ -18,7 +18,7 @@
     <?php include_once(dirname(__DIR__).'/Trip-Count/static/php/functions.php'); ?>
 </head>
 <body>
-  
+<?php include_once(dirname(__DIR__).'/Trip-Count/static/php/functions.php'); ?>
   <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
 
     

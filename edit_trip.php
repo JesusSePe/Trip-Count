@@ -1,12 +1,14 @@
+<?php  
+ session_start();  
+ ?> 
 <?php
- 
-$databaseHost = 'localhost';
-$databaseName = 'tripcount';
-$databaseUsername = 'root';
-$databasePassword = '';
+$servername = 'localhost';
+$dbname = 'tripcount';
+$username = 'adrian';
+$password = 'Hakantor';
  
 try {
-    $dbConn = new PDO("mysql:host={$databaseHost};dbname={$databaseName}", $databaseUsername, $databasePassword);
+    $dbConn = new PDO("mysql:host={$servername};dbname={$dbname}", $username, $password);
     
     $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch(PDOException $e) {
@@ -69,9 +71,9 @@ while($row = $query->fetch(PDO::FETCH_ASSOC))
     <title>Editar</title>
 </head>
 <body>
+<?php include_once(dirname(__DIR__).'/Trip-Count/static/php/functions.php'); ?>
 <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
-<div><?php systemMSG('info', 'Se te ha redirigido a la pagina de balanç');
-            systemMSG('warning', 'Esta pagina esta en construccion');?></div>
+<div><?php systemMSG('info', 'Se te ha redirigido a la pagina de Editar Viaje');?></div>
 <ul class="breadcrumb">
     <li><a href="index.php">Inicio</a></li>
     <li><a href="login.php">Login</a></li>
