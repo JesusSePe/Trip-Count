@@ -9,7 +9,7 @@ html {
   align-items: center;
   flex-direction: column;
   margin-top: 3rem;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
 }
 
 .container {
@@ -54,7 +54,7 @@ label.lock {
 .user:before {
   content: '\f007';
   font: 14px fontawesome;
-  color: #ffffff;
+  color: black;
   width: 353px;
 
 }

@@ -12,6 +12,14 @@ html {
   margin-bottom: 3rem;
 }
 
+.ocultar {
+    display: none;
+}
+ 
+.mostrar {
+    display: block;
+}
+
 .container {
 	background:#FF9000;
   border-radius: 5px;
