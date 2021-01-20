@@ -76,6 +76,13 @@ CREATE TABLE user_expenses (
 	PRIMARY KEY(id_user, id_expense)
 );
 
+CREATE TABLE IF NOT EXISTS images_tabla (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  imagenes longblob NOT NULL,
+  creado  datetime NOT NULL,
+  PRIMARY KEY (id)
+);
+
 /*Insert users*/
 INSERT INTO users (name, mail, pwd) VALUES ('Check', 'mail@mail.com', 'b03ddf3ca2e714a6548e7495e2a03f5e824eaac9837cd7f159c67b90fb4b7342'); /*P@ssw0rd*/
 INSERT INTO users (name, mail, pwd) VALUES ('Another', 'example@mail.com', '1a4d8f9dabdf67491921cd1f528b27fcca35cc1e76afdb26ea1c4c237bf7e27b'); /*AsDf 1243*/
