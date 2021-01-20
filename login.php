@@ -48,7 +48,7 @@
 
                       $uname = $row["name"];
                       $user_id = $row["id_user"];
-                      $_SESSION["uname"] = $uname;
+                      $_SESSION["name"] = $uname;
                       $_SESSION["user_id"] = $user_id;
                       $row = $statement->fetch();
                     }
