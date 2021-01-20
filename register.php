@@ -33,41 +33,38 @@ if (isset($_POST['mail'], $_POST['pwd'], $_POST['name'], $_POST['pwd2'])){
     if (empty($_POST['pwd2'])) {
       $errors = true;
       array_push($messages, '<b>ERROR:</b> No se ha confirmado la segunda  contraseña.');
+    }else {
+      if ($_POST['pwd'] != $_POST['pwd2']) {
+        $errors = true;
+        array_push($messages, '<b>ERROR:</b> Las contraseñas no coinciden.');
+      }
     }
-  } else {
-  if ($_POST['pwd'] != $_POST['pwd2']) {
-    $errors = true;
-    array_push($messages, '<b>ERROR:</b> Las contraseñas no coinciden.');
+    if (empty($_POST['name'])) {
+      $errors = true;
+      array_push($messages, '<b>ERROR:</b> No se un ha proporcionado un nombre de usuario.');
+    } 
   }
-}
-if (empty($_POST['name'])) {
-  $errors = true;
-  array_push($messages, '<b>ERROR:</b> No se un ha proporcionado un nombre de usuario.');
-} 
-}
-
-if (empty($_POST['mail'])) {
-  $errors = true;
-  array_push($messages, '<b>ERROR:</b> No se ha proporcionado el campo de correo electrónico.');
-}
-
-if (!$errors) {
-  $sentencia = $conn->prepare("SELECT * FROM users WHERE mail = ? ");
-  $sentencia->bindParam(1, $email);
-  $sentencia->execute();
-  if ($sentencia->rowCount() == 0) {
-  $password = hash('sha256', filter_var($_POST['pwd'], FILTER_SANITIZE_STRING)); // 
-  $query = $conn->prepare("INSERT INTO users (name, pwd, mail) VALUES (?, ?, ?)");
-  $query->bindParam(1, $_POST['name']);
-  $query->bindParam(3, $email);
-  $query->bindParam(2, $password);
-  $query->execute();
-  $msg = 'Nuevo usuario creado correctamente, redireccionando...';
-  header("refresh:1;url=index.php");
-} else {
-  $errors = true;
-  array_push($message, "<b>ERROR:</b>Hay otro usuario con este nombre.");
-}
+  if (empty($_POST['mail'])) {
+    $errors = true;
+    array_push($messages, '<b>ERROR:</b> No se ha proporcionado el campo de correo electrónico.');
+  }
+  if (!$errors) {
+    $sentencia = $conn->prepare("SELECT * FROM users WHERE mail = ? ");
+    $sentencia->bindParam(1, $email);
+    $sentencia->execute();
+    if ($sentencia->rowCount() == 0) {
+    $password = hash('sha256', filter_var($_POST['pwd'], FILTER_SANITIZE_STRING)); // 
+    $query = $conn->prepare("INSERT INTO users (name, pwd, mail) VALUES (?, ?, ?)");
+    $query->bindParam(1, $_POST['name']);
+    $query->bindParam(3, $email);
+    $query->bindParam(2, $password);
+    $query->execute();
+    $msg = 'Nuevo usuario creado correctamente, redireccionando...';
+    header("refresh:1;url=index.php");
+  }else {
+    $errors = true;
+    array_push($message, "<b>ERROR:</b>Hay otro usuario con este nombre.");
+  }
 }
 unset($_POST['mail'], $_POST['pwd'], $_POST['pwd2']);
 }
@@ -86,7 +83,7 @@ unset($_POST['mail'], $_POST['pwd'], $_POST['pwd2']);
         <div class="logo">REGISTER</div>
         <div class="loginitem">
             <?php
-            if ($has_errors) {
+            if ($errors) {
               echo '<div class=\'message error-message\'>';
                 foreach ($messages as $key => $error) {
                     echo $error . "</br>";
