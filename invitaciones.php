@@ -43,7 +43,6 @@
     $insert_user->bindParam(':desc', $desc);
     $insert_user->bindParam(':id', $_SESSION['user_id']);
     $insert_user->execute();
-    $insert_user->debugDumpParams();
 ?>
 <head>
     <meta charset="UTF-8">
