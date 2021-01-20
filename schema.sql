@@ -3,9 +3,7 @@ USE tripcount;
 CREATE TABLE users (
 	id_user MEDIUMINT NOT NULL AUTO_INCREMENT,
 	name VARCHAR(25) NOT NULL,
-	last_name VARCHAR (40) NOT NULL,
 	mail VARCHAR(50) NOT NULL,
-	uname VARCHAR(15) NOT NULL,
 	pwd VARCHAR(100) NOT NULL,
 	PRIMARY KEY(id_user)
 );
@@ -72,9 +70,9 @@ CREATE TABLE user_expenses (
 );
 
 /*Insert users*/
-INSERT INTO users (name, last_name, mail, uname, pwd) VALUES ('Check', 'Correct', 'mail@mail.com', 'Manolo', 'b03ddf3ca2e714a6548e7495e2a03f5e824eaac9837cd7f159c67b90fb4b7342'); /*P@ssw0rd*/
-INSERT INTO users (name, last_name, mail, uname, pwd) VALUES ('Another', 'User', 'example@mail.com', 'Anon', '1a4d8f9dabdf67491921cd1f528b27fcca35cc1e76afdb26ea1c4c237bf7e27b'); /*AsDf 1243*/
-INSERT INTO users (name, last_name, mail, uname, pwd) VALUES ('Anon', 'Imous', 'something@dunno.com', 'Mlem', '90395d452a308fcb26c44a7a5fb70916b2aaf592fccdd187ac7c6e1192b217c1'); /*Anon*/
+INSERT INTO users (name, mail, pwd) VALUES ('Check', 'mail@mail.com', 'b03ddf3ca2e714a6548e7495e2a03f5e824eaac9837cd7f159c67b90fb4b7342'); /*P@ssw0rd*/
+INSERT INTO users (name, mail, pwd) VALUES ('Another', 'example@mail.com', '1a4d8f9dabdf67491921cd1f528b27fcca35cc1e76afdb26ea1c4c237bf7e27b'); /*AsDf 1243*/
+INSERT INTO users (name, mail, pwd) VALUES ('Anon', 'something@dunno.com', '90395d452a308fcb26c44a7a5fb70916b2aaf592fccdd187ac7c6e1192b217c1'); /*Anon*/
 /*Insert friends*/
 INSERT INTO friends (id_user, id_friend) VALUES (1, 2); /*User 1 added user 2 as a friend*/
 INSERT INTO friends (id_user, id_friend) VALUES (2, 1); /*User 2 added user 1 as a friend*/
