@@ -74,14 +74,15 @@ label.lock {
   width: 353px;
 }
 
-.form input[type="password"], .form input[type="text"], .form input[type="submit"] {
+.form input[type="password"], .form input[type="text"], .form input[type="submit"], .form input[type="email"]  {
   width: 100%;
 }
 
 .formlogin label,
 .formlogin input[type="text"],
 .formlogin input[type="password"],
-.formlogin input[type="submit"] {
+.formlogin input[type="submit"],
+.formlogin input[type="email"] {
   border-radius: 0.25rem;
   padding: 1rem;
   color: #3A3F44;  
@@ -135,3 +136,14 @@ label.lock {
   text-align: center;
 }
 
+.formlogin input[type="email"], .form-login input[type="password"] {
+  background-color: #ffffff;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  color: #1D1D1E;
+}
+
+.formlogin input[type="email"]:focus, .form-login input[type="email"]:hover, .form-login input[type="email"]:focus, .form-login input[type="email"]:hover {
+  background-color: #eeeeee;
+  color: #1D1D1E;
+}
