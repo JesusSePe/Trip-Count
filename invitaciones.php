@@ -36,6 +36,14 @@
     $insert->bindParam(':date', $date);
     $insert->bindParam(':cur', $curid);
     $insert->execute();
+
+    // Add user to travel
+    $insert_user = $pdo->prepare("INSERT INTO users_travels (id_travel, id_user) VALUES ((SELECT id_travel FROM travels WHERE t_name = :nombre AND t_description = :desc), :id)");
+    $insert_user->bindParam(':nombre', $nombre);
+    $insert_user->bindParam(':desc', $desc);
+    $insert_user->bindParam(':id', $_SESSION['user_id']);
+    $insert_user->execute();
+    $insert_user->debugDumpParams();
 ?>
 <head>
     <meta charset="UTF-8">
