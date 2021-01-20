@@ -201,8 +201,8 @@
     // Get all currency IDs
     $hostname = "localhost";
     $dbname = "tripcount";
-    $username = "php";
-    $pw = "Php_1c4J8";
+    $username = "root";
+    $pw = "";
     try {
         $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $pw);
     } catch (PDOException $e){
