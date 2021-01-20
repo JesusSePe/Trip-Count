@@ -1,7 +1,7 @@
 <?php
   $servername = "localhost";
-  $username = "adrian";
-  $password = "Hakantor";
+  $username = "root";
+  $password = "";
   $dbname = "tripcount";
   try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -24,29 +24,39 @@
 <?php
 $messages = [];
 $errors = false;
+
+$query2 = $conn->prepare("SELECT * FROM `users`");
+$query2->execute();
+
 if (isset($_POST['mail'], $_POST['pwd'], $_POST['name'], $_POST['pwd2'])){
+  if ($_POST['pwd'] <> $_POST['pwd2']) {
+    $errors = true;
+    array_push($messages, ' Las contraseñas no coinciden.');
+  }
+  if (empty($_POST['name'])) {
+    $errors = true;
+    array_push($messages, ' No se un ha proporcionado un nombre de usuario.');
+  } 
   if (empty($_POST['pwd']) && empty($_POST['pwd2'])) {
     if (empty($_POST['pwd'])) {
       $errors = true;
-      array_push($messages, '<b>ERROR:</b> No se ha proporcionado el campo de contraseña.');
+      array_push($messages, ' No se ha proporcionado el campo de contraseña.');
     }
     if (empty($_POST['pwd2'])) {
       $errors = true;
-      array_push($messages, '<b>ERROR:</b> No se ha confirmado la segunda  contraseña.');
-    }else {
-      if ($_POST['pwd'] != $_POST['pwd2']) {
-        $errors = true;
-        array_push($messages, '<b>ERROR:</b> Las contraseñas no coinciden.');
-      }
+      array_push($messages, ' No se ha confirmado la segunda  contraseña.');
     }
-    if (empty($_POST['name'])) {
-      $errors = true;
-      array_push($messages, '<b>ERROR:</b> No se un ha proporcionado un nombre de usuario.');
-    } 
   }
   if (empty($_POST['mail'])) {
     $errors = true;
-    array_push($messages, '<b>ERROR:</b> No se ha proporcionado el campo de correo electrónico.');
+    array_push($messages, ' No se ha proporcionado el campo de correo electrónico.');
+  }
+  while($row = $query2->fetch()){
+    if ($row['mail'] == $_POST['mail']) {
+      $errors = true;
+      array_push($messages, ' Este correo ya se esta utilizando.');
+      break;
+    }
   }
   if (!$errors) {
     $sentencia = $conn->prepare("SELECT * FROM users WHERE mail = ? ");
@@ -56,14 +66,14 @@ if (isset($_POST['mail'], $_POST['pwd'], $_POST['name'], $_POST['pwd2'])){
     $password = hash('sha256', filter_var($_POST['pwd'], FILTER_SANITIZE_STRING)); // 
     $query = $conn->prepare("INSERT INTO users (name, pwd, mail) VALUES (?, ?, ?)");
     $query->bindParam(1, $_POST['name']);
-    $query->bindParam(3, $email);
+    $query->bindParam(3, $_POST['mail']);
     $query->bindParam(2, $password);
     $query->execute();
     $msg = 'Nuevo usuario creado correctamente, redireccionando...';
     header("refresh:1;url=index.php");
-  }else {
+  } else {
     $errors = true;
-    array_push($message, "<b>ERROR:</b>Hay otro usuario con este nombre.");
+    array_push($message, "Hay otro usuario con este nombre.");
   }
 }
 unset($_POST['mail'], $_POST['pwd'], $_POST['pwd2']);
@@ -72,7 +82,22 @@ unset($_POST['mail'], $_POST['pwd'], $_POST['pwd2']);
 <body>
   <?php include_once(dirname(__DIR__).'/Trip-Count/static/php/functions.php'); ?>
   <?php include_once(dirname(__DIR__) . "/Trip-Count/static/header.php");?>
-  <div><?php systemMSG('info', 'Se te ha redirigido al register')?></div>
+  <div>
+    <?php systemMSG('info', 'Se te ha redirigido al register')?>
+    <?php
+            if ($errors) {
+              echo '<div class=\'message error-message\'>';
+                foreach ($messages as $key => $error) {
+                    echo systemMSG('error', $error);
+                }
+                echo '</div>';
+            } else {
+                echo '<div class=\'message\'>';
+                echo '<p></p>';
+                echo '</div>';
+            }
+            ?>
+  </div>
   <ul class="breadcrumb">
       <li><a href="index.php">Inicio</a></li>
       <li>Register</li>
@@ -82,27 +107,15 @@ unset($_POST['mail'], $_POST['pwd'], $_POST['pwd2']);
         <div></div>
         <div class="logo">REGISTER</div>
         <div class="loginitem">
-            <?php
-            if ($errors) {
-              echo '<div class=\'message error-message\'>';
-                foreach ($messages as $key => $error) {
-                    echo $error . "</br>";
-                }
-                echo '</div>';
-            } else {
-                echo '<div class=\'message\'>';
-                echo '<p></p>';
-                echo '</div>';
-            }
-            ?>
-          <form action="register2.php" method="post" name="submit" class="form formlogin">
+            
+          <form action="register.php" method="post" name="submit" class="form formlogin">
             <div class="formfield">
                 <label for="name">Nombre</label>
                 <input type="text" name="name" id="userName">
             </div>
             <div class="formfield">
               <label for="userMail">Correo electrónico</label>
-              <input type="text" name="mail" id="userMail" placeholder="user@mail.com">
+              <input type="email" name="mail" id="userMail" placeholder="user@mail.com">
             </div>
             <div class="formfield">
                 <label for="userPass">Contraseña</label>
@@ -113,7 +126,7 @@ unset($_POST['mail'], $_POST['pwd'], $_POST['pwd2']);
                 <input type="password" name="pwd2" id="userPass2">
             </div>
             <div class="formfield">
-                <button class="button-primary" type="submit" accesskey="r"><u>R</u>EGISTRAR</button>
+                <input type="submit" name="submit" value="Register" class="button" accesskey="r"> 
             </div>
             </form>
          </div>

@@ -212,7 +212,7 @@
         //insert to database
         if(isset($_POST['submit'])){
 
-            $user_name = $_POST['uname'];
+            $user_name = $_POST['name'];
             $user_pass = $_POST['pwd'];
             $user_passCon = $_POST['pwdcom'];
             $clave_cifrada = password_hash($user_pass, PASSWORD_DEFAULT, array("cost"=>15));
