@@ -25,7 +25,7 @@
 </ul>
 <div class="main-content">
     <div>
-     <form name="MiForm" id="MiForm" method="post" action="enter_payments.php" enctype="multipart/form-data">
+     <form name="MiForm" id="MiForm" method="post" action="<?php include_once(dirname(__DIR__) . "/TripCount/static/enter_payments.php");?>" enctype="multipart/form-data">
         <h4 class="text-center">Seleccione imagen a cargar</h4>
         <div class="form-group">
           <label class="col-sm-2 control-label">Archivos</label>
@@ -44,8 +44,8 @@ if(isset($_POST["submit"])){
         $imgContenido = addslashes(file_get_contents($image));
         
         $Host = 'localhost';
-        $Username = 'root';
-        $Password = '';
+        $Username = 'proyecto';
+        $Password = 'P@ssw0rd';
         $dbName = 'tripcount';
         
         $db = new mysqli($Host, $Username, $Password, $dbName);
@@ -57,6 +57,7 @@ if(isset($_POST["submit"])){
         
         //Insertar imagen en la base de datos
         $insertar = $db->query("INSERT into images_tabla (imagenes, creado) VALUES ('$imgContenido', now())");
+        $insertar->debugDumpParams();
         if($insertar){
             echo "Archivo Subido Correctamente.";
         }else{
@@ -67,36 +68,6 @@ if(isset($_POST["submit"])){
     }
 }
 ?>
-     
-    <div class="container">
-        <div></div>
-    <form class="form" action="/enter_payments.php" method="post">
-         <div class="loginitem">
-            <div class="logo">Payment</div>
-            </div>
-  <div class="container">
-    <label for="uname"><b>Precio</b></label>
-    <input type="number" placeholder="Pago" name="uname" required>
-    <br>
-    <br>
-    <label for="select"><b>Invitados</b></label>
-    <select name="users">
-        <option value="0">Seleccione:</option>
-            <select name="lst_exam" id="lst_exam">
-                <?php
-                $query = $pdo->prepare("SELECT * FROM user_expenses");
-                $query->execute();
-                while ($row = $query->fetch()){
-                    echo "<option>" . $row["id_user"] . "</option>";
-                }?>
-            </select>
-        
-    <button type="submit">Login</button>
-  </div>
-
-  <div class="container">
-    <button type="button" class="avanzado">Pago Avanzado</button>
-  </div>
 </form>
 
         </div>

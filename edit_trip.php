@@ -4,8 +4,8 @@
 <?php
 $servername = 'localhost';
 $dbname = 'tripcount';
-$username = 'adrian';
-$password = 'Hakantor';
+$username = 'proyecto';
+$password = 'P@ssw0rd';
  
 try {
     $dbConn = new PDO("mysql:host={$servername};dbname={$dbname}", $username, $password);
@@ -96,8 +96,11 @@ while($row = $query->fetch(PDO::FETCH_ASSOC))
             <div class="formfield">
               <input type="hidden" name="id" value=<?php echo $_GET['id_travel'];?>>
               <input type="submit" name="update" value="Update"> 
-              <!--preguntar a xavi como subrayar la l de login para el acceso directo-->
+              
               <span></span>
+            </div>
+            <div class="formfield">
+              <a class="button" href="invitaciones.php"> INVITAR </a>
             </div>
           </form>
         </div>

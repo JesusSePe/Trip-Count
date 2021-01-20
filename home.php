@@ -35,8 +35,8 @@
             <?php
             $hostname = "localhost";
             $dbname = "tripcount";
-            $username = "root";  
-            $password = "";  
+            $username = "proyecto";  
+            $password = "P@ssw0rd";  
             $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
             if(!$pdo){
                 systemMSG('error', 'No se ha conectado a la base de datos!');

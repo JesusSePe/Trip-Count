@@ -15,8 +15,8 @@
           <?php  
           session_start();  
           $host = "localhost";  
-          $username = "root";  
-          $password = "";  
+          $username = "proyecto";  
+          $password = "P@ssw0rd";  
           $database = "tripcount";  
           $message = "";  
           try{
