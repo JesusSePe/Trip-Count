@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="styles/home.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="icon" href="img/coin.png" type="image/png">
+    <script src="static/js/functions.js"></script>
     <?php include_once(dirname(__DIR__).'/Trip-Count/static/php/functions.php'); ?>
 </head>
 <body>
@@ -57,12 +58,12 @@
                     if(ISSET($_POST['t_creation'])){
 
                         // LISTA DE VIAJES
-                        $query = $pdo->prepare("SELECT id_travel, t_name, t_description, t_creation, t_update, code, id_travel FROM travels tra LEFT JOIN currency cur ON tra.id_currency = cur.id_currency WHERE id_travel IN (SELECT id_travel FROM users_travels WHERE id_user = :id_user) ORDER BY `t_creation` ASC");
+                        $query = $pdo->prepare("SELECT id_travel, t_name, t_description, t_creation, t_update, code FROM travels tra LEFT JOIN currency cur ON tra.id_currency = cur.id_currency WHERE id_travel IN (SELECT id_travel FROM users_travels WHERE id_user = :id_user) ORDER BY `t_creation` ASC");
                         $query->bindParam(':id_user', $_SESSION['user_id']);
                         $query->execute();
                         systemMSG('info', 'Se ha ordenado por fecha de creacion ');
                         while($row = $query->fetch()){
-                           echo "<tr id='".$row['id_travel']."'>
+                           echo "<tr onclick='details(".$row['id_travel'].")' id='".$row['id_travel']."'>
                             <td>".$row['t_name']."</td>
                             <td>".$row['t_description']."</td>
                             <td>".$row['t_creation']."</td>
@@ -71,7 +72,7 @@
                             </tr>";
 
                             // DETALLES DE PAGOS DE LOS DIFERENTES VIAJES. 
-                            $details_query = $pdo->prepare("SELECT expense_date, amount, name FROM expenses exp INNER JOIN user_expenses ue ON exp.id_expense = ue.id_expense INNER JOIN users u ON ue.id_user = u.id_user WHERE id_travel = :id ORDER by 1");
+                            $details_query = $pdo->prepare("SELECT expense_date, amount, name FROM expenses exp LEFT JOIN user_expenses ue ON exp.id_expense = ue.id_expense LEFT JOIN users u ON ue.id_user = u.id_user WHERE id_travel = :id ORDER by 1");
                             $details_query->bindParam(':id', $row['id_travel']);
                             $details_query->execute();
                             while($details_row = $details_query->fetch()){
@@ -81,34 +82,100 @@
                                 <td>Usuari: ".$details_row['name']."</td>
                                 </tr>";
                             }
+                            // BOTONES E INFORMACIÓN EXTRA.
+                            $total_query = $pdo->prepare("SELECT sum(amount) FROM expenses WHERE id_travel = :id GROUP BY id_travel");
+                            $total_query->bindParam(':id', $row['id_travel']);
+                            $total_query->execute();
+                            while($total = $total_query->fetch()){
+                                echo "
+                                <tr class = 'details details".$row['id_travel']."'>
+                                <td>Despesa total: ".$total['sum(amount)']."</td>
+                                <td><a href='./enter_payments.php'>Afegir pagament</a></td>
+                                <td><a href=''>Gestionar usuaris</a></td>
+                                <td><a href='./balanç.php'>Balanç</a></td>
+                                </tr>";
+                            }
                         }
                     }else if(ISSET($_POST['t_update'])){
-                        $query = $pdo->prepare("SELECT t_name, t_description, t_creation, t_update, code FROM travels tra LEFT JOIN currency cur ON tra.id_currency = cur.id_currency ORDER BY t_update DESC");
-
+                        $query = $pdo->prepare("SELECT id_travel, t_name, t_description, t_creation, t_update, code FROM travels tra LEFT JOIN currency cur ON tra.id_currency = cur.id_currency WHERE id_travel IN (SELECT id_travel FROM users_travels WHERE id_user = :id_user) ORDER BY t_update DESC");
+                        $query->bindParam(':id_user', $_SESSION['user_id']);
                         $query->execute();
                         systemMSG('info', 'Se ha ordenado por fecha de actualizacion ');
-                while($row = $query->fetch()){
-                   echo "<tr>
+                        while($row = $query->fetch()){
+                           echo "<tr onclick='details(".$row['id_travel'].")' id='".$row['id_travel']."'>
                             <td>".$row['t_name']."</td>
                             <td>".$row['t_description']."</td>
                             <td>".$row['t_creation']."</td>
                             <td>".$row['t_update']."</td>
                             <td>".$row['code']."</td>
-                    </tr>";
-                }
-            }else{
-                $query = $pdo->prepare("SELECT t_name, t_description, t_creation, t_update, code FROM travels tra LEFT JOIN currency cur ON tra.id_currency = cur.id_currency ORDER BY `id_travel` ASC");
-                $query->execute();
-                while($row = $query->fetch()){
-                    echo "<tr>
+                            </tr>";
+
+                            // DETALLES DE PAGOS DE LOS DIFERENTES VIAJES. 
+                            $details_query = $pdo->prepare("SELECT expense_date, amount, name FROM expenses exp LEFT JOIN user_expenses ue ON exp.id_expense = ue.id_expense LEFT JOIN users u ON ue.id_user = u.id_user WHERE id_travel = :id ORDER by 1");
+                            $details_query->bindParam(':id', $row['id_travel']);
+                            $details_query->execute();
+                            while($details_row = $details_query->fetch()){
+                                echo "<tr class = 'details details".$row['id_travel']."'>
+                                <td>Data despesa: ".$details_row['expense_date']."</td>
+                                <td>Quantitat: ".$details_row['amount']."</td>
+                                <td>Usuari: ".$details_row['name']."</td>
+                                </tr>";
+                            }
+                            // BOTONES E INFORMACIÓN EXTRA.
+                            $total_query = $pdo->prepare("SELECT sum(amount) FROM expenses WHERE id_travel = :id GROUP BY id_travel");
+                            $total_query->bindParam(':id', $row['id_travel']);
+                            $total_query->execute();
+                            while($total = $total_query->fetch()){
+                                echo "
+                                <tr class = 'details details".$row['id_travel']."'>
+                                <td>Despesa total: ".$total['sum(amount)']."</td>
+                                <td><a href='./enter_payments.php'>Afegir pagament</a></td>
+                                <td><a href=''>Gestionar usuaris</a></td>
+                                <td><a href='./balanç.php'>Balanç</a></td>
+                                </tr>";
+                            }
+                        }
+                    }else{
+                        $query = $pdo->prepare("SELECT id_travel, t_name, t_description, t_creation, t_update, code FROM travels tra LEFT JOIN currency cur ON tra.id_currency = cur.id_currency WHERE id_travel IN (SELECT id_travel FROM users_travels WHERE id_user = :id_user) ORDER BY `id_travel` ASC");
+                        $query->bindParam(':id_user', $_SESSION['user_id']);
+                        $query->execute();
+                        while($row = $query->fetch()){
+                           echo "<tr onclick='details(".$row['id_travel'].")' id='".$row['id_travel']."'>
                             <td>".$row['t_name']."</td>
                             <td>".$row['t_description']."</td>
                             <td>".$row['t_creation']."</td>
                             <td>".$row['t_update']."</td>
                             <td>".$row['code']."</td>
-                    </tr>";
-                }
-            }
+                            </tr>";
+
+                            // DETALLES DE PAGOS DE LOS DIFERENTES VIAJES. 
+                            $details_query = $pdo->prepare("SELECT expense_date, amount, name FROM expenses exp LEFT JOIN user_expenses ue ON exp.id_expense = ue.id_expense LEFT JOIN users u ON ue.id_user = u.id_user WHERE id_travel = :id ORDER by 1");
+                            $details_query->bindParam(':id', $row['id_travel']);
+                            $details_query->execute();
+                            while($details_row = $details_query->fetch()){
+                                echo "<tr class = 'details details".$row['id_travel']."'>
+                                <td>Data despesa: ".$details_row['expense_date']."</td>
+                                <td>Quantitat: ".$details_row['amount']."</td>
+                                <td>Usuari: ".$details_row['name']."</td>
+                                </tr>";
+                            }
+                            // BOTONES E INFORMACIÓN EXTRA.
+                            $total_query = $pdo->prepare("SELECT sum(amount) FROM expenses WHERE id_travel = :id GROUP BY id_travel");
+                            $total_query->bindParam(':id', $row['id_travel']);
+                            $total_query->execute();
+                            while($total = $total_query->fetch()){
+                                echo "
+                                <tr class = 'details details".$row['id_travel']."'>
+                                <td>Despesa total: ".$total['sum(amount)']."</td>
+                                <td><a href='./enter_payments.php'>Afegir pagament</a></td>
+                                <td><a href=''>Gestionar usuaris</a></td>
+                                <td><a href='./balanç.php'>Balanç</a></td>
+                                </tr>";
+                            }
+                        }
+                    }
+            
+                        
         ?></p>
 <p> </tbody><br />
 </table></p>

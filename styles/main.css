@@ -271,6 +271,7 @@ span::before {
 .details {
   display: none;
 }
+
 /*JS NOTE: To show a travel's details: .details[travel_id]{display:table-row;}*/
 
 /* FORM */
